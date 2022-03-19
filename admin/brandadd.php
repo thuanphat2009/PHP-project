@@ -1,5 +1,5 @@
 <?php
-include '../classes/category.php';
+include '../classes/brand.php';
 ?>
 
 <!DOCTYPE html>
@@ -11,27 +11,27 @@ include '../classes/category.php';
 </head>
 <body>
 <?php
-$cate = new category();
+$brand = new brand();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$cateName = $_POST['cateName'];
-	$insertCate = $cate->insert_category($cateName);
+	$brandName = $_POST['brandName'];
+	$insertBrand = $brand->insert_brand($brandName);
 }
 ?>
 <div class="container">
 		<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-xs-12 edit_information">
 		
-			<form action="categoryadd.php"  method="POST">	
-				<h3 class="text-center">Thêm Danh Mục</h3>
+			<form action="brandadd.php"  method="POST">	
+				<h3 class="text-center">Thêm Thương Hiệu</h3>
                 <?php 
-                    if(isset($insertCate)){
-                        echo $insertCate;
+                    if(isset($insertBrand)){
+                        echo $insertBrand;
                     }
                 ?>
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="form-group">
-							<label class="profile_details_text">Tên Danh Mục:</label>
-							<input name="cateName" class="form-control" value="">
+							<label class="profile_details_text">Tên Thương Hiệu:</label>
+							<input name="brandName" class="form-control" value="">
 							
 						</div>
 					</div>
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 						</div>
 					</div>
 				</div>
-				<a href="./categorylist.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Về Danh sách Danh Mục</a>
+				<a href="./brandlist.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Về Danh sách Thương Hiệu</a>
 			</form>
 		</div>
 	</div>
