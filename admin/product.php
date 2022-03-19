@@ -1,16 +1,4 @@
-<?php
-include '../classes/brand.php';
-include '../lib/session.php';
-Session::checkSession();
-?>
-<?php
-  $brand = new brand();
-  if(isset($_GET['delid'])){
-    $id = $_GET['delid'];
-    $delbrand = $brand->del_brand($id); 
-}
-   
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,7 +38,7 @@ Session::checkSession();
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="./brandadd.php">Thêm Thương Hiệu</a>
+            <a class="navbar-brand" href="./productadd.php">Thêm Sản phẩm</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -77,10 +65,19 @@ Session::checkSession();
                   </p>
                 </a>
               </li>
-              <?php
-                include '../admin/include/logout.php'
-
-              ?>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="now-ui-icons location_world"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Some Actions</span>
+                  </p>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
               <li class="nav-item">
                 <a class="nav-link" href="#pablo">
                   <i class="now-ui-icons users_single-02"></i>
@@ -138,8 +135,8 @@ Session::checkSession();
                         <?php echo $result['brandName']; ?>
                         </td>
                         <td>
-                          <a href="brandedit.php?brandid=<?php echo $result['brandId'] ?>">Sửa</a> |
-                          <a onclick= "return confirm ('Muốn xóa hông?')" href="?delid=<?php echo $result['brandId'] ?>">Xóa</a>
+                          <a href="brandedit.php?brandid=<?php echo $result['brandId'] ?>">edit</a> |
+                          <a onclick= "return confirm ('Muốn xóa hông?')" href="?delid=<?php echo $result['brandId'] ?>">delete</a>
                         </td>
                       </tr>
                     <?php 
@@ -152,7 +149,7 @@ Session::checkSession();
               </div>
             </div>
           </div>
-     
+        
         </div>
       </div>
       <footer class="footer">
@@ -186,7 +183,6 @@ Session::checkSession();
     </div>
   </div>
   <!--   Core JS Files   -->
-  <script src="./assets/js/core/jsbybanhcuon.js"></script>
   <script src="./assets/js/core/jquery.min.js"></script>
   <script src="./assets/js/core/popper.min.js"></script>
   <script src="./assets/js/core/bootstrap.min.js"></script>

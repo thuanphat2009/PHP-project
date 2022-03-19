@@ -18,13 +18,6 @@
               <p>Dashboard</p>
             </a>
           </li>
-        
-          <li>
-            <a href="./tables.php">
-              <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Table List</p>
-            </a>
-          </li>
           <li>
             <a href="./categorylist.php">
               <i class="now-ui-icons design_bullet-list-67"></i>
@@ -35,6 +28,12 @@
             <a href="./brandlist.php">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Thương Hiệu</p>
+            </a>
+          </li>
+          <li>
+            <a href="./product.php">
+              <i class="now-ui-icons design_bullet-list-67"></i>
+              <p>Sản phẩm</p>
             </a>
           </li>
         </ul>

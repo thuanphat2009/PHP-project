@@ -15,16 +15,16 @@
             $cateName = $this->fm->validation($cateName);
             $connection = $this->db->conn;
             if(empty($cateName)){
-                $alert =  "<span class='text-danger'>Category must be not empty</span>"; 
+                $alert =  "<span class='text-danger'>Không được để trống</span>"; 
                  return $alert;
             }else{
                 $query = "INSERT INTO tbl_category(cateName) VALUES('$cateName')";
                 $result = $this->db->insert($query);
                 if ($result){
-                    $alert = "<span class='text-success'>Insert Category Successfully</span>";             
+                    $alert = "<span class='text-success'>Thêm danh mục thành công</span>";             
                     return $alert;
                 }else{
-                    $alert = "<span class='text-danger'>Insert Category Not Success</span>";
+                    $alert = "<span class='text-danger'>Thêm danh mục thất bại</span>";
                     return $alert;            
              }
             
@@ -42,16 +42,16 @@
         $id =$connection -> real_escape_string($id);
    
         if(empty($cateName)){
-            $alert =  "<span class='text-danger'>Category must be not empty</span>"; 
+            $alert =  "<span class='text-danger'>Không được để trống</span>"; 
              return $alert;
         }else{
             $query = "UPDATE tbl_category SET cateName = '$cateName' WHERE cateId = '$id'";
             $result = $this->db->update($query);
             if ($result){
-                $alert = "<span class='text-success'>Update Category Successfully</span>";             
+                $alert = "<span class='text-success'>Sửa danh mục thành công</span>";             
                 return $alert;
             }else{
-                $alert = "<span class='text-danger'>Update Category Not Success</span>";
+                $alert = "<span class='text-danger'>Sửa danh mục thất bại</span>";
                 return $alert;            
          }
         
@@ -61,10 +61,10 @@
         $query = "DELETE FROM tbl_category WHERE cateId = '$id'";
         $result = $this->db->delete($query);
         if ($result){
-            $alert = "<span class='text-success'>Delete Category Successfully</span>";             
+            $alert = "<span class='text-success'>Xóa danh mục thành công</span>";             
             return $alert;
         }else{
-            $alert = "<span class='text-danger'>Delete Category Not Success</span>";
+            $alert = "<span class='text-danger'>Xóa danh mục thất bại</span>";
             return $alert;            
      }
     }
