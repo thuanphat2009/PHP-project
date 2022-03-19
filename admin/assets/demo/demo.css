@@ -61,3 +61,8 @@
   max-width: 530px;
   margin: 0 auto;
 }
+.image__fit{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
