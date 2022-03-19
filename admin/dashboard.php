@@ -68,9 +68,14 @@ Session::checkSession();
                   </p>
                 </a>
               </li> -->
-            <?php
-              include '../admin/include/logout.php';
-            ?>
+
+              
+              <?php
+                include '../admin/include/logout.php'
+
+              ?>
+
+             
               <li class="nav-item">
                 <a class="nav-link" href="#pablo">
                   <i class="now-ui-icons users_single-02"></i>
@@ -393,6 +398,7 @@ Session::checkSession();
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="./assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="./assets/demo/demo.js"></script>
+  <script src="./assets/js/core/jsbybanhcuon.js"></script>
   <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js

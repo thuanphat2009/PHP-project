@@ -1,3 +1,4 @@
+
 demo = {
   initPickColor: function() {
     $('.pick-class-label').click(function() {
@@ -12,7 +13,6 @@ demo = {
       }
     });
   },
-
   initDocChart: function() {
     chartColor = "#FFFFFF";
 
