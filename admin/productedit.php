@@ -11,7 +11,7 @@ require_once '../classes/product.php';
 	} else {
 		$id = $_GET['productid'];
 	}
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['productid'])) {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
         
         $updateProduct = $pd->update_product($_POST,$_FILES,$id);
     }	
@@ -149,7 +149,7 @@ require_once '../classes/product.php';
   <hr>
   <div class="form-group">
     <div class="col-sm-offset-3 col-sm-9">
-      <button type="submit" name="submit" class="btn btn-primary">Cập Nhật</button>
+      <button type="submit" name="submit" value="Update" class="btn btn-primary">Cập Nhật</button>
     </div>
   </div> <!-- form-group // -->
   <a href="./productlist.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Về Danh sách Sản Phẩm</a>

@@ -27,10 +27,18 @@ require_once '../classes/product.php';
 </head>
 
 <body class="">
+
   <div class="wrapper ">
     <?php
     include '../admin/include/sidebar.php'
     ?>
+    <?php 
+      $pd = new product();
+        if(isset($_GET['productid'])){
+          $id = $_GET['productid'];
+          $delpro = $pd->del_product($id);
+        }
+  ?>
     <div class="main-panel" id="main-panel">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
@@ -144,7 +152,7 @@ require_once '../classes/product.php';
                         </td>
                         <td>
                           <a href="productedit.php?productid=<?php echo $result['productId'] ?>">edit</a> |
-                          <a onclick= "return confirm ('Muốn xóa hông?')" href="?delid=<?php echo $result['brandId'] ?>">delete</a>
+                          <a onclick= "return confirm ('Muốn xóa hông?')" href="?productid=<?php echo $result['productId'] ?>">delete</a>
                         </td>
                       </tr>
                     <?php
