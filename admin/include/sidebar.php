@@ -31,7 +31,7 @@
             </a>
           </li>
           <li>
-            <a href="./product.php">
+            <a href="./productlist.php">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Sản phẩm</p>
             </a>
