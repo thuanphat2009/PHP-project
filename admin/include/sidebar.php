@@ -25,7 +25,18 @@
               <p>Table List</p>
             </a>
           </li>
-        
+          <li>
+            <a href="./categorylist.php">
+              <i class="now-ui-icons design_bullet-list-67"></i>
+              <p>Danh mục</p>
+            </a>
+          </li>
+          <li>
+            <a href="./brandlist.php">
+              <i class="now-ui-icons design_bullet-list-67"></i>
+              <p>Thương Hiệu</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
