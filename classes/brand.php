@@ -73,6 +73,25 @@
         $query = "SELECT * FROM tbl_brand WHERE brandId = '$id'";
         $result = $this->db->select($query);
         return $result;
+    } 
+     //USER     
+    public function add_brand(){
+        $query = "SELECT * FROM tbl_brand order by brandId desc";
+        $result = $this->db->select($query);
+        return $result;
+    }  
+    public function get_product_by_brand($id){
+        $query = "SELECT * FROM tbl_product WHERE brandId = '$id' order by brandId desc LIMIT 6";
+        $result = $this->db->select($query);
+        return $result;
+    }   
+    public function get_name_by_brand($id){
+        $query = "SELECT tbl_product.*, tbl_brand.brandName, tbl_brand.brandId
+        From tbl_product , tbl_brand 
+        WHERE tbl_product.brandId = tbl_brand.brandId And tbl_product.brandId= '$id' LIMIT 1
+        ";
+        $result = $this->db->select($query);
+        return $result;
     }         
 }
 ?>

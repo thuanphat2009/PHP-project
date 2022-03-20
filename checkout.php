@@ -1,6 +1,6 @@
 <?php 
-	include 'include/header.php';
-	include 'include/slider.php';
+	include_once 'include/header.php';
+	include_once 'include/slider.php';
 ?>	
     <!-- Header End====================================================================== -->
     <div id="mainBody">

@@ -1,6 +1,12 @@
 <?php
 include 'include/header.php';
 ?>
+<?php 
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
+
+		$loginCustomer = $cs->login_customer($_POST);
+	  }	
+?>
 <!-- Header End====================================================================== -->
 <div id="mainBody">
 	<div class="container">
@@ -17,9 +23,13 @@ include 'include/header.php';
 				</ul>
 				<h3> Đăng nhập</h3>
 				<hr class="soft" />
-
+				<?php
+					if (isset($loginCustomer)) {
+						echo $loginCustomer;
+					}
+				?>
 				<div class="row">
-					<div class="span4">
+					<!-- <div class="span4">
 						<div class="well">
 							<h5>Tạo tài khoản</h5><br />
 							Nhập email để tạo tài khoản của bạn.<br /><br /><br />
@@ -35,27 +45,28 @@ include 'include/header.php';
 								</div>
 							</form>
 						</div>
-					</div>
+					</div> -->
 					<div class="span1"> &nbsp;</div>
 					<div class="span4">
 						<div class="well">
 							<h5>Đã có tài khoản ?</h5>
-							<form>
+							<form action="" method="post">
 								<div class="control-group">
 									<label class="control-label" for="inputEmail1">Email</label>
 									<div class="controls">
-										<input class="span3" type="text" id="inputEmail1" placeholder="Email">
+										<input class="span3" name="email" type="text" id="inputEmail1" placeholder="Email">
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label" for="inputPassword1">Mật khẩu</label>
 									<div class="controls">
-										<input type="password" class="span3" id="inputPassword1" placeholder="Mật khẩu">
+										<input type="password" name="password" class="span3" id="inputPassword1" placeholder="Mật khẩu">
 									</div>
 								</div>
 								<div class="control-group">
 									<div class="controls">
-										<button type="submit" class="btn">Đăng nhập</button> <a href="forgetpass.php">Quên mật khẩu ?</a>
+									<input class="btn btn-large btn-success" type="submit" name="login" value="Đăng Nhập" /> 
+									<a href="forgetpass.php">Quên mật khẩu ?</a>
 									</div>
 								</div>
 							</form>
