@@ -56,7 +56,7 @@
                     Session::set('customer_login',true);
                     Session::set('customer_id',$value['Id']);
                     Session::set('customer_name',$value['name']);
-                    echo "<script> window.location.href='checkout.php';</script>";
+                    echo "<script> window.location.href='products.php';</script>";
                 }else{
                     $alert =  "<span class='text-danger'>Email hoặc Password không đúng</span>"; 
                     return $alert;

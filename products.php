@@ -1,6 +1,8 @@
 <?php
-include 'include/header.php';
+include_once 'include/header.php';
 ?>
+
+
 <!-- Header End====================================================================== -->
 <div id="mainBody">
 	<div class="container">
@@ -36,237 +38,72 @@ include 'include/header.php';
 				<br class="clr" />
 				<div class="tab-content">
 					<div class="tab-pane" id="listView">
+					<?php 
+                         $add_product = $product->get_add_products();
+                          	if($add_product){
+                            while($result =$add_product->fetch_assoc()){
+                                
+                    ?>
 						<div class="row">
 							<div class="span2">
-								<img src="themes/images/products/3.jpg" alt="" />
+								<img style="height:160px;width:160px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result['image'] ?>" alt="" />
 							</div>
 							<div class="span4">
 
-								<hr class="soft" />
-								<h5>Tên sản phẩm</h5>
+								
+								<h5><?php echo $result['productName'] ?></h5>
 								<p>
-									Mô tả.
+									<?php echo $result['product_desc'] ?>
 								</p>
 
 								<br class="clr" />
 							</div>
 							<div class="span3 alignR">
 								<form class="form-horizontal qtyFrm">
-									<h3> $140.00</h3>
+									<h3> <?php echo $result['price']." "."VND" ?></h3>
 
 
 									<a href="product_details.php" class="btn btn-large btn-primary"> Thêm vào <i class=" icon-shopping-cart"></i></a>
-									<a href="product_details.php" class="btn btn-large"><i class="icon-zoom-in"></i></a>
+									<a href="product_details.php?proid=<?php echo $result['productId'] ?>" class="btn btn-large"><i class="icon-zoom-in"></i></a>
 
 								</form>
 							</div>
 						</div>
 						<hr class="soft" />
-						<div class="row">
-							<div class="span2">
-								<img src="themes/images/products/1.jpg" alt="" />
-							</div>
-							<div class="span4">
-
-								<hr class="soft" />
-								<h5>Tên sản phẩm</h5>
-								<p>
-									Mô tả.
-								</p>
-
-								<br class="clr" />
-							</div>
-							<div class="span3 alignR">
-								<form class="form-horizontal qtyFrm">
-									<h3> $140.00</h3>
-
-
-									<a href="product_details.php" class="btn btn-large btn-primary"> Thêm vào <i class=" icon-shopping-cart"></i></a>
-									<a href="product_details.php" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-
-								</form>
-							</div>
-						</div>
-						<hr class="soft" />
-						<div class="row">
-							<div class="span2">
-								<img src="themes/images/products/3.jpg" alt="" />
-							</div>
-							<div class="span4">
-
-								<hr class="soft" />
-								<h5>Tên sản phẩm</h5>
-								<p>
-									Mô tả.
-								</p>
-
-								<br class="clr" />
-							</div>
-							<div class="span3 alignR">
-								<form class="form-horizontal qtyFrm">
-									<h3> $140.00</h3>
-
-
-									<a href="product_details.php" class="btn btn-large btn-primary"> Thêm vào <i class=" icon-shopping-cart"></i></a>
-									<a href="product_details.php" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-
-								</form>
-							</div>
-						</div>
-						<hr class="soft" />
-						<div class="row">
-							<div class="span2">
-								<img src="themes/images/products/3.jpg" alt="" />
-							</div>
-							<div class="span4">
-
-								<hr class="soft" />
-								<h5>Tên sản phẩm</h5>
-								<p>
-									Mô tả.
-								</p>
-
-								<br class="clr" />
-							</div>
-							<div class="span3 alignR">
-								<form class="form-horizontal qtyFrm">
-									<h3> $140.00</h3>
-
-
-									<a href="product_details.php" class="btn btn-large btn-primary"> Thêm vào <i class=" icon-shopping-cart"></i></a>
-									<a href="product_details.php" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-
-								</form>
-							</div>
-						</div>
-
-						<hr class="soft" />
-						<div class="row">
-							<div class="span2">
-								<img src="themes/images/products/3.jpg" alt="" />
-							</div>
-							<div class="span4">
-
-								<hr class="soft" />
-								<h5>Tên sản phẩm</h5>
-								<p>
-									Mô tả.
-								</p>
-
-								<br class="clr" />
-							</div>
-							<div class="span3 alignR">
-								<form class="form-horizontal qtyFrm">
-									<h3> $140.00</h3>
-
-									<a href="product_details.php" class="btn btn-large btn-primary"> Thêm vào <i class=" icon-shopping-cart"></i></a>
-									<a href="product_details.php" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-								</form>
-							</div>
-						</div>
-						<hr class="soft" />
-						<div class="row">
-							<div class="span2">
-								<img src="themes/images/products/3.jpg" alt="" />
-							</div>
-							<div class="span4">
-
-								<hr class="soft" />
-								<h5>Tên sản phẩm</h5>
-								<p>
-									Mô tả.
-								</p>
-
-								<br class="clr" />
-							</div>
-							<div class="span3 alignR">
-								<form class="form-horizontal qtyFrm">
-									<h3> $140.00</h3>
-
-
-									<a href="product_details.php" class="btn btn-large btn-primary"> Thêm vào <i class=" icon-shopping-cart"></i></a>
-									<a href="product_details.php" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-
-								</form>
-							</div>
-						</div>
-						<hr class="soft" />
+						<?php  
+                                    }
+                                }
+                        ?>
 					</div>
 
 					<div class="tab-pane  active" id="blockView">
 						<ul class="thumbnails">
+						<?php 
+                                $add_product = $product->get_add_products();
+                                    if($add_product){
+                                        while($result =$add_product->fetch_assoc()){
+                                
+                        ?>
 							<li class="span3">
 								<div class="thumbnail">
-									<a href="product_details.php"><img src="themes/images/products/3.jpg" alt="" /></a>
+									<a href="product_details.php?proid=<?php echo $result['productId'] ?>"><img style="height:160px;width:160px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result['image'] ?>" alt="" /></a>
 									<div class="caption">
-										<h5>Manicure &amp; Pedicure</h5>
+										<h5><?php echo $result['productName'] ?></h5>
 										<p>
-											Mô tả.
+											<?php echo $result['product_desc'] ?>
 										</p>
-										<h4 style="text-align:center"><a class="btn" href="product_details.php"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a></h4>
+										<h4 style="text-align:center">
+											<a class="btn" href="product_details.php?proid=<?php echo $result['productId'] ?>"> <i class="icon-zoom-in"></i></a> 
+											<a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> 
+											<a class="btn btn-primary" href="#"><?php echo $result['price']." "."VND" ?></a>
+										</h4>
 									</div>
 								</div>
 							</li>
-							<li class="span3">
-								<div class="thumbnail">
-									<a href="product_details.php"><img src="themes/images/products/3.jpg" alt="" /></a>
-									<div class="caption">
-										<h5>Manicure &amp; Pedicure</h5>
-										<p>
-											Mô tả.
-										</p>
-										<h4 style="text-align:center"><a class="btn" href="product_details.php"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a></h4>
-									</div>
-								</div>
-							</li>
-							<li class="span3">
-								<div class="thumbnail">
-									<a href="product_details.php"><img src="themes/images/products/3.jpg" alt="" /></a>
-									<div class="caption">
-										<h5>Manicure &amp; Pedicure</h5>
-										<p>
-											Mô tả.
-										</p>
-										<h4 style="text-align:center"><a class="btn" href="product_details.php"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a></h4>
-									</div>
-								</div>
-							</li>
-							<li class="span3">
-								<div class="thumbnail">
-									<a href="product_details.php"><img src="themes/images/products/3.jpg" alt="" /></a>
-									<div class="caption">
-										<h5>Manicure &amp; Pedicure</h5>
-										<p>
-											Mô tả.
-										</p>
-										<h4 style="text-align:center"><a class="btn" href="product_details.php"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a></h4>
-									</div>
-								</div>
-							</li>
-							<li class="span3">
-								<div class="thumbnail">
-									<a href="product_details.php"><img src="themes/images/products/3.jpg" alt="" /></a>
-									<div class="caption">
-										<h5>Manicure &amp; Pedicure</h5>
-										<p>
-											Mô tả.
-										</p>
-										<h4 style="text-align:center"><a class="btn" href="product_details.php"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a></h4>
-									</div>
-								</div>
-							</li>
-							<li class="span3">
-								<div class="thumbnail">
-									<a href="product_details.php"><img src="themes/images/products/3.jpg" alt="" /></a>
-									<div class="caption">
-										<h5>Manicure &amp; Pedicure</h5>
-										<p>
-											Mô tả.
-										</p>
-										<h4 style="text-align:center"><a class="btn" href="product_details.php"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a></h4>
-									</div>
-								</div>
-							</li>
+							<?php  
+                                    }
+                                }
+                            ?>
 						</ul>
 						<hr class="soft" />
 					</div>

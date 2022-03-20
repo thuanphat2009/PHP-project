@@ -2,6 +2,12 @@
 include 'include/header.php';
 ?>
 <?php 
+	$login_check = Session::get('customer_login');
+	if($login_check){
+		echo "<script> window.location.href='products.php';</script>";
+	}
+?>
+<?php 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
 
 		$loginCustomer = $cs->login_customer($_POST);
