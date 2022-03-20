@@ -27,7 +27,7 @@
 												<div class="thumbnail">
 													<i class="tag"></i>
 													<a href="product_details.php?proid=<?php echo $result['productId'] ?> ">
-													<img style="height:140px;width:140px;object-fit:cover;"
+													<img style="height:140px; width:140px; object-fit:cover;"
 														src="admin/uploads/<?php echo $result['image'] ?>" alt="">
 													</a>
 													<div class="caption">
@@ -59,7 +59,7 @@
 						<li class="span3">
 							<div class="thumbnail">
 								<a href="product_details.php?proid=<?php echo $result['productId'] ?>">
-								<img style="height:250px;width:250px;object-fit:cover;" src="admin/uploads/<?php echo $result['image'] ?>" alt="" /></a>
+								<img style="height:250px; width:250px; object-fit:cover;" src="admin/uploads/<?php echo $result['image'] ?>" alt="" /></a>
 								<div class="caption">
 									<h5><?php echo $result['productName'] ?></h5>
 									<p>
