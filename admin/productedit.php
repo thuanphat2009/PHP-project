@@ -67,7 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
 
               <?php
               include '../admin/include/logout.php'
-
               ?>
               <li class="nav-item">
                 <a class="nav-link" href="#pablo">
@@ -104,7 +103,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                       $get_product_by_id = $pd->getproductbyId($id);
                       if ($get_product_by_id) {
                         while ($result_product = $get_product_by_id->fetch_assoc()) {
-
                       ?>
                           <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                             <div class="form-group">

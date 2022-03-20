@@ -38,10 +38,18 @@ Session::checkSession();
 </head>
 
 <body class="">
+
   <div class="wrapper ">
     <?php
     include '../admin/include/sidebar.php'
     ?>
+    <?php 
+      $pd = new product();
+        if(isset($_GET['productid'])){
+          $id = $_GET['productid'];
+          $delpro = $pd->del_product($id);
+        }
+  ?>
     <div class="main-panel" id="main-panel">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
