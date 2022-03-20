@@ -133,6 +133,12 @@ Session::checkSession();
                         Giá
                       </th>
                       <th>
+                        Tồn kho
+                      </th>
+                      <th>
+                        Đã bán
+                      </th>
+                      <th>
                         Action
                       </th>
                     </thead>
@@ -160,6 +166,12 @@ Session::checkSession();
                         </td>
                         <td>
                           <?php echo $result['price'] ?>
+                        </td>
+                        <td>
+                          <?php echo $result['tonkho'] ?>
+                        </td>
+                        <td>
+                          <?php echo $result['daban'] ?>
                         </td>
                         <td>
                           <a href="productedit.php?productid=<?php echo $result['productId'] ?>">Sửa</a> |

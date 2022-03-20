@@ -175,7 +175,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                           <input type="file" style="opacity:1; position:unset;" name="image">
 
                         </div> <!-- form-group // -->
+                        <div class="form-group">
+                          <label for="tonkho" class="col-sm-3 control-label">Số lượng tồn kho</label>
 
+                          <input type="text" class="form-control" name="tonkho" id="tonkho" placeholder="">
+
+                        </div> <!-- form-group // -->
+                       
                         <hr>
                         <div class="form-group">
 
