@@ -82,12 +82,12 @@ include 'include/header.php';
 						</form>
 
 						<hr class="soft" />
-						<h4>100 sản phẩm tồn kho</h4>
+						<h4><?php echo $result_details['tonkho'] ?> sản phẩm tồn kho</h4>
 						<hr class="soft clr" />
-						<p>
+						<!-- <p>
 							<?php echo $result_details['product_desc'] ?>
 
-						</p>
+						</p> -->
 						
 					</div>
 
