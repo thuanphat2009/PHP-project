@@ -32,7 +32,7 @@ include 'include/header.php';
 						
 					?>
 						<a href="admin/uploads/<?php echo $result_details['image'] ?>" title="Fujifilm FinePix S2950 Digital Camera">
-							<img style="height:250px; width:250px; object-fit:cover;" src="admin/uploads/<?php echo $result_details['image'] ?>" style="width:100%" alt="Fujifilm FinePix S2950 Digital Camera" />
+							<img style="height:250px;width:250px;object-fit:cover;" src="admin/uploads/<?php echo $result_details['image'] ?>" style="width:100%" alt="Fujifilm FinePix S2950 Digital Camera" />
 						</a>
 						<div id="differentview" class="moreOptopm carousel slide">
 							<!-- <div class="carousel-inner">
