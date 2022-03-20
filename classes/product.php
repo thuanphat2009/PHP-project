@@ -164,5 +164,10 @@
         $result = $this->db->select($query);
         return $result;
     }
+    public function get_add_products(){
+        $query = "SELECT * FROM tbl_product LIMIT 6";
+        $result = $this->db->select($query);
+        return $result;
+    }
 }
 ?>

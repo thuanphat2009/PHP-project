@@ -69,7 +69,7 @@ include 'include/header.php';
 						<div class="row">
                            
 							<div class="span2">
-								<img style="height:160px;width:160px;object-fit:cover;" src="admin/uploads/<?php echo $result['image'] ?>" alt="" />
+								<img style="height:160px;width:160px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result['image'] ?>" alt="" />
 							</div>
 							<div class="span4">
 
@@ -87,7 +87,7 @@ include 'include/header.php';
 
 
 									<a href="product_details.php" class="btn btn-large btn-primary"> Thêm vào <i class=" icon-shopping-cart"></i></a>
-									<a href="product_details.php" class="btn btn-large"><i class="icon-zoom-in"></i></a>
+									<a href="product_details.php?proid=<?php echo $result['productId'] ?>" class="btn btn-large"><i class="icon-zoom-in"></i></a>
 
 								</form>
 							</div>
@@ -113,7 +113,7 @@ include 'include/header.php';
                         ?>
 							<li class="span3">
 								<div class="thumbnail">
-									<a href="product_details.php?proid=<?php echo $result['productId'] ?>"><img style="height:240px;width:240px;object-fit:cover;" src="admin/uploads/<?php echo $result['image'] ?>" alt="" /></a>
+									<a href="product_details.php?proid=<?php echo $result['productId'] ?>"><img style="height:240px;width:240px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result['image'] ?>" alt="" /></a>
 									<div class="caption">
 										<h5><?php echo $result['productName'] ?></h5>
 										<p>

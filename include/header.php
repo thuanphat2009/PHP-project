@@ -57,7 +57,14 @@
 	<div id="header">
 		<div class="container">
 			<div id="welcomeLine" class="row">
-				<div class="span6">Chào mừng <strong> Phát</strong></div>
+				<?php 
+					$login_check = Session::get('customer_name');
+					if($login_check){
+						echo '<div class="span6">Chào mừng <strong> '.Session::get(customer_name).'</strong></div>';
+					}
+				?>
+				
+
 				<div class="span6">
 					<div class="pull-right">
 						<a href="product_summary.php"><span class="btn btn-mini btn-primary"><i
@@ -84,38 +91,38 @@
 						<button type="submit" id="submitButton" class="btn btn-primary">Tìm kiếm</button>
 					</form>
 					<ul id="topMenu" class="nav pull-right">
+						<li class=""><a href="products.php">Sản Phẩm</a></li>
 						<li class=""><a href="special_offer.php">Đặc biệt</a></li>
 						<li class=""><a href="normal.php">Đặt hàng</a></li>
 						<li class=""><a href="contact.php">Liên hệ</a></li>
-						<li class="">
-							<a href="./login.php" role="button"  style="padding-right:0"><span
-									class="btn btn-large btn-success">Đăng nhập</span></a>
-							<div id="login" class="modal hide fade in" tabindex="-1" role="dialog"
-								aria-labelledby="login" aria-hidden="false">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal"
-										aria-hidden="true">×</button>
-									<h3>Đăng nhập</h3>
-								</div>
-								<div class="modal-body">
-									<form class="form-horizontal loginFrm">
-										<div class="control-group">
-											<input type="text" id="inputEmail" placeholder="Email">
-										</div>
-										<div class="control-group">
-											<input type="password" id="inputPassword" placeholder="Mật khẩu">
-										</div>
-										<div class="control-group">
-											<label class="checkbox">
-												<input type="checkbox"> Ghi nhớ
-											</label>
-										</div>
-									</form>
-									<button type="submit" class="btn btn-success">Đăng nhập</button>
-									<button class="btn" data-dismiss="modal" aria-hidden="true">Đóng</button>
-								</div>
-							</div>
-						</li>
+						<?php 
+							if(isset($_GET['customer_id'])){
+								Session::destroy();
+							}
+						?>
+						<?php 
+							$login_check = Session::get('customer_login');
+							if($login_check==false){
+								echo '<li class="">
+								<a href="./login.php" role="button"  style="padding-right:0"><span
+										class="btn btn-large btn-success">Đăng nhập</span></a>
+								
+							</li>
+							<li class="">
+								<a href="./register.php" role="button"  style="padding-right:0"><span
+										class="btn btn-large btn-success">Đăng kí</span></a>
+								
+							</li>';
+							}else{
+								echo '<li class="">
+								<a href="?customer_id='.Session::get('customer_id').'" role="button"  style="padding-right:0"><span
+										class="btn btn-large btn-success">Đăng xuất</span></a>
+								
+							</li>';
+							}
+						?>
+
+						
 					</ul>
 				</div>
 			</div>

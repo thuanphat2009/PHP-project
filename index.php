@@ -1,6 +1,6 @@
 ﻿<?php
-include 'include/header.php';
-include 'include/slider.php';
+include_once 'include/header.php';
+include_once 'include/slider.php';
 ?>
 <div id="mainBody">
 	<div class="container">
@@ -27,12 +27,12 @@ include 'include/slider.php';
 													<div class="thumbnail">
 														<i class="tag"></i>
 														<a href="product_details.php?proid=<?php echo $result['productId'] ?> ">
-															<img style="height:140px;width:140px;object-fit:cover;" src="admin/uploads/<?php echo $result['image'] ?>" alt="">
+															<img style="height:140px;width:140px;object-fit:cover;" src="themes/images/products/b3.jpg" alt="">
 														</a>
 														<div class="caption">
 															<h5><?php echo $result['productName'] ?></h5>
 															<h4>
-																<a class="btn" href="product_details.php?proid=<?php echo $result['productId'] ?> "">Xem</a>
+																<a class="btn" href="product_details.php?proid=<?php echo $result['productId'] ?> ">Xem</a>
 																<span class="pull-right"><?php echo $result['price'] . " " . "VND" ?>
 																</span>
 															</h4>
