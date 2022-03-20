@@ -69,10 +69,29 @@
             return $alert;            
      }
     }
+    //USER
     public function getcatebyId($id){
         $query = "SELECT * FROM tbl_category WHERE cateId = '$id'";
         $result = $this->db->select($query);
         return $result;
-    }         
+    }       
+    public function add_category(){
+        $query = "SELECT * FROM tbl_category order by cateId desc";
+        $result = $this->db->select($query);
+        return $result;
+    }  
+    public function get_product_by_cate($id){
+        $query = "SELECT * FROM tbl_product WHERE cateId = '$id' order by cateId desc LIMIT 6";
+        $result = $this->db->select($query);
+        return $result;
+    }   
+    public function get_name_by_cate($id){
+        $query = "SELECT tbl_product.*, tbl_category.cateName, tbl_category.cateId
+        From tbl_product , tbl_category 
+        WHERE tbl_product.cateId = tbl_category.cateId And tbl_product.cateId= '$id' LIMIT 1
+        ";
+        $result = $this->db->select($query);
+        return $result;
+    } 
 }
 ?>

@@ -1,6 +1,12 @@
 ﻿<?php
 include 'include/header.php';
 ?>
+<?php 
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+
+		$insertCustomer = $cs->insert_customer($_POST);
+	  }	
+?>
 <!-- Header End====================================================================== -->
 <div id="mainBody">
 	<div class="container">
@@ -16,6 +22,11 @@ include 'include/header.php';
 					<li class="active">Đăng ký</li>
 				</ul>
 				<h3> Đăng ký</h3>
+				<?php
+					if (isset($insertCustomer)) {
+						echo $insertCustomer;
+					}
+				?>
 				<div class="well">
 					<!--
 	<div class="alert alert-info fade in">
@@ -30,32 +41,32 @@ include 'include/header.php';
 		<button type="button" class="close" data-dismiss="alert">×</button>
 		<strong>Lorem Ipsum is simply</strong> dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
 	 </div> -->
-					<form class="form-horizontal">
+					<form action="" method="post" class="form-horizontal">
 						<div class="control-group">
 							<label class="control-label" for="inputFname1">Họ tên <sup>*</sup></label>
 							<div class="controls">
-								<input type="text" id="inputFname1" placeholder="Họ tên">
+								<input type="text" id="inputFname1" name="name"  placeholder="Họ tên">
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="input_email">Email <sup>*</sup></label>
 							<div class="controls">
-								<input type="text" id="input_email" placeholder="Email">
+								<input type="text" id="input_email" name="email"  placeholder="Email">
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="inputPassword1">Mật khẩu <sup>*</sup></label>
 							<div class="controls">
-								<input type="password" id="inputPassword1" placeholder="Mật khẩu">
+								<input type="password" id="inputPassword1" name="pass" placeholder="Mật khẩu">
 							</div>
 						</div>
-						<div class="control-group">
+						<!-- <div class="control-group">
 							<label class="control-label" for="inputPassword1">Nhập lại mật khẩu <sup>*</sup></label>
 							<div class="controls">
 								<input type="password" id="inputPassword1" placeholder="Nhập lại mật khẩu">
 							</div>
-						</div>
-						<div class="control-group">
+						</div> -->
+						<!-- <div class="control-group">
 							<label class="control-label">Ngày sinh <sup>*</sup></label>
 							<div class="controls">
 								<select class="span1" name="days">
@@ -89,13 +100,13 @@ include 'include/header.php';
 									<option value="7">7&nbsp;&nbsp;</option>
 								</select>
 							</div>
-						</div>
+						</div> -->
 
 						<div class="control-group">
 							<div class="controls">
 								<input type="hidden" name="email_create" value="1">
 								<input type="hidden" name="is_new_customer" value="1">
-								<input class="btn btn-large btn-success" type="submit" value="Đăng ký" />
+								<input class="btn btn-large btn-success" type="submit" name="submit" value="Đăng ký" />
 							</div>
 						</div>
 					</form>

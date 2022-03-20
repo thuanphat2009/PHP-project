@@ -11,8 +11,10 @@
 	$fm = new Format();
 	$ct = new cart();
 	$us = new user();
+	$br = new brand();
 	$cate = new category();
 	$product = new product();
+	$cs = new customer();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -86,7 +88,7 @@
 						<li class=""><a href="normal.php">Đặt hàng</a></li>
 						<li class=""><a href="contact.php">Liên hệ</a></li>
 						<li class="">
-							<a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span
+							<a href="./login.php" role="button"  style="padding-right:0"><span
 									class="btn btn-large btn-success">Đăng nhập</span></a>
 							<div id="login" class="modal hide fade in" tabindex="-1" role="dialog"
 								aria-labelledby="login" aria-hidden="false">
