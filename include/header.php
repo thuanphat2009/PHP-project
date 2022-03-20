@@ -1,3 +1,19 @@
+<?php 
+	require_once './lib/database.php';
+	require_once './helper/format.php';
+	require_once './lib/session.php';
+    Session::init(); 
+
+	spl_autoload_register(function($className){
+		include_once "classes/".$className.".php";
+	});
+	$db = new Database();
+	$fm = new Format();
+	$ct = new cart();
+	$us = new user();
+	$cate = new category();
+	$product = new product();
+?>
 <!DOCTYPE html>
 <html lang="en">
 

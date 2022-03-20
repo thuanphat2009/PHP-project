@@ -1,6 +1,7 @@
 <?php
-    require_once '../lib/database.php';
-    require_once '../helper/format.php';
+    $filepath = realpath(dirname(__FILE__));
+    include_once ($filepath.'/../lib/database.php');
+    include_once ($filepath.'/../helper/format.php');
 ?>
 
 <?php
@@ -139,6 +140,26 @@
         $query = "SELECT * FROM tbl_product WHERE productId = '$id'";
         $result = $this->db->select($query);
         return $result;
-    }         
+    }     
+    //User
+    
+    public function getproduct_featured(){
+        $query = "SELECT * FROM tbl_product WHERE type = '1'";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function getproduct_new(){
+        $query = "SELECT * FROM tbl_product ORDER BY productId desc LIMIT 2";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function get_details($id){
+        $query = "SELECT tbl_product.*, tbl_brand.brandName , tbl_category.cateName
+        From tbl_product INNER JOIN tbl_brand ON tbl_product.brandId = tbl_brand.brandId
+        INNER JOIN tbl_category ON tbl_product.cateId = tbl_category.cateId
+        Where tbl_product.productId = '$id'";
+        $result = $this->db->select($query);
+        return $result;
+    }
 }
 ?>
