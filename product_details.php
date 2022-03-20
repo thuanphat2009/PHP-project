@@ -1,6 +1,13 @@
 <?php
 include 'include/header.php';
 ?>
+<?php 
+	if (!isset($_GET['proid']) || $_GET['proid'] == NULL) {
+		echo "<script>window.location ='index.php'</script>";
+	  } else {
+		$id = $_GET['proid'];
+	  }
+?>
 <!-- Header End====================================================================== -->
 <div id="mainBody">
 	<div class="container">
@@ -18,11 +25,17 @@ include 'include/header.php';
 				</ul>
 				<div class="row">
 					<div id="gallery" class="span3">
-						<a href="themes/images/products/large/f1.jpg" title="Fujifilm FinePix S2950 Digital Camera">
-							<img src="themes/images/products/large/3.jpg" style="width:100%" alt="Fujifilm FinePix S2950 Digital Camera" />
+					<?php 
+						$get_product_details = $product->get_details($id);
+						if($get_product_details){
+							while($result_details = $get_product_details->fetch_assoc()){
+						
+					?>
+						<a href="admin/uploads/<?php echo $result_details['image'] ?>" title="Fujifilm FinePix S2950 Digital Camera">
+							<img src="admin/uploads/<?php echo $result_details['image'] ?>" style="width:100%" alt="Fujifilm FinePix S2950 Digital Camera" />
 						</a>
 						<div id="differentview" class="moreOptopm carousel slide">
-							<div class="carousel-inner">
+							<!-- <div class="carousel-inner">
 								<div class="item active">
 									<a href="themes/images/products/large/f1.jpg"> <img style="width:29%" src="themes/images/products/large/f1.jpg" alt="" /></a>
 									<a href="themes/images/products/large/f2.jpg"> <img style="width:29%" src="themes/images/products/large/f2.jpg" alt="" /></a>
@@ -33,7 +46,7 @@ include 'include/header.php';
 									<a href="themes/images/products/large/f1.jpg"> <img style="width:29%" src="themes/images/products/large/f1.jpg" alt="" /></a>
 									<a href="themes/images/products/large/f2.jpg"> <img style="width:29%" src="themes/images/products/large/f2.jpg" alt="" /></a>
 								</div>
-							</div>
+							</div> -->
 							<!--  
 			  <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
               <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a> 
@@ -51,13 +64,15 @@ include 'include/header.php';
 							</div>
 						</div>
 					</div>
+				
 					<div class="span6">
-						<h3>Fujifilm FinePix S2950 Digital Camera </h3>
-						<small>- (14MP, 18x Optical Zoom) 3-inch LCD</small>
+				
+						<h3><?php echo $result_details['productName'] ?> </h3>
+						<!-- <small>- (14MP, 18x Optical Zoom) 3-inch LCD</small> -->
 						<hr class="soft" />
 						<form class="form-horizontal qtyFrm">
 							<div class="control-group">
-								<label class="control-label"><span>$222.00</span></label>
+								<label class="control-label"><span><?php echo $result_details['price']." "."VND" ?></span></label>
 								<div class="controls">
 									<input style="width:80px;" type="number" class="span1" placeholder="Số lượng." />
 									<button type="submit" class="btn btn-large btn-primary pull-right"> Thêm vào giỏ
@@ -70,10 +85,10 @@ include 'include/header.php';
 						<h4>100 sản phẩm tồn kho</h4>
 						<hr class="soft clr" />
 						<p>
-							Mô tả
+							<?php echo $result_details['product_desc'] ?>
 
 						</p>
-
+						
 					</div>
 
 					<div class="span9">
@@ -91,28 +106,23 @@ include 'include/header.php';
 										</tr>
 										<tr class="techSpecRow">
 											<td class="techSpecTD1">Nhà sản xuất: </td>
-											<td class="techSpecTD2">Fujifilm</td>
+											<td class="techSpecTD2"><?php echo $result_details['brandName'] ?></td>
 										</tr>
 										<tr class="techSpecRow">
-											<td class="techSpecTD1">Mã máy:</td>
-											<td class="techSpecTD2">FinePix S2950HD</td>
+											<td class="techSpecTD1">Mô tả:</td>
+											<td class="techSpecTD2"><?php echo $result_details['product_desc'] ?></td>
 										</tr>
 										<tr class="techSpecRow">
-											<td class="techSpecTD1">Ngày sản xuất:</td>
-											<td class="techSpecTD2"> 2011-01-28</td>
-										</tr>
-										<tr class="techSpecRow">
-											<td class="techSpecTD1">Trọng lượng:</td>
-											<td class="techSpecTD2"> 5.50" h x 5.50" w x 2.00" l, .75 pounds</td>
-										</tr>
-										<tr class="techSpecRow">
-											<td class="techSpecTD1">Chiều dài:</td>
-											<td class="techSpecTD2">3</td>
+											<td class="techSpecTD1">Phân loại:</td>
+											<td class="techSpecTD2"> <?php echo $result_details['cateName'] ?></td>
 										</tr>
 									</tbody>
 								</table>
-
-
+							
+								<?php 
+									}
+								}
+								?>
 							</div>
 							<div class="tab-pane fade" id="profile">
 								<div id="myTab" class="pull-right">
