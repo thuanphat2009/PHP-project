@@ -19,7 +19,7 @@ include_once 'include/slider.php';
 								<div class="item active">
 									<ul class="thumbnails">
 										<?php
-										$product_featured = $product->getproduct_featured();
+										$product_featured = $product->getproduct_featured_first();
 										if ($product_featured) {
 											while ($result = $product_featured->fetch_assoc()) {
 										?>
@@ -27,7 +27,7 @@ include_once 'include/slider.php';
 													<div class="thumbnail">
 														<i class="tag"></i>
 														<a href="product_details.php?proid=<?php echo $result['productId'] ?> ">
-															<img style="height:140px;width:140px;object-fit:cover;" src="themes/images/products/b3.jpg" alt="">
+															<img style="height:140px;width:140px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result['image'] ?>" alt="">
 														</a>
 														<div class="caption">
 															<h5><?php echo $result['productName'] ?></h5>
@@ -45,6 +45,30 @@ include_once 'include/slider.php';
 										?>
 									</ul>
 								</div>
+								<div class="item ">
+									<ul class="thumbnails">
+									<?php
+										$product_featured_last = $product->getproduct_featured_last();
+										if ($product_featured_last) {
+											while ($result_last = $product_featured_last->fetch_assoc()) {
+										?>
+										<li class="span3">
+										<div class="thumbnail">
+													<i class="tag"></i>
+													<a href="product_details.php?proid=<?php echo $result_last['productId'] ?>"><img style="height:140px;width:140px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result_last['image'] ?>" alt=""></a>
+												<div class="caption">
+													<h5><?php echo $result_last['productName'] ?></h5>
+													<h4><a class="btn" href="product_details.html">Xem</a> 
+													<span class="pull-right"><?php echo $result_last['price'] . " " . "VND" ?></span></h4>
+												</div>
+										</div>
+										</li>
+										<?php
+											}
+										}
+										?>
+									</ul>
+			  					</div>
 							</div>
 							<a class="left carousel-control" href="#featured" data-slide="prev">‹</a>
 							<a class="right carousel-control" href="#featured" data-slide="next">›</a>

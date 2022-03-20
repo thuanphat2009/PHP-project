@@ -146,13 +146,18 @@
     }     
     //User
     
-    public function getproduct_featured(){
-        $query = "SELECT * FROM tbl_product WHERE type = '1'";
+    public function getproduct_featured_first(){
+        $query = "SELECT * FROM tbl_product WHERE type = '1' ORDER BY productId ASC LIMIT 4";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function getproduct_featured_last(){
+        $query = "SELECT * FROM tbl_product WHERE type = '1' ORDER BY productId DESC LIMIT 4";
         $result = $this->db->select($query);
         return $result;
     }
     public function getproduct_new(){
-        $query = "SELECT * FROM tbl_product ORDER BY productId desc LIMIT 2";
+        $query = "SELECT * FROM tbl_product ORDER BY productId desc LIMIT 6";
         $result = $this->db->select($query);
         return $result;
     }
