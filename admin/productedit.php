@@ -203,7 +203,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                               <img style="height:120px;width:120px;object-fit:cover;" src="uploads/<?php echo $result_product['image'] ?>" alt="">
 
                             </div> <!-- form-group // -->
+                            <div class="form-group">
+                              <label for="tonkho" class="col-sm-3 control-label">Số lượng tồn kho</label>
 
+                              <input type="text" class="form-control" name="tonkho" value="<?php echo $result_product['tonkho'] ?>">
+
+                            </div>
                             <hr>
                             <div class="form-group">
 
