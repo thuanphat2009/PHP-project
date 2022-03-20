@@ -2,7 +2,18 @@
 require_once '../classes/brand.php';
 require_once '../classes/category.php';
 require_once '../classes/product.php';
+include '../lib/session.php';
+Session::checkSession();
 
+?>
+<?php
+  $product = new product();
+  if(isset($_GET['delid'])){
+    $id = $_GET['delid'];
+    $delcate = $product->del_product($id); 
+}
+
+   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -143,8 +154,8 @@ require_once '../classes/product.php';
                           <?php echo $result['price'] ?>
                         </td>
                         <td>
-                          <a href="productedit.php?productid=<?php echo $result['productId'] ?>">edit</a> |
-                          <a onclick= "return confirm ('Muốn xóa hông?')" href="?delid=<?php echo $result['brandId'] ?>">delete</a>
+                          <a href="productedit.php?productid=<?php echo $result['productId'] ?>">Sửa</a> |
+                          <a onclick= "return confirm ('Muốn xóa hông?')" href="?delid=<?php echo $result['productId'] ?>">Xóa</a>
                         </td>
                       </tr>
                     <?php
@@ -191,6 +202,7 @@ require_once '../classes/product.php';
     </div>
   </div>
   <!--   Core JS Files   -->
+  <script src="./assets/js/core/jsbybanhcuon.js"></script>
   <script src="./assets/js/core/jquery.min.js"></script>
   <script src="./assets/js/core/popper.min.js"></script>
   <script src="./assets/js/core/bootstrap.min.js"></script>
