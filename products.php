@@ -45,9 +45,12 @@ include_once 'include/header.php';
                                 
                     ?>
 						<div class="row">
-							<div class="span2">
-								<img style="height:160px;width:160px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result['image'] ?>" alt="" />
-							</div>
+							<a href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>">
+								<div class="span2">
+									<img style="height:160px;width:160px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result['image'] ?>" alt="" />
+								</div>
+							</a>
+							
 							<div class="span4">
 
 								
@@ -64,7 +67,7 @@ include_once 'include/header.php';
 
 
 									<a href="product_details.php" class="btn btn-large btn-primary"> Thêm vào <i class=" icon-shopping-cart"></i></a>
-									<a href="product_details.php?proid=<?php echo $result['productId'] ?>" class="btn btn-large"><i class="icon-zoom-in"></i></a>
+									<a href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>" class="btn btn-large"><i class="icon-zoom-in"></i></a>
 
 								</form>
 							</div>
@@ -86,14 +89,14 @@ include_once 'include/header.php';
                         ?>
 							<li class="span3">
 								<div class="thumbnail">
-									<a href="product_details.php?proid=<?php echo $result['productId'] ?>"><img style="height:160px;width:160px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result['image'] ?>" alt="" /></a>
+									<a href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>"><img style="height:160px;width:160px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result['image'] ?>" alt="" /></a>
 									<div class="caption">
 										<h5><?php echo $result['productName'] ?></h5>
 										<p>
 											<?php echo $result['product_desc'] ?>
 										</p>
 										<h4 style="text-align:center">
-											<a class="btn" href="product_details.php?proid=<?php echo $result['productId'] ?>"> <i class="icon-zoom-in"></i></a> 
+											<a class="btn" href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>"> <i class="icon-zoom-in"></i></a> 
 											<a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> 
 											<a class="btn btn-primary" href="#"><?php echo $result['price']." "."VND" ?></a>
 										</h4>

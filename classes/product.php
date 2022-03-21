@@ -174,5 +174,19 @@
         $result = $this->db->select($query);
         return $result;
     }
+    public function get_product_relative($id,$id_cate){
+        $query = "SELECT * FROM tbl_product Where cateId = '$id_cate' 
+        EXCEPT
+        SELECT *
+        FROM tbl_product
+        WHERE productId = '$id' LIMIT 6 ";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function get_product_rand(){
+        $query = "SELECT DISTINCT * FROM tbl_product ORDER BY RAND() LIMIT 2";
+        $result = $this->db->select($query);
+        return $result;
+    }
 }
 ?>
