@@ -8,6 +8,13 @@ include 'include/header.php';
 		$id = $_GET['proid'];
 	  }
 ?>
+<?php 
+	if (!isset($_GET['cateid']) || $_GET['cateid'] == NULL) {
+		echo "<script>window.location ='index.php'</script>";
+	  } else {
+		$id_cate = $_GET['cateid'];
+	  }
+?>
 <!-- Header End====================================================================== -->
 <div id="mainBody">
 	<div class="container">
@@ -32,7 +39,7 @@ include 'include/header.php';
 						
 					?>
 						<a href="admin/uploads/<?php echo $result_details['image'] ?>" title="">
-							<img style="height:250px;width:250px;object-fit:cover;" src="admin/uploads/<?php echo $result_details['image'] ?>" style="width:100%" alt="" />
+							<img style="height:250px;width:250px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result_details['image'] ?>" style="width:100%" alt="" />
 						</a>
 						<div id="differentview" class="moreOptopm carousel slide">
 							<!-- <div class="carousel-inner">
@@ -140,7 +147,7 @@ include 'include/header.php';
 											<div class="span4">
 
 												<hr class="soft" />
-												<h5>Tên sản phẩm</h5>
+												<h5>Huy</h5>
 												<p>
 													Mô tả.
 												</p>
@@ -293,84 +300,30 @@ include 'include/header.php';
 									</div>
 									<div class="tab-pane active" id="blockView">
 										<ul class="thumbnails">
+										<?php 
+											$get_product_relative = $product->get_product_relative($id,$id_cate);
+											if($get_product_relative){
+												while($result_relative = $get_product_relative->fetch_assoc()){
+						
+										?>
 											<li class="span3">
 												<div class="thumbnail">
-													<a href="product_details.php"><img src="themes/images/products/10.jpg" alt="" /></a>
+													<a href="product_details.php?proid=<?php echo $result_relative['productId'] ?>&&cateid=<?php echo $result_relative['cateId'] ?>">
+														<img style="height:160px;width:160px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result_relative['image'] ?>" alt="" /></a>
 													<div class="caption">
-														<h5>Manicure &amp; Pedicure</h5>
+														<h5><?php echo $result_relative['productName'] ?> </h5>
 														<p>
-															Mô tả.
+															<?php echo $result_relative['product_desc'] ?>
 														</p>
-														<h4 style="text-align:center"><a class="btn" href="product_details.php"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a>
+														<h4 style="text-align:center"><a class="btn" href="product_details.php?proid=<?php echo $result_relative['productId'] ?>&&cateid=<?php echo $result_relative['cateId'] ?>"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a>
 														</h4>
 													</div>
 												</div>
 											</li>
-											<li class="span3">
-												<div class="thumbnail">
-													<a href="product_details.php"><img src="themes/images/products/11.jpg" alt="" /></a>
-													<div class="caption">
-														<h5>Manicure &amp; Pedicure</h5>
-														<p>
-															Mô tả.
-														</p>
-														<h4 style="text-align:center"><a class="btn" href="product_details.php"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a>
-														</h4>
-													</div>
-												</div>
-											</li>
-											<li class="span3">
-												<div class="thumbnail">
-													<a href="product_details.php"><img src="themes/images/products/12.jpg" alt="" /></a>
-													<div class="caption">
-														<h5>Manicure &amp; Pedicure</h5>
-														<p>
-															Mô tả.
-														</p>
-														<h4 style="text-align:center"><a class="btn" href="product_details.php"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a>
-														</h4>
-													</div>
-												</div>
-											</li>
-											<li class="span3">
-												<div class="thumbnail">
-													<a href="product_details.php"><img src="themes/images/products/13.jpg" alt="" /></a>
-													<div class="caption">
-														<h5>Manicure &amp; Pedicure</h5>
-														<p>
-															Mô tả.
-														</p>
-														<h4 style="text-align:center"><a class="btn" href="product_details.php"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a>
-														</h4>
-													</div>
-												</div>
-											</li>
-											<li class="span3">
-												<div class="thumbnail">
-													<a href="product_details.php"><img src="themes/images/products/1.jpg" alt="" /></a>
-													<div class="caption">
-														<h5>Manicure &amp; Pedicure</h5>
-														<p>
-															Mô tả.
-														</p>
-														<h4 style="text-align:center"><a class="btn" href="product_details.php"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a>
-														</h4>
-													</div>
-												</div>
-											</li>
-											<li class="span3">
-												<div class="thumbnail">
-													<a href="product_details.php"><img src="themes/images/products/2.jpg" alt="" /></a>
-													<div class="caption">
-														<h5>Manicure &amp; Pedicure</h5>
-														<p>
-															Mô tả.
-														</p>
-														<h4 style="text-align:center"><a class="btn" href="product_details.php"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a>
-														</h4>
-													</div>
-												</div>
-											</li>
+											<?php 
+													}
+												}
+											?>
 										</ul>
 										<hr class="soft" />
 									</div>

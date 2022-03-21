@@ -26,13 +26,13 @@ include_once 'include/slider.php';
 												<li class="span3">
 													<div class="thumbnail">
 														<i class="tag"></i>
-														<a href="product_details.php?proid=<?php echo $result['productId'] ?> ">
+														<a href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?> ">
 															<img style="height:140px;width:140px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result['image'] ?>" alt="">
 														</a>
 														<div class="caption">
 															<h5><?php echo $result['productName'] ?></h5>
 															<h4>
-																<a class="btn" href="product_details.php?proid=<?php echo $result['productId'] ?> ">Xem</a>
+																<a class="btn" href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>">Xem</a>
 																<span class="pull-right"><?php echo $result['price'] . " " . "VND" ?>
 																</span>
 															</h4>
@@ -55,7 +55,7 @@ include_once 'include/slider.php';
 										<li class="span3">
 										<div class="thumbnail">
 													<i class="tag"></i>
-													<a href="product_details.php?proid=<?php echo $result_last['productId'] ?>"><img style="height:140px;width:140px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result_last['image'] ?>" alt=""></a>
+													<a href="product_details.php?proid=<?php echo $result_last['productId'] ?>&&cateid=<?php echo $result_last['cateId'] ?>"><img style="height:140px;width:140px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result_last['image'] ?>" alt=""></a>
 												<div class="caption">
 													<h5><?php echo $result_last['productName'] ?></h5>
 													<h4><a class="btn" href="product_details.html">Xem</a> 
@@ -80,27 +80,27 @@ include_once 'include/slider.php';
 					<?php
 					$product_new = $product->getproduct_new();
 					if ($product_new) {
-						while ($result = $product_new->fetch_assoc()) {
+						while ($result_new = $product_new->fetch_assoc()) {
 					?>
 							<li class="span3">
 								<div class="thumbnail">
-									<a href="product_details.php?proid=<?php echo $result['productId'] ?>">
-										<img style="height:250px;width:250px;object-fit:cover;" src="admin/uploads/<?php echo $result['image'] ?>" alt="" /></a>
+									<a href="product_details.php?proid=<?php echo $result_new['productId'] ?>&&cateid=<?php echo $result_new['cateId'] ?>">
+										<img style="height:250px;width:250px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result_new['image'] ?>" alt="" /></a>
 									<div class="caption">
-										<h5><?php echo $result['productName'] ?></h5>
+										<h5><?php echo $result_new['productName'] ?></h5>
 										<p>
 											<!-- echo $fm->textShorten($result['product_desc'],5)  -->
-											<?php echo $result['product_desc'] ?>
+											<?php echo $result_new['product_desc'] ?>
 										</p>
 
 										<h4 style="text-align:center">
-											<a class="btn" href="product_details.php?proid=<?php echo $result['productId'] ?> "">
+											<a class="btn" href="product_details.php?proid=<?php echo $result_new['productId'] ?>&&cateid=<?php echo $result_new['cateId'] ?> ">
 												<i class=" icon-zoom-in"></i>
 											</a>
 											<a class="btn" href="#">Thêm vào
 												<i class="icon-shopping-cart"></i>
 											</a> <a class="btn btn-primary" href="#">
-												<?php echo $result['price'] . " " . "VND" ?>
+												<?php echo $result_new['price'] . " " . "VND" ?>
 											</a>
 										</h4>
 									</div>
