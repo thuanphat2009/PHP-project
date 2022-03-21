@@ -33,7 +33,7 @@ include_once 'include/slider.php';
 															<h5><?php echo $result['productName'] ?></h5>
 															<h4>
 																<a class="btn" href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>">Xem</a>
-																<span class="pull-right"><?php echo $result['price'] . " " . "VND" ?>
+																<span class="pull-right"><?php echo $fm->format_currency($result['price']) . " " . "VND" ?>
 																</span>
 															</h4>
 														</div>
@@ -59,7 +59,7 @@ include_once 'include/slider.php';
 												<div class="caption">
 													<h5><?php echo $result_last['productName'] ?></h5>
 													<h4><a class="btn" href="product_details.html">Xem</a> 
-													<span class="pull-right"><?php echo $result_last['price'] . " " . "VND" ?></span></h4>
+													<span class="pull-right"><?php echo $fm->format_currency($result_last['price']) . " " . "VND" ?></span></h4>
 												</div>
 										</div>
 										</li>
@@ -100,7 +100,7 @@ include_once 'include/slider.php';
 											<a class="btn" href="#">Thêm vào
 												<i class="icon-shopping-cart"></i>
 											</a> <a class="btn btn-primary" href="#">
-												<?php echo $result_new['price'] . " " . "VND" ?>
+											<?php echo $fm->format_currency($result_new['price']) . " " . "VND" ?>
 											</a>
 										</h4>
 									</div>

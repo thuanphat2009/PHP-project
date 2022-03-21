@@ -64,7 +64,7 @@
     }
     public function update_product($data,$files,$id){
         
-        $connection = $this->db->conn;
+            $connection = $this->db->conn;
             $productName =$connection -> real_escape_string($data['productName']);
             $category =$connection -> real_escape_string($data['category']);
             $brand =$connection -> real_escape_string($data['brand']);
@@ -186,6 +186,50 @@
     public function get_product_rand(){
         $query = "SELECT DISTINCT * FROM tbl_product ORDER BY RAND() LIMIT 2";
         $result = $this->db->select($query);
+        return $result;
+    }
+    public function insert_wishlist($productid, $customer_id){
+        $connection = $this->db->conn;
+        $productid =$connection -> real_escape_string($productid);
+        $customer_id =$connection -> real_escape_string($customer_id);
+
+        $check_wlist = "SELECT * FROM tbl_wishlist WHERE productId ='$productid' AND customer_id ='$customer_id'";
+        $result_check_wlist = $this->db->select ($check_wlist);
+        
+        if($result_check_wlist){
+            $msg = "<span class='text-success'>Sản phẩm đã đc thêm r</span>";
+            return $msg;
+        }
+        else{
+            $query = "SELECT * from tbl_product WHERE productId='$productid'";
+            $result = $this->db->select($query)->fetch_assoc();
+
+            $productName = $result['productName'];
+            $price = $result['price'];
+            $image = $result['image'];
+
+            $query_insert = "INSERT INTO tbl_wishlist(productId,price,image,customer_id,productName) VALUE ('$productid','$price','$image','$customer_id','$productName')";
+            $insert_wlist = $this->db->insert($query_insert);
+            if($insert_wlist){
+                $alert = "<span class='text-success'>Add thành công</span>";             
+                return $alert;
+            }else{
+                $alert = "<span class='text-success'>Add thất bại</span>";             
+                return $alert;
+            }
+        }
+    }
+    public function get_wlist($customer_id){
+        $query = "SELECT tbl_wishlist.*, tbl_product.productId , tbl_category.cateId
+        From tbl_product INNER JOIN tbl_category ON tbl_product.cateId = tbl_category.cateId
+        INNER JOIN tbl_wishlist ON tbl_product.productId = tbl_wishlist.productId
+        WHERE tbl_wishlist.customer_id ='$customer_id'";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function del_wlist($proid,$customer_id){
+        $query = "DELETE FROM tbl_wishlist WHERE productId = '$proid' AND customer_id='$customer_id'";
+        $result = $this->db->delete($query);
         return $result;
     }
 }

@@ -7,6 +7,7 @@ Session::checkSession();
 
 ?>
 <?php
+  $fm = new format();
   $product = new product();
   if(isset($_GET['delid'])){
     $id = $_GET['delid'];
@@ -165,7 +166,7 @@ Session::checkSession();
                           <?php echo $result['brandName'] ?>
                         </td>
                         <td>
-                          <?php echo $result['price'] ?>
+                          <?php echo $fm->format_currency($result['price']) . " " . "VND" ?>
                         </td>
                         <td>
                           <?php echo $result['tonkho'] ?>

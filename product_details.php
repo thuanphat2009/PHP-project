@@ -15,6 +15,13 @@ include 'include/header.php';
 		$id_cate = $_GET['cateid'];
 	  }
 ?>
+<?php 
+	$customer_id = Session::get('customer_id');
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['wishlist']))  {
+		$productid = $_POST['productid'];
+		$insertWishlist = $product->insert_wishlist($productid, $customer_id);
+	}
+?>
 <!-- Header End====================================================================== -->
 <div id="mainBody">
 	<div class="container">
@@ -65,7 +72,10 @@ include 'include/header.php';
 								<span class="btn"><i class="icon-envelope"></i></span>
 								<span class="btn"><i class="icon-print"></i></span>
 								<span class="btn"><i class="icon-zoom-in"></i></span>
-								<span class="btn"><i class="icon-star"></i></span>
+								<span class="btn">
+									<i class="icon-star"></i>
+								</span>
+								
 								<span class="btn"><i class=" icon-thumbs-up"></i></span>
 								<span class="btn"><i class="icon-thumbs-down"></i></span>
 							</div>
@@ -79,14 +89,33 @@ include 'include/header.php';
 						<hr class="soft" />
 						<form class="form-horizontal qtyFrm">
 							<div class="control-group">
-								<label class="control-label"><span><?php echo $result_details['price']." "."VND" ?></span></label>
+								<label class="control-label"><span><?php echo $fm->format_currency($result_details['price']) . " " . "VND" ?></span></label>
 								<div class="controls">
 									<input style="width:80px;" type="number" class="span1" placeholder="Số lượng." />
+								
 									<button type="submit" class="btn btn-large btn-primary pull-right"> Thêm vào giỏ
 										<i class=" icon-shopping-cart"></i></button>
 								</div>
 							</div>
 						</form>
+						<form action="" method="POST">
+									<input type="hidden" name="productid" value="<?php echo $result_details['productId'] ?>">
+
+									<?php 
+										$login_check = Session::get('customer_login');
+										if($login_check){
+											echo '<input type="submit" name="wishlist" value="Ước" class="btn btn-large btn-primary pull-right">
+											';
+										}else{
+											echo '';
+										}
+									?>
+									<?php 
+										if(isset($insertWishlist)){
+											echo $insertWishlist;
+										}
+									?>
+								</form>
 
 						<hr class="soft" />
 						<h4><?php echo $result_details['tonkho'] ?> sản phẩm tồn kho</h4>
@@ -315,7 +344,7 @@ include 'include/header.php';
 														<p>
 															<?php echo $result_relative['product_desc'] ?>
 														</p>
-														<h4 style="text-align:center"><a class="btn" href="product_details.php?proid=<?php echo $result_relative['productId'] ?>&&cateid=<?php echo $result_relative['cateId'] ?>"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a>
+														<h4 style="text-align:center"><a class="btn" href="product_details.php?proid=<?php echo $result_relative['productId'] ?>&&cateid=<?php echo $result_relative['cateId'] ?>"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><?php echo $fm->format_currency($result_relative['price']) . " " . "VND" ?></a>
 														</h4>
 													</div>
 												</div>

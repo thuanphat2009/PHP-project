@@ -95,6 +95,15 @@
 						<li class=""><a href="special_offer.php">Đặc biệt</a></li>
 						<li class=""><a href="normal.php">Đặt hàng</a></li>
 						<li class=""><a href="contact.php">Liên hệ</a></li>
+						
+						<?php 
+							$login_check = Session::get('customer_login');
+							if($login_check==false){
+								echo '';
+							}else{
+								echo '<li class=""><a href="wishlist.php">Wish List</a></li>';
+							}
+						?>
 						<?php 
 							$login_check = Session::get('customer_login');
 							if($login_check==false){
