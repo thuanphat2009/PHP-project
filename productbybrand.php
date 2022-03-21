@@ -85,7 +85,7 @@ include 'include/header.php';
 							</div>
 							<div class="span3 alignR">
 								<form class="form-horizontal qtyFrm">
-									<h3><?php echo $result['price']." "."VND" ?></h3>
+									<h3><?php echo $fm->format_currency($result['price']) . " " . "VND" ?></h3>
 
 
 									<a href="product_details.php" class="btn btn-large btn-primary"> Thêm vào <i class=" icon-shopping-cart"></i></a>
@@ -121,7 +121,7 @@ include 'include/header.php';
 										<p>
                                             <?php echo $result['product_desc'] ?>
 										</p>
-										<h4 style="text-align:center"><a class="btn" href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><?php echo $result['price'].""."VND" ?></a></h4>
+										<h4 style="text-align:center"><a class="btn" href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><?php echo $fm->format_currency($result['price']) . " " . "VND" ?></a></h4>
 									</div>
 								</div>
 							</li>
