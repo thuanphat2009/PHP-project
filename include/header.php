@@ -96,6 +96,15 @@
 						<li class=""><a href="normal.php">Đặt hàng</a></li>
 						<li class=""><a href="contact.php">Liên hệ</a></li>
 						<?php 
+							$login_check = Session::get('customer_login');
+							if($login_check==false){
+								echo '';
+							}else{
+								echo '<li class=""><a href="profile.php">Thông tin người dùng</a></li>';
+							}
+						?>
+						
+						<?php 
 							if(isset($_GET['customer_id'])){
 								Session::destroy();
 							}
