@@ -63,6 +63,32 @@
                 }
             }
         }
+        public function show_customer($id){
+            $query = "SELECT * FROM tbl_customer where Id = '$id'";
+            $result = $this->db->select($query);
+            return $result;
+        }
+        public function update_customer($data,$id){
+            $connection = $this->db->conn;
+            $name =$connection -> real_escape_string($data['name']);
+            $email =$connection -> real_escape_string($data['email']);
+
+            if($name=="" ||  $email==""){                                                                           
+                $alert =  "<span class='text-danger'>Không được để trống</span>"; 
+                 return $alert;
+            }else{
+                $query = "UPDATE tbl_customer SET name='$name',email='$email' Where Id= '$id'";
+                $result = $this->db->insert($query);
+                if ($result){
+                    $alert = "<span class='text-success'>Cập nhật thông tin thành công</span>";             
+                    return $alert;
+                }else{
+                        $alert = "<span class='text-danger'>Cập nhật thông tin thất bại</span>";
+                        return $alert;            
+                    }
+               
+            }
+        }
 
 }
 ?>
