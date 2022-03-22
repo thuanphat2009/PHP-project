@@ -15,7 +15,7 @@ include 'include/header.php';
 					<li><a href="index.php">Trang chủ</a> <span class="divider">/</span></li>
 					<li class="active">Đặc biệt</li>
 				</ul>
-				<h4> Các sản phẩm đang giảm giá<small class="pull-right"> 40 + sản phẩm </small></h4>
+				<h4> Các sản phẩm đang giảm giá<small class="pull-right"> 50+ sản phẩm </small></h4>
 				<hr class="soft" />
 				<form class="form-horizontal span6">
 					<div class="control-group">
