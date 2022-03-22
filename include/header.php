@@ -51,6 +51,7 @@
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="themes/images/ico/apple-touch-icon-72-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" href="themes/images/ico/apple-touch-icon-57-precomposed.png">
 	<style type="text/css" id="enject"></style>
+	<link rel="stylesheet" href="themes/css/custom.css">
 </head>
 
 <body>
@@ -60,7 +61,7 @@
 				<?php 
 					$login_check = Session::get('customer_name');
 					if($login_check){
-						echo '<div class="span6">Chào mừng <strong> '.Session::get(customer_name).'</strong></div>';
+						echo '<div class="span6">Chào mừng <strong> '.Session::get('customer_name').'</strong></div>';
 					}
 				?>
 				
@@ -101,7 +102,7 @@
 							if($login_check==false){
 								echo '';
 							}else{
-								echo '<li class=""><a href="wishlist.php">Wish List</a></li>';
+								echo '<li class=""><a href="wishlist.php">Yêu thích</a></li>';
 							}
 						?>
 						<?php 
@@ -134,7 +135,7 @@
 							}else{
 								echo '<li class="">
 								<a href="?customer_id='.Session::get('customer_id').'" role="button"  style="padding-right:0"><span
-										class="btn btn-large btn-success">Đăng xuất</span></a>
+										class="btn btn-large btn-danger">Đăng xuất</span></a>
 								
 							</li>';
 							}

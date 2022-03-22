@@ -40,7 +40,7 @@
 					</ul>
 					<br />
 					<?php 
-						$get_product_rand = $product->get_product_rand();
+						$get_product_rand = $product->get_product_rand(2);
 							if($get_product_rand){
 								while($result_rand = $get_product_rand->fetch_assoc()){
 						
@@ -48,7 +48,7 @@
    
 					<div class="thumbnail">
 					 	<a href="product_details.php?proid=<?php echo $result_rand['productId'] ?>&&cateid=<?php echo $result_rand['cateId'] ?>">
-							<img style="height:120px;width:120px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result_rand['image'] ?>" />			
+							<img class="radius slidebar" src="admin/uploads/<?php echo $result_rand['image'] ?>" />			
 						</a>
 						<div class="caption">
 							<h5><?php echo $result_rand['productName'] ?></h5>

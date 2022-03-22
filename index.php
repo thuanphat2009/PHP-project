@@ -27,7 +27,7 @@ include_once 'include/slider.php';
 													<div class="thumbnail">
 														<i class="tag"></i>
 														<a href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?> ">
-															<img style="height:140px;width:140px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result['image'] ?>" alt="">
+															<img class="radius slider" src="admin/uploads/<?php echo $result['image'] ?>" alt="">
 														</a>
 														<div class="caption">
 															<h5><?php echo $result['productName'] ?></h5>
@@ -55,7 +55,7 @@ include_once 'include/slider.php';
 										<li class="span3">
 										<div class="thumbnail">
 													<i class="tag"></i>
-													<a href="product_details.php?proid=<?php echo $result_last['productId'] ?>&&cateid=<?php echo $result_last['cateId'] ?>"><img style="height:140px;width:140px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result_last['image'] ?>" alt=""></a>
+													<a href="product_details.php?proid=<?php echo $result_last['productId'] ?>&&cateid=<?php echo $result_last['cateId'] ?>"><img class="radius slider" src="admin/uploads/<?php echo $result_last['image'] ?>" alt=""></a>
 												<div class="caption">
 													<h5><?php echo $result_last['productName'] ?></h5>
 													<h4><a class="btn" href="product_details.html">Xem</a> 
@@ -78,14 +78,14 @@ include_once 'include/slider.php';
 				<h4>Sản phẩm mới nhất </h4>
 				<ul class="thumbnails">
 					<?php
-					$product_new = $product->getproduct_new();
+					$product_new = $product->get_product_new(6);
 					if ($product_new) {
 						while ($result_new = $product_new->fetch_assoc()) {
 					?>
 							<li class="span3">
 								<div class="thumbnail">
 									<a href="product_details.php?proid=<?php echo $result_new['productId'] ?>&&cateid=<?php echo $result_new['cateId'] ?>">
-										<img style="height:250px;width:250px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result_new['image'] ?>" alt="" /></a>
+										<img class="radius product-new" src="admin/uploads/<?php echo $result_new['image'] ?>" alt="" /></a>
 									<div class="caption">
 										<h5><?php echo $result_new['productName'] ?></h5>
 										<p>

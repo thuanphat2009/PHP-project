@@ -104,7 +104,7 @@ include 'include/header.php';
 									<?php 
 										$login_check = Session::get('customer_login');
 										if($login_check){
-											echo '<input type="submit" name="wishlist" value="Ước" class="btn btn-large btn-primary pull-right">
+											echo '<input type="submit" name="wishlist" value="Thêm yêu thích" class="btn btn-large btn-warning pull-right">
 											';
 										}else{
 											echo '';

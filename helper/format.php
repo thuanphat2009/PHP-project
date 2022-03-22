@@ -41,8 +41,7 @@ class Format
         }
         $res=strrev($res);
         return $res;     
-    
         }
-    }                           I
+    }                           
 
 ?>

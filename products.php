@@ -38,75 +38,75 @@ include_once 'include/header.php';
 				<br class="clr" />
 				<div class="tab-content">
 					<div class="tab-pane" id="listView">
-					<?php 
-                         $add_product = $product->get_add_products();
-                          	if($add_product){
-                            while($result =$add_product->fetch_assoc()){
-                                
-                    ?>
-						<div class="row">
-							<a href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>">
-								<div class="span2">
-									<img style="height:160px;width:160px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result['image'] ?>" alt="" />
-								</div>
-							</a>
-							
-							<div class="span4">
+						<?php
+						$add_product = $product->get_all_products();
+						if ($add_product) {
+							while ($result = $add_product->fetch_assoc()) {
 
-								
-								<h5><?php echo $result['productName'] ?></h5>
-								<p>
-									<?php echo $result['product_desc'] ?>
-								</p>
+						?>
+								<div class="row">
+									<a href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>">
+										<div class="span2">
+											<img class="radius products-item" src="admin/uploads/<?php echo $result['image'] ?>" alt="" />
+										</div>
+									</a>
 
-								<br class="clr" />
-							</div>
-							<div class="span3 alignR">
-								<form class="form-horizontal qtyFrm">
-									<h3> <?php echo $fm->format_currency($result['price']) . " " . "VND" ?></h3>
+									<div class="span4">
 
 
-									<a href="product_details.php" class="btn btn-large btn-primary"> Thêm vào <i class=" icon-shopping-cart"></i></a>
-									<a href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-
-								</form>
-							</div>
-						</div>
-						<hr class="soft" />
-						<?php  
-                                    }
-                                }
-                        ?>
-					</div>
-
-					<div class="tab-pane  active" id="blockView">
-						<ul class="thumbnails">
-						<?php 
-                                $add_product = $product->get_add_products();
-                                    if($add_product){
-                                        while($result =$add_product->fetch_assoc()){
-                                
-                        ?>
-							<li class="span3">
-								<div class="thumbnail">
-									<a href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>"><img style="height:160px;width:160px;object-fit:cover;border-radius:15px;" src="admin/uploads/<?php echo $result['image'] ?>" alt="" /></a>
-									<div class="caption">
 										<h5><?php echo $result['productName'] ?></h5>
 										<p>
 											<?php echo $result['product_desc'] ?>
 										</p>
-										<h4 style="text-align:center">
-											<a class="btn" href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>"> <i class="icon-zoom-in"></i></a> 
-											<a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> 
-											<a class="btn btn-primary" href="#"><?php echo $fm->format_currency($result['price']) . " " . "VND" ?></a>
-										</h4>
+
+										<br class="clr" />
+									</div>
+									<div class="span3 alignR">
+										<form class="form-horizontal qtyFrm">
+											<h3> <?php echo $fm->format_currency($result['price']) . " " . "VND" ?></h3>
+
+
+											<a href="product_details.php" class="btn btn-large btn-primary"> Thêm vào <i class=" icon-shopping-cart"></i></a>
+											<a href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>" class="btn btn-large"><i class="icon-zoom-in"></i></a>
+
+										</form>
 									</div>
 								</div>
-							</li>
-							<?php  
-                                    }
-                                }
-                            ?>
+								<hr class="soft" />
+						<?php
+							}
+						}
+						?>
+					</div>
+
+					<div class="tab-pane  active" id="blockView">
+						<ul class="thumbnails">
+							<?php
+							$add_product = $product->get_all_products();
+							if ($add_product) {
+								while ($result = $add_product->fetch_assoc()) {
+
+							?>
+									<li class="span3">
+										<div class="thumbnail">
+											<a href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>"><img class="radius products-item" src="admin/uploads/<?php echo $result['image'] ?>" alt="" /></a>
+											<div class="caption">
+												<h5><?php echo $result['productName'] ?></h5>
+												<p>
+													<?php echo $result['product_desc'] ?>
+												</p>
+												<h4 style="text-align:center">
+													<a class="btn" href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>"> <i class="icon-zoom-in"></i></a>
+													<a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a>
+													<a class="btn btn-primary" href="#"><?php echo $fm->format_currency($result['price']) . " " . "VND" ?></a>
+												</h4>
+											</div>
+										</div>
+									</li>
+							<?php
+								}
+							}
+							?>
 						</ul>
 						<hr class="soft" />
 					</div>
