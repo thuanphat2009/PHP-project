@@ -55,14 +55,35 @@ class product
             }
         }
     }
-    public function show_product()
+    public function show_product_all()
     {
-        // $query = "SELECT * FROM tbl_product order by productId desc";
-        $query = "SELECT tbl_product.*, tbl_brand.brandName 
+        $data = null;
+        $sql = "SELECT * From tbl_product";
+        $result = $this->db->select($sql);
+
+        if($result->num_rows >0 ){
+            while($row = $result->fetch_assoc()){
+                $data[] = $row;
+
+            }
+            return $data;
+        }
+    }
+    public function show_product_pagein($startPro,$pro){
+    
+        $data = null;
+        $sql = "SELECT tbl_product.*, tbl_brand.brandName 
         From tbl_product INNER JOIN tbl_brand ON tbl_product.brandId = tbl_brand.brandId
-        order by tbl_product.productId desc";
-        $result = $this->db->select($query);
-        return $result;
+        order by tbl_product.productId LIMIT $startPro,$pro";
+        $result = $this->db->select($sql);
+
+        if($result->num_rows >0 ){
+            while($row = $result->fetch_assoc()){
+                $data[] = $row;
+
+            }
+            return $data;
+        }
     }
     public function update_product($data, $files, $id)
     {
