@@ -181,7 +181,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                           <input type="text" class="form-control" name="tonkho" id="tonkho" placeholder="">
 
                         </div> <!-- form-group // -->
-                       
+                        <div class="form-group">
+                          <label for="giagiam" class="col-sm-3 control-label">Giảm giá (%)</label>
+
+                          <input type="text" class="form-control" name="giamgia" id="tonkho" placeholder="">
+
+                        </div>
                         <hr>
                         <div class="form-group">
 

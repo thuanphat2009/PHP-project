@@ -33,8 +33,8 @@ include 'include/slider.php';
 															<h5><?php echo $result['productName'] ?></h5>
 															<h4>
 																<a class="btn" href="product_details.php?proid=<?php echo $result['productId'] ?> "">Xem</a>
-																<span class="pull-right"><?php echo $result['price'] . " " . "VND" ?>
-																</span>
+																<span class=" pull-right"><?php echo $result['price'] . " " . "VND" ?>
+																	</span>
 															</h4>
 														</div>
 													</div>
@@ -70,12 +70,17 @@ include 'include/slider.php';
 										</p>
 
 										<h4 style="text-align:center">
-											<a class="btn" href="product_details.php?proid=<?php echo $result['productId'] ?> "">
+											<a class="btn" href="product_details.php?proid=<?php echo $result['productId'] ?> ">
 												<i class=" icon-zoom-in"></i>
 											</a>
-											<a class="btn" href="#">Thêm vào
-												<i class="icon-shopping-cart"></i>
-											</a> <a class="btn btn-primary" href="#">
+											
+												<a class="btn" href="#">Thêm vào
+													<i class="icon-shopping-cart"></i>
+												</a>
+											
+
+
+											<a class="btn btn-primary" href="#">
 												<?php echo $result['price'] . " " . "VND" ?>
 											</a>
 										</h4>

@@ -21,6 +21,7 @@
             $product_desc =$connection -> real_escape_string($data['product_desc']);
             $price =$connection -> real_escape_string($data['price']);
             $tonkho =$connection -> real_escape_string($data['tonkho']);
+            $giamgia =$connection -> real_escape_string($data['giamgia']);
             // $daban =$connection -> real_escape_string($data['daban']);
             $type =$connection -> real_escape_string($data['type']);
            
@@ -42,7 +43,7 @@
                  return $alert;
             }else{
                 move_uploaded_file($file_temp,$uploaded_image);
-                $query = "INSERT INTO tbl_product(productName,cateId,brandId,product_desc,price,type,image,tonkho) VALUES('$productName','$category','$brand','$product_desc','$price','$type','$unique_image','$tonkho')";
+                $query = "INSERT INTO tbl_product(productName,cateId,brandId,product_desc,price,type,image,tonkho,giamgia) VALUES('$productName','$category','$brand','$product_desc','$price','$type','$unique_image','$tonkho','$giamgia')";
                 $result = $this->db->insert($query);
                 if ($result){
                     $alert = "<span class='text-success'>Thêm Sản Phẩm thành công</span>";             
@@ -72,6 +73,7 @@
             $price =$connection -> real_escape_string($data['price']);
             $type =$connection -> real_escape_string($data['type']);
             $tonkho =$connection -> real_escape_string($data['tonkho']);
+            $giamgia =$connection -> real_escape_string($data['giamgia']);
             $permited = array('jpg', 'jpeg', 'png', 'gif');
             $file_name = $_FILES['image']['name'];  
             $file_size = $_FILES['image']['size'];
@@ -102,7 +104,8 @@
                     price = '$price',
                     image = '$unique_image',
                     type = '$type',
-                    tonkho = '$tonkho'
+                    tonkho = '$tonkho',
+                    giamgia = '$giamgia'
                     WHERE productId = '$id'";
         }else{
             // Nếu ng dùng k chọn ảnh
@@ -113,7 +116,8 @@
                     product_desc = '$product_desc',
                     price = '$price',
                     type = '$type',
-                    tonkho = '$tonkho'
+                    tonkho = '$tonkho',
+                    giamgia = '$giamgia'
                     WHERE productId = '$id'";
         } 
             $result = $this->db->update($query);
@@ -144,6 +148,11 @@
         $result = $this->db->select($query);
         return $result;
     }     
+    public function getproductbyIdtoArray($id){
+        $query = "SELECT * FROM tbl_product WHERE productId = '$id'";
+        $result = $this->db->select_to_array($query);
+        return $result;
+    }   
     //User
     
     public function getproduct_featured(){
