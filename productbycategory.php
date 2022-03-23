@@ -7,12 +7,32 @@ include 'include/header.php';
         } else {
             $id = $_GET['cateid'];
         }
-
+		
         // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //     $cateName = $_POST['cateName'];
         //     $updateCate = $cate->update_category($cateName, $id);
         // }
 ?>
+<?php 
+	$cate = new category();
+	//vị trí hiện tại của trang
+	$page = isset($_GET['page']) ?  $_GET['page'] : 1;
+
+	// số sản phẩm trên 1 trang 
+	$pro =2	;
+	//công thức tính vị trí sản phẩm băt sđầu muốn lấy
+	$startPro = $page * $pro - $pro;
+
+	//show sp
+	$result_page = $cate->show_productbycate_pagein($startPro,$pro,$id);
+	//lấy tất cả sp từ db
+	$rows = $cate->show_productbycate_all($id);
+	// //đếm số lượng sp
+	// $rowCount = count($rows);
+	// //tổng só trang
+	$total = ceil($rows['0']['count_product_cate'] / $pro);
+?>
+
 <!-- Header End====================================================================== -->
 <div id="mainBody">
 	<div class="container">
@@ -61,9 +81,9 @@ include 'include/header.php';
 				<div class="tab-content">
 					<div class="tab-pane" id="listView">
                         <?php 
-                                $productbycate = $cate->get_product_by_cate($id);
-                                    if($productbycate){
-                                        while($result =$productbycate->fetch_assoc()){
+                                
+                                    if($result_page){
+                                        while($result =$result_page->fetch_assoc()){
                                 
                         ?>
 						<div class="row">
@@ -108,9 +128,9 @@ include 'include/header.php';
 					<div class="tab-pane  active" id="blockView">
 						<ul class="thumbnails">
                         <?php 
-                            $productbycate = $cate->get_product_by_cate($id);
-                                if($productbycate){
-                                    while($result =$productbycate->fetch_assoc()){
+                            $product_block = $cate->show_productbycate_pagein($startPro,$pro,$id);
+							if ($product_block) {
+								while ($result = $product_block->fetch_assoc()) {
                             
                         ?>
 							<li class="span3">
@@ -138,13 +158,25 @@ include 'include/header.php';
 
 				<div class="pagination">
 					<ul>
-						<li><a href="#">&lsaquo;</a></li>
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">...</a></li>
-						<li><a href="#">&rsaquo;</a></li>
+						<?php if($page>1): ?>
+							<li><a href="productbycategory.php?cateid=<?= $id ?>&&page=<?= $page -1  ?>">&lsaquo;</a></li>
+						<?php endif; ?>
+
+						<?php for($i =1 ; $i<= $total;$i++): ?>
+                        <?php if($page == $i){ ?>
+						
+						<li><a class="" href="productbycategory.php?cateid=<?= $id ?>&&page=<?= $i ?>"><?php $i ?></a></li>
+
+                        <?php }else{ ?>
+                        
+							<li><a class="" href="productbycategory.php?cateid=<?= $id ?>&&page=<?= $i ?>"><?= $i ?></a></li>
+
+                    	<?php } endfor; ?>
+
+						
+						<?php if($page!= $total): ?>
+							<li><a href="productbycategory.php?cateid=<?= $id ?>&&page=<?= $page +1 ?>">&rsaquo;</a></li>
+						<?php endif; ?>
 					</ul>
 				</div>
 				<br class="clr" />

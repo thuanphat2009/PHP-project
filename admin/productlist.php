@@ -29,9 +29,9 @@ Session::checkSession();
   $startPro = $page * $pro - $pro;
 
   //show sp
-  $result_page = $product->show_product_pagein($startPro,$pro);
+  $result_page = $product->show_productadmin_pagein($startPro,$pro);
   //lấy tất cả sp từ db
-  $rows = $product->show_product_all();
+  $rows = $product->show_productadmin_all();
 
   //đếm số lượng sp
   $rowCount = count($rows);
@@ -134,8 +134,8 @@ Session::checkSession();
               <div class="card-body">
                 <div class="table-responsive">
                 <?php 
-                    if(isset($delbrand)){
-                        echo $delbrand;
+                    if(isset($delpro)){
+                        echo $delpro;
                     }
                 ?>
                   <table class="table">
