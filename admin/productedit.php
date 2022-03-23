@@ -209,6 +209,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                               <input type="text" class="form-control" name="tonkho" value="<?php echo $result_product['tonkho'] ?>">
 
                             </div>
+                            <div class="form-group">
+                              <label for="giamgia" class="col-sm-3 control-label">giamgia</label>
+
+                              <input type="text" class="form-control" name="giamgia" value="<?php echo $result_product['giamgia'] ?>">
+
+                            </div>
                             <hr>
                             <div class="form-group">
 

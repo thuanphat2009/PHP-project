@@ -32,6 +32,7 @@ include_once 'include/slider.php';
 														<div class="caption">
 															<h5><?php echo $result['productName'] ?></h5>
 															<h4>
+
 																<a class="btn" href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>">Xem</a>
 																<span class="pull-right"><?php echo $fm->format_currency($result['price']) . " " . "VND" ?>
 																</span>
@@ -101,6 +102,7 @@ include_once 'include/slider.php';
 												<i class="icon-shopping-cart"></i>
 											</a> <a class="btn btn-primary" href="#">
 											<?php echo $fm->format_currency($result_new['price']) . " " . "VND" ?>
+
 											</a>
 										</h4>
 									</div>

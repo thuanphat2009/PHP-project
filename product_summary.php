@@ -1,134 +1,134 @@
-<?php 
-	include 'include/header.php';
-?>	
-	<!-- Header End====================================================================== -->
-	<div id="mainBody">
-		<div class="container">
-			<div class="row">
-				<!-- Sidebar ================================================== -->
+<?php
+include 'include/header.php';
+require_once './lib/session.php';
+Session::init();
+if (isset($_SESSION['cart'])) {
+	$i = 0;
+	foreach ($_SESSION['cart'] as $cart_item) {
+		$i++;
+	}
+}
+?>
+<!-- Header End====================================================================== -->
+<div id="mainBody">
+	<div class="container">
+		<div class="row">
+			<!-- Sidebar ================================================== -->
+			<?php
+			include 'include/sidebar.php'
+			?>
+			<!-- Sidebar end=============================================== -->
+			<div class="span9">
+				<ul class="breadcrumb">
+					<li><a href="index.php">Trang chủ</a> <span class="divider">/</span></li>
+					<li class="active"> Giỏ hàng</li>
+				</ul>
 				<?php
-					include 'include/sidebar.php' 
+				if (isset($_SESSION['cart'])) {
 				?>
-				<!-- Sidebar end=============================================== -->
-				<div class="span9">
-					<ul class="breadcrumb">
-						<li><a href="index.php">Trang chủ</a> <span class="divider">/</span></li>
-						<li class="active"> Giỏ hàng</li>
-					</ul>
-					<h3> Giỏ hàng [ <small> 3 sản phẩm </small>]<a href="products.php"
-							class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Trở lại trang sản phẩm </a></h3>
-					<hr class="soft" />
-					
+					<h3> Giỏ hàng [ <small> <?php echo $i; ?> sản phẩm </small>]<a href="products.php" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Trở lại trang sản phẩm </a></h3>
+				<?php
+				} else {
+				?>
 
-					<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th>Sản phẩm</th>
-								<th>Mô tả</th>
-								<th>Số lượng</th>
-								<th>Giá</th>
-								<th>Tổng tiền sản phẩm</th>
-								<th>Giảm giá</th>
-								<th>Tổng cộng</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td> <img width="60" src="themes/images/products/4.jpg" alt="" /></td>
-								<td>MASSA AST<br />Color : black, Material : metal</td>
-								<td>
-									<div class="input-append"><input class="span1" style="max-width:34px"
-											placeholder="1" id="appendedInputButtons" size="16" type="text"><button
-											class="btn" type="button"><i class="icon-minus"></i></button><button
-											class="btn" type="button"><i class="icon-plus"></i></button><button
-											class="btn btn-danger" type="button"><i
-												class="icon-remove icon-white"></i></button> </div>
-								</td>
-								<td>$120.00</td>
-								<td>$25.00</td>
-								<td>$15.00</td>
-								<td>$110.00</td>
-							</tr>
-							<tr>
-								<td> <img width="60" src="themes/images/products/8.jpg" alt="" /></td>
-								<td>MASSA AST<br />Color : black, Material : metal</td>
-								<td>
-									<div class="input-append"><input class="span1" style="max-width:34px"
-											placeholder="1" size="16" type="text"><button class="btn" type="button"><i
-												class="icon-minus"></i></button><button class="btn" type="button"><i
-												class="icon-plus"></i></button><button class="btn btn-danger"
-											type="button"><i class="icon-remove icon-white"></i></button> </div>
-								</td>
-								<td>$7.00</td>
-								<td>--</td>
-								<td>$1.00</td>
-								<td>$8.00</td>
-							</tr>
-							<tr>
-								<td> <img width="60" src="themes/images/products/3.jpg" alt="" /></td>
-								<td>MASSA AST<br />Color : black, Material : metal</td>
-								<td>
-									<div class="input-append"><input class="span1" style="max-width:34px"
-											placeholder="1" size="16" type="text"><button class="btn" type="button"><i
-												class="icon-minus"></i></button><button class="btn" type="button"><i
-												class="icon-plus"></i></button><button class="btn btn-danger"
-											type="button"><i class="icon-remove icon-white"></i></button> </div>
-								</td>
-								<td>$120.00</td>
-								<td>$25.00</td>
-								<td>$15.00</td>
-								<td>$110.00</td>
-							</tr>
-
-							<tr>
-								<td colspan="6" style="text-align:right">Tổng tiền: </td>
-								<td> $228.00</td>
-							</tr>
-							<tr>
-								<td colspan="6" style="text-align:right">Tổng giảm giá: </td>
-								<td> $50.00</td>
-							</tr>
-							<tr>
-								<td colspan="6" style="text-align:right">Tổng cộng: </td>
-								<td> $31.00</td>
-							</tr>
-							<tr>
-								<td colspan="6" style="text-align:right"><strong>Tổng cộng =</strong>
-								</td>
-								<td class="label label-important" style="display:block"> <strong> $155.00 </strong></td>
-							</tr>
-						</tbody>
-					</table>
+					<h3> Giỏ hàng [ <small> 0 sản phẩm </small>]<a href="products.php" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Trở lại trang sản phẩm </a></h3>
+				<?php
+				}
+				?>
+				<hr class="soft" />
 
 
-					<!-- <table class="table table-bordered">
-						<tbody>
-							<tr>
-								<td>
-									<form class="form-horizontal">
-										<div class="control-group">
-											<label class="control-label"><strong> VOUCHERS CODE: </strong> </label>
-											<div class="controls">
-												<input type="text" class="input-medium" placeholder="CODE">
-												<button type="submit" class="btn"> ADD </button>
-											</div>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Sản phẩm</th>
+							<th>Tên</th>
+							<th>Số lượng</th>
+							<th>Giá</th>
+							<th>Tổng tiền sản phẩm</th>
+							<th>Giảm giá</th>
+							<th>Tổng cộng</th>
+						</tr>
+					</thead>
+					<?php
+					if (isset($_SESSION['cart'])) {
+						$tongtien = 0;
+					?>
+							<tbody>
+								<?php 
+										$i = 0;
+										foreach ($_SESSION['cart'] as $cart_item) {
+											$i++;
+											$thanhtien = $cart_item['soluong'] * $cart_item['giasp'];
+											$tongcong = $thanhtien - (($cart_item['giamgia']*$thanhtien)/100);
+											$tongtien += $tongcong;
+								?>
+								<tr>
+									<td>
+										<img width="60" src="admin/uploads/<?php echo $cart_item['hinh'] ?>" />
+									</td>
+									<td><?php echo $cart_item['tensanpham'] ?></td>
+									<td>
+										<div class="input-append">
+											<input readonly class="span1" style="max-width:34px" value="<?php echo $cart_item['soluong'] ?>" id="appendedInputButtons" size="16" type="text">
+											<a href="./classes/themgiohang.php?giamsl=<?php echo $cart_item['id'] ?>" class="btn" type="button">
+												<i class="icon-minus"></i>
+											</a>
+											<a href="./classes/themgiohang.php?tangsl=<?php echo $cart_item['id'] ?>" class="btn" type="button">
+												<i class="icon-plus"></i>
+											</a>
+											<a href="./classes/themgiohang.php?xoaspid=<?php echo $cart_item['id'] ?>" class="btn btn-danger" type="button">
+												<i class="icon-remove icon-white"></i>
+											</a>
 										</div>
-									</form>
-								</td>
-							</tr>
+									</td>
+									<td><?php echo number_format($cart_item['giasp'],0,',','.').' '.'VND';  ?></td>
+									<td><?php echo number_format($thanhtien,0,',','.').' '.'VND'; ?></td>
+									<td><?php echo $cart_item['giamgia'] ?> %</td>
+									<td><?php echo number_format($tongcong,0,',','.').' '.'VND'; ?></td>
+								</tr>
+										<?php
+										}
+										?>
 
+								<tr>
+									<td colspan="6" style="text-align:right"><strong>Tổng cộng = </strong>
+									</td>
+									<td class="label label-important" style="display:block"> <strong><?php echo number_format($tongtien,0,',','.'); ?> VND </strong></td>
+								</tr>
+								<tr>
+									<td colspan="12" style="text-align:right">
+									<strong>
+										<a onclick= "return confirm ('Xác nhận xóa toàn bộ giỏ hàng?')" href="./classes/themgiohang.php?xoatatca">Xóa tất cả sản phẩm </a>
+
+									</strong>
+									</td>
+								</tr>
+							</tbody>
+						<?php
+						
+					} else {
+						?>
+						<tbody>
+							<h2>Giỏ hàng trống</h2>
 						</tbody>
-					</table> -->
+					<?php
+					}
+					?>
+				</table>
 
-					
-					<a href="login.php" class="btn btn-large pull-right">Thanh toán <i class="icon-arrow-right"></i></a>
 
-				</div>
+
+
+
+				<a href="login.php" class="btn btn-large pull-right">Thanh toán <i class="icon-arrow-right"></i></a>
+
 			</div>
 		</div>
 	</div>
-	<!-- MainBody End ============================= -->
-	<!-- Footer ================================================================== -->
-	<?php
-	include 'include/footer.php'
+</div>
+<!-- MainBody End ============================= -->
+<!-- Footer ================================================================== -->
+<?php
+include 'include/footer.php'
 ?>

@@ -63,5 +63,17 @@ class Database
             return false;
         }
     }
+     //hàm thực hiện trả về một mảng danh sách kết quả
+     public function select_to_array($query)
+     {
+         $rows = array();
+         $result = $this->select($query);
+         if ($result == false) return false;
+         //duyệt mỗi dòng trong kết quả, lưu vào mảng
+         while ($item = $result->fetch_assoc()) {
+             $rows[] = $item;
+         }
+         return $rows;
+     }
 }
 ?>

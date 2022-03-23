@@ -94,7 +94,7 @@
 					<ul id="topMenu" class="nav pull-right">
 						<li class=""><a href="products.php">Sản Phẩm</a></li>
 						<li class=""><a href="special_offer.php">Đặc biệt</a></li>
-						<li class=""><a href="normal.php">Đặt hàng</a></li>
+						<li class=""><a href="product_summary.php">Đặt hàng</a></li>
 						<li class=""><a href="contact.php">Liên hệ</a></li>
 						
 						<?php 

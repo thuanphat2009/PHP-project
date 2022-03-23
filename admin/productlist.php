@@ -159,6 +159,9 @@ Session::checkSession();
                         Tồn kho
                       </th>
                       <th>
+                        Giảm giá (%)
+                      </th>
+                      <th>
                         Đã bán
                       </th>
                       <th>
@@ -189,6 +192,10 @@ Session::checkSession();
                           <?php echo $val['tonkho'] ?>
                         </td>
                         <td>
+                          <?php echo $result['giamgia'] ?>
+                        </td>
+                        <td>
+                          <?php echo $result['daban'] ?>
                           <?php echo $val['daban'] ?>
                         </td>
                         <td>
