@@ -92,6 +92,29 @@
         ";
         $result = $this->db->select($query);
         return $result;
-    }         
+    }        
+    
+    public function show_productbybrand_pagein($startPro,$pro,$id){
+    
+        
+        $sql = "SELECT * FROM tbl_product WHERE brandId = '$id' order by brandId desc LIMIT $startPro,$pro";
+        $result = $this->db->select($sql);
+        return $result;
+        
+    }
+    public function show_productbybrand_all($id)
+    {
+       
+        $sql = "SELECT count(*) as count_product_brand From tbl_product WHERE brandId = $id GROUP BY brandId ";
+        $result = $this->db->select($sql);
+        // return $result;
+        if($result->num_rows >0 ){
+            while($row = $result->fetch_assoc()){
+                $data[] = $row;
+
+            }
+            return $data;
+        }
+    }
 }
 ?>

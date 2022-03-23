@@ -7,13 +7,36 @@ Session::checkSession();
 
 ?>
 <?php
+  $fm = new format();
   $product = new product();
   if(isset($_GET['delid'])){
     $id = $_GET['delid'];
     $delcate = $product->del_product($id); 
+
+
 }
 
    
+?>
+<?php 
+  $product = new product();
+  //vị trí hiện tại của trang
+  $page = isset($_GET['page']) ?  $_GET['page'] : 1;
+
+  // số sản phẩm trên 1 trang 
+  $pro =5;
+  //công thức tính vị trí sản phẩm băt sđầu muốn lấy
+  $startPro = $page * $pro - $pro;
+
+  //show sp
+  $result_page = $product->show_productadmin_pagein($startPro,$pro);
+  //lấy tất cả sp từ db
+  $rows = $product->show_productadmin_all();
+
+  //đếm số lượng sp
+  $rowCount = count($rows);
+  //tổng só trang
+  $total = ceil($rowCount / $pro);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,8 +134,8 @@ Session::checkSession();
               <div class="card-body">
                 <div class="table-responsive">
                 <?php 
-                    if(isset($delbrand)){
-                        echo $delbrand;
+                    if(isset($delpro)){
+                        echo $delpro;
                     }
                 ?>
                   <table class="table">
@@ -147,50 +170,69 @@ Session::checkSession();
                     </thead>
                     <tbody>
                     <?php 
-                      $pd = new product();
-                      $pdlist = $pd->show_product();
-                      if($pdlist){
-                          $i =0;
-                          while($result = $pdlist->fetch_assoc()){
-                            $i++;
+                      if(!empty($result_page)): foreach($result_page as $val):
                     ?>
                       <tr>
                         <td>
-                          <?php echo $i ?>
+                          <?php echo $val['productId'] ?>
                         </td>
                         <td>
-                          <?php echo $result['productName'] ?>
+                          <?php echo $val['productName'] ?>
                         </td>
                         <td>
-                          <img style="height:120px;width:120px;object-fit:cover;" src="uploads/<?php echo $result['image'] ?>" alt="">
+                          <img style="height:120px;width:120px;object-fit:cover;" src="uploads/<?php echo $val['image'] ?>" alt="">
                         </td>
                         <td>
-                          <?php echo $result['brandName'] ?>
+                          <?php echo $val['brandName'] ?>
                         </td>
                         <td>
-                          <?php echo $result['price'] ?>
+                          <?php echo $fm->format_currency($val['price']) . " " . "VND" ?>
                         </td>
                         <td>
-                          <?php echo $result['tonkho'] ?>
+                          <?php echo $val['tonkho'] ?>
                         </td>
                         <td>
                           <?php echo $result['giamgia'] ?>
                         </td>
                         <td>
                           <?php echo $result['daban'] ?>
+                          <?php echo $val['daban'] ?>
                         </td>
                         <td>
-                          <a href="productedit.php?productid=<?php echo $result['productId'] ?>">Sửa</a> |
-                          <a onclick= "return confirm ('Muốn xóa hông?')" href="?delid=<?php echo $result['productId'] ?>">Xóa</a>
+                          <a href="productedit.php?productid=<?php echo $val['productId'] ?>">Sửa</a> |
+                          <a onclick= "return confirm ('Muốn xóa hông?')" href="?delid=<?php echo $val['productId'] ?>">Xóa</a>
                         </td>
                       </tr>
                     <?php
-                      }
-                    }
+                      endforeach;
+                      endif
+                    
                     ?>
                     </tbody>
                   </table>
                 </div>
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                  <?php if($page>1): ?>
+
+                    <li class="page-item"><a class="page-link" href="productlist.php?page=<?= $page -1  ?>">Previous</a></li>
+                  <?php endif; ?>
+                    <?php for($i =1 ; $i<= $total;$i++): ?>
+                        <?php if($page == $i){ ?>
+
+                          <li class="page-item active"><a class="page-link" href="productlist.php?page=<? $i ?>"><?php $i ?> </a></li>
+
+                        <?php }else{ ?>
+                        
+                          <li class="page-item"><a class="page-link" href="productlist.php?page=<?= $i  ?>"><?= $i ?> </a></li>
+
+                    <?php } endfor; ?>
+                    <?php if($page!= $total): ?>
+
+                        <li class="page-item"><a class="page-link" href="productlist.php?page=<?= $page +1  ?>">Next</a></li>
+                    <?php endif; ?>
+                  </ul>
+                </nav>
               </div>
             </div>
           </div>

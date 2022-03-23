@@ -84,7 +84,34 @@
         $query = "SELECT * FROM tbl_product WHERE cateId = '$id' order by cateId desc LIMIT 6";
         $result = $this->db->select($query);
         return $result;
-    }   
+    } 
+    
+    public function show_productbycate_pagein($startPro,$pro,$id){
+    
+        
+        $sql = "SELECT * FROM tbl_product WHERE cateId = '$id' order by cateId desc LIMIT $startPro,$pro";
+        $result = $this->db->select($sql);
+        return $result;
+        
+    }
+    public function show_productbycate_all($id)
+    {
+        $data = NULL;
+        $sql = "SELECT count(*) as count_product_cate From tbl_product WHERE cateId = $id GROUP BY cateId ";
+        $result = $this->db->select($sql);
+        // return $result;
+        if($result->num_rows >0 ){
+            while($row = $result->fetch_assoc()){
+                $data[] = $row;
+
+            }
+            return $data;
+        }
+        else{
+            echo "<script> window.location.href='products.php' ;</script>";
+        }
+    }
+    
     public function get_name_by_cate($id){
         $query = "SELECT tbl_product.*, tbl_category.cateName, tbl_category.cateId
         From tbl_product , tbl_category 

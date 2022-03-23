@@ -39,26 +39,29 @@
 						</li>
 					</ul>
 					<br />
+					<?php 
+						$get_product_rand = $product->get_product_rand(2);
+							if($get_product_rand){
+								while($result_rand = $get_product_rand->fetch_assoc()){
+						
+					?>
+   
 					<div class="thumbnail">
-						<img src="themes/images/products/panasonic.jpg" alt="Bootshop panasonoc New camera" />
+					 	<a href="product_details.php?proid=<?php echo $result_rand['productId'] ?>&&cateid=<?php echo $result_rand['cateId'] ?>">
+							<img class="radius slidebar" src="admin/uploads/<?php echo $result_rand['image'] ?>" />			
+						</a>
 						<div class="caption">
-							<h5>Panasonic</h5>
-							<h4 style="text-align:center"><a class="btn" href="product_details.php"> <i
+							<h5><?php echo $result_rand['productName'] ?></h5>
+							<h4 style="text-align:center"><a class="btn" href="product_details.php?proid=<?php echo $result_rand['productId'] ?>&&cateid=<?php echo $result_rand['cateId'] ?>"> <i
 										class="icon-zoom-in"></i></a> <a class="btn" href="#"> Thêm vào <i
 										class="icon-shopping-cart"></i></a> <a class="btn btn-primary"
-									href="#">$222.00</a></h4>
+									href="#"><?php echo $result_rand['price']." "."VND" ?></a></h4>
 						</div>
 					</div><br />
-					<div class="thumbnail">
-						<img src="themes/images/products/kindle.png" title="Bootshop New Kindel" alt="Bootshop Kindel">
-						<div class="caption">
-							<h5>Kindle</h5>
-							<h4 style="text-align:center"><a class="btn" href="product_details.php"> <i
-										class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i
-										class="icon-shopping-cart"></i></a> <a class="btn btn-primary"
-									href="#">$222.00</a></h4>
-						</div>
-					</div><br />
+					<?php 
+								}
+							}
+					?>
 					<div class="thumbnail">
 						<img src="themes/images/payment_methods.png" title="Bootshop Payment Methods"
 							alt="Payments Methods">
