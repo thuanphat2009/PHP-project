@@ -113,6 +113,7 @@ include_once 'include/slider.php';
 				</ul>
 
 			</div>
+
 		</div>
 	</div>
 </div>

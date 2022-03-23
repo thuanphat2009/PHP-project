@@ -55,7 +55,7 @@ class product
             }
         }
     }
-    public function show_product_all()
+    public function show_productadmin_all()
     {
         $data = null;
         $sql = "SELECT * From tbl_product";
@@ -69,7 +69,7 @@ class product
             return $data;
         }
     }
-    public function show_product_pagein($startPro,$pro){
+    public function show_productadmin_pagein($startPro,$pro){
     
         $data = null;
         $sql = "SELECT tbl_product.*, tbl_brand.brandName 
@@ -85,6 +85,36 @@ class product
             return $data;
         }
     }
+
+    public function show_productuser_pagein($startPro,$pro){
+    
+        $data = null;
+        $sql = "SELECT * FROM tbl_product LIMIT $startPro,$pro";
+        $result = $this->db->select($sql);
+
+        if($result->num_rows >0 ){
+            while($row = $result->fetch_assoc()){
+                $data[] = $row;
+
+            }
+            return $data;
+        }
+    }
+    public function show_productuser_all()
+    {
+        $data = null;
+        $sql = "SELECT * From tbl_product";
+        $result = $this->db->select($sql);
+
+        if($result->num_rows >0 ){
+            while($row = $result->fetch_assoc()){
+                $data[] = $row;
+
+            }
+            return $data;
+        }
+    }
+
     public function update_product($data, $files, $id)
     {
 
@@ -207,12 +237,12 @@ class product
     }
 
     //tất cả sản phẩm - trang sản phẩm
-    public function get_all_products()
-    {
-        $query = "SELECT * FROM tbl_product LIMIT 6";
-        $result = $this->db->select($query);
-        return $result;
-    }
+    // public function get_all_products()
+    // {
+    //     $query = "SELECT * FROM tbl_product LIMIT 6";
+    //     $result = $this->db->select($query);
+    //     return $result;
+    // }
 
     public function get_product_relative($id, $id_cate)
     {

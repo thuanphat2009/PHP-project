@@ -1,7 +1,26 @@
 <?php
 include_once 'include/header.php';
 ?>
+<?php 
+  $product = new product();
+  //vị trí hiện tại của trang
+  $page = isset($_GET['page']) ?  $_GET['page'] : 1;
 
+  // số sản phẩm trên 1 trang 
+  $pro =6	;
+  //công thức tính vị trí sản phẩm băt sđầu muốn lấy
+  $startPro = $page * $pro - $pro;
+
+  //show sp
+  $result_page = $product->show_productuser_pagein($startPro,$pro);
+  //lấy tất cả sp từ db
+  $rows = $product->show_productuser_all();
+
+  //đếm số lượng sp
+  $rowCount = count($rows);
+  //tổng só trang
+  $total = ceil($rowCount / $pro);
+?>
 
 <!-- Header End====================================================================== -->
 <div id="mainBody">
@@ -38,75 +57,70 @@ include_once 'include/header.php';
 				<br class="clr" />
 				<div class="tab-content">
 					<div class="tab-pane" id="listView">
-						<?php
-						$add_product = $product->get_all_products();
-						if ($add_product) {
-							while ($result = $add_product->fetch_assoc()) {
-
-						?>
+					<?php 
+                      if(!empty($result_page)): foreach($result_page as $val):
+                    ?>
 								<div class="row">
-									<a href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>">
+									<a href="product_details.php?proid=<?php echo $val['productId'] ?>&&cateid=<?php echo $val['cateId'] ?>">
 										<div class="span2">
-											<img class="radius products-item" src="admin/uploads/<?php echo $result['image'] ?>" alt="" />
+											<img class="radius products-item" src="admin/uploads/<?php echo $val['image'] ?>" alt="" />
 										</div>
 									</a>
 
 									<div class="span4">
 
 
-										<h5><?php echo $result['productName'] ?></h5>
+										<h5><?php echo $val['productName'] ?></h5>
 										<p>
-											<?php echo $result['product_desc'] ?>
+											<?php echo $val['product_desc'] ?>
 										</p>
 
 										<br class="clr" />
 									</div>
 									<div class="span3 alignR">
 										<form class="form-horizontal qtyFrm">
-											<h3> <?php echo $fm->format_currency($result['price']) . " " . "VND" ?></h3>
+											<h3> <?php echo $fm->format_currency($val['price']) . " " . "VND" ?></h3>
 
 
 											<a href="product_details.php" class="btn btn-large btn-primary"> Thêm vào <i class=" icon-shopping-cart"></i></a>
-											<a href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>" class="btn btn-large"><i class="icon-zoom-in"></i></a>
+											<a href="product_details.php?proid=<?php echo $val['productId'] ?>&&cateid=<?php echo $val['cateId'] ?>" class="btn btn-large"><i class="icon-zoom-in"></i></a>
 
 										</form>
 									</div>
 								</div>
 								<hr class="soft" />
-						<?php
-							}
-						}
-						?>
+								<?php
+                      				endforeach;
+                      				endif
+                   				 ?>
 					</div>
 
 					<div class="tab-pane  active" id="blockView">
 						<ul class="thumbnails">
-							<?php
-							$add_product = $product->get_all_products();
-							if ($add_product) {
-								while ($result = $add_product->fetch_assoc()) {
-
-							?>
+						<?php 
+                     		 if(!empty($result_page)): foreach($result_page as $val):
+                    	?>
 									<li class="span3">
 										<div class="thumbnail">
-											<a href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>"><img class="radius products-item" src="admin/uploads/<?php echo $result['image'] ?>" alt="" /></a>
+											<a href="product_details.php?proid=<?php echo $val['productId'] ?>&&cateid=<?php echo $val['cateId'] ?>"><img class="radius products-item" src="admin/uploads/<?php echo $val['image'] ?>" alt="" /></a>
 											<div class="caption">
-												<h5><?php echo $result['productName'] ?></h5>
+												<h5><?php echo $val['productName'] ?></h5>
 												<p>
-													<?php echo $result['product_desc'] ?>
+													<?php echo $val['product_desc'] ?>
 												</p>
 												<h4 style="text-align:center">
-													<a class="btn" href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>"> <i class="icon-zoom-in"></i></a>
+													<a class="btn" href="product_details.php?proid=<?php echo $val['productId'] ?>&&cateid=<?php echo $val['cateId'] ?>"> <i class="icon-zoom-in"></i></a>
 													<a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a>
-													<a class="btn btn-primary" href="#"><?php echo $fm->format_currency($result['price']) . " " . "VND" ?></a>
+													<a class="btn btn-primary" href="#"><?php echo $fm->format_currency($val['price']) . " " . "VND" ?></a>
 												</h4>
 											</div>
 										</div>
 									</li>
-							<?php
-								}
-							}
-							?>
+									<?php
+										endforeach;
+										endif
+                    
+                    				?>
 						</ul>
 						<hr class="soft" />
 					</div>
@@ -114,13 +128,25 @@ include_once 'include/header.php';
 
 				<div class="pagination">
 					<ul>
-						<li><a href="#">&lsaquo;</a></li>
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">...</a></li>
-						<li><a href="#">&rsaquo;</a></li>
+						<?php if($page>1): ?>
+							<li><a href="products.php?page=<?= $page -1  ?>">&lsaquo;</a></li>
+						<?php endif; ?>
+
+						<?php for($i =1 ; $i<= $total;$i++): ?>
+                        <?php if($page == $i){ ?>
+						
+						<li><a class="" href="products.php?page=<? $i ?>"><?php $i ?></a></li>
+
+                        <?php }else{ ?>
+                        
+							<li><a class="" href="products.php?page=<?= $i ?>"><?= $i ?></a></li>
+
+                    	<?php } endfor; ?>
+
+						
+						<?php if($page!= $total): ?>
+							<li><a href="products.php?page=<?= $page +1  ?>">&rsaquo;</a></li>
+						<?php endif; ?>
 					</ul>
 				</div>
 				<br class="clr" />
