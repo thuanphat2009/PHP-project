@@ -55,6 +55,8 @@ class product
              }
             
     }
+    }
+
     public function show_productadmin_all()
     {
         $data = null;
@@ -210,7 +212,7 @@ class product
         return $result;
     }   
 
-    }
+    
 
     //lấy thêm thông tin chí tiết của sản phẩm
     public function get_details($id)
