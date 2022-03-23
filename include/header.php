@@ -66,7 +66,7 @@
 				?>
 				
 
-				<div class="span6">
+				<div class="span12">
 					<div class="pull-right">
 						<a href="product_summary.php"><span class="btn btn-mini btn-primary"><i
 									class="icon-shopping-cart icon-white"></i> 3 sản phẩm trong giỏ hàng </span> </a>
@@ -84,7 +84,7 @@
 					<a class="brand" href="index.php"><img src="themes/images/logo.png" alt="Bootsshop" /></a>
 					<form class="form-inline navbar-search" method="post" action="products.php">
 						<input id="srchFld" class="srchTxt" type="text" />
-						<select class="srchTxt">
+						<select style="width:100px;" class="srchTxt">
 							<option>Tất cả</option>
 							<option>Áo </option>
 							<option>Quần </option>
@@ -94,7 +94,6 @@
 					<ul id="topMenu" class="nav pull-right">
 						<li class=""><a href="products.php">Sản Phẩm</a></li>
 						<li class=""><a href="special_offer.php">Đặc biệt</a></li>
-						<li class=""><a href="product_summary.php">Đặt hàng</a></li>
 						<li class=""><a href="contact.php">Liên hệ</a></li>
 						
 						<?php 
