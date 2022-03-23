@@ -78,11 +78,11 @@ include_once 'include/header.php';
 										<br class="clr" />
 									</div>
 									<div class="span3 alignR">
-										<form class="form-horizontal qtyFrm">
+										<form method="post" action="./classes/themgiohang.php?proid=<?php echo $val['productId'] ?>" class="form-horizontal qtyFrm">
 											<h3> <?php echo $fm->format_currency($val['price']) . " " . "VND" ?></h3>
 
-
-											<a href="product_details.php" class="btn btn-large btn-primary"> Thêm vào <i class=" icon-shopping-cart"></i></a>
+											
+											<input value=" Thêm vào giỏ" type="submit" name="themgiohang" class="btn btn-large btn-primary"/>
 											<a href="product_details.php?proid=<?php echo $val['productId'] ?>&&cateid=<?php echo $val['cateId'] ?>" class="btn btn-large"><i class="icon-zoom-in"></i></a>
 
 										</form>
@@ -108,11 +108,13 @@ include_once 'include/header.php';
 												<p>
 													<?php echo $val['product_desc'] ?>
 												</p>
+												<form method="post" action="./classes/themgiohang.php?proid=<?php echo $val['productId'] ?>" class="form-horizontal qtyFrm">
 												<h4 style="text-align:center">
 													<a class="btn" href="product_details.php?proid=<?php echo $val['productId'] ?>&&cateid=<?php echo $val['cateId'] ?>"> <i class="icon-zoom-in"></i></a>
-													<a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a>
+													<input value=" Thêm vào giỏ " type="submit" name="themgiohang" class="btn btn-large btn-primary"/>
 													<a class="btn btn-primary" href="#"><?php echo $fm->format_currency($val['price']) . " " . "VND" ?></a>
 												</h4>
+												</form>
 											</div>
 										</div>
 									</li>
