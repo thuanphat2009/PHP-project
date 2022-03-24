@@ -1,20 +1,26 @@
-<?php 
-	require_once './lib/database.php';
-	require_once './helper/format.php';
-	require_once './lib/session.php';
-    Session::init(); 
+<?php
+require_once './lib/database.php';
+require_once './helper/format.php';
+require_once './lib/session.php';
+Session::init();
 
-	spl_autoload_register(function($className){
-		include_once "classes/".$className.".php";
-	});
-	$db = new Database();
-	$fm = new Format();
-	$ct = new cart();
-	$us = new user();
-	$br = new brand();
-	$cate = new category();
-	$product = new product();
-	$cs = new customer();
+spl_autoload_register(function ($className) {
+	include_once "classes/" . $className . ".php";
+});
+$db = new Database();
+$fm = new Format();
+$ct = new cart();
+$us = new user();
+$br = new brand();
+$cate = new category();
+$product = new product();
+$cs = new customer();
+if (isset($_SESSION['cart'])) {
+	$i = 0;
+	foreach ($_SESSION['cart'] as $cart_item) {
+		$i++;
+	}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,10 +50,8 @@
 	<link href="themes/js/google-code-prettify/prettify.css" rel="stylesheet" />
 	<!-- fav and touch icons -->
 	<link rel="shortcut icon" href="themes/images/ico/favicon.ico">
-	<link rel="apple-touch-icon-precomposed" sizes="144x144"
-		href="themes/images/ico/apple-touch-icon-144-precomposed.png">
-	<link rel="apple-touch-icon-precomposed" sizes="114x114"
-		href="themes/images/ico/apple-touch-icon-114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="themes/images/ico/apple-touch-icon-144-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="themes/images/ico/apple-touch-icon-114-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="themes/images/ico/apple-touch-icon-72-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" href="themes/images/ico/apple-touch-icon-57-precomposed.png">
 	<style type="text/css" id="enject"></style>
@@ -58,18 +62,25 @@
 	<div id="header">
 		<div class="container">
 			<div id="welcomeLine" class="row">
-				<?php 
-					$login_check = Session::get('customer_name');
-					if($login_check){
-						echo '<div class="span6">Chào mừng <strong> '.Session::get('customer_name').'</strong></div>';
-					}
+				<?php
+				$login_check = Session::get('customer_name');
+				if ($login_check) {
+					echo '<div class="span6">Chào mừng <strong> ' . Session::get('customer_name') . '</strong></div>';
+				}
 				?>
-				
+
 
 				<div class="span12">
 					<div class="pull-right">
-						<a href="product_summary.php"><span class="btn btn-mini btn-primary"><i
-									class="icon-shopping-cart icon-white"></i> 3 sản phẩm trong giỏ hàng </span> </a>
+						<?php
+						if (isset($_SESSION['cart'])) {
+						?>
+							<a href="product_summary.php"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> <?php echo $i ?> sản phẩm trong giỏ hàng </span> </a>
+						<?php
+						} else {
+						?>
+							<a href="product_summary.php"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> 0 sản phẩm trong giỏ hàng </span> </a>
+						<?php } ?>
 					</div>
 				</div>
 			</div>
@@ -95,33 +106,33 @@
 						<li class=""><a href="products.php">Sản Phẩm</a></li>
 						<li class=""><a href="special_offer.php">Đặc biệt</a></li>
 						<li class=""><a href="contact.php">Liên hệ</a></li>
-						
-						<?php 
-							$login_check = Session::get('customer_login');
-							if($login_check==false){
-								echo '';
-							}else{
-								echo '<li class=""><a href="wishlist.php">Yêu thích</a></li>';
-							}
+
+						<?php
+						$login_check = Session::get('customer_login');
+						if ($login_check == false) {
+							echo '';
+						} else {
+							echo '<li class=""><a href="wishlist.php">Yêu thích</a></li>';
+						}
 						?>
-						<?php 
-							$login_check = Session::get('customer_login');
-							if($login_check==false){
-								echo '';
-							}else{
-								echo '<li class=""><a href="profile.php">Thông tin người dùng</a></li>';
-							}
+						<?php
+						$login_check = Session::get('customer_login');
+						if ($login_check == false) {
+							echo '';
+						} else {
+							echo '<li class=""><a href="profile.php">Thông tin người dùng</a></li>';
+						}
 						?>
-						
-						<?php 
-							if(isset($_GET['customer_id'])){
-								Session::destroy();
-							}
+
+						<?php
+						if (isset($_GET['customer_id'])) {
+							Session::destroy();
+						}
 						?>
-						<?php 
-							$login_check = Session::get('customer_login');
-							if($login_check==false){
-								echo '<li class="">
+						<?php
+						$login_check = Session::get('customer_login');
+						if ($login_check == false) {
+							echo '<li class="">
 								<a href="./login.php" role="button"  style="padding-right:0"><span
 										class="btn btn-large btn-success">Đăng nhập</span></a>
 								
@@ -131,16 +142,16 @@
 										class="btn btn-large btn-success">Đăng kí</span></a>
 								
 							</li>';
-							}else{
-								echo '<li class="">
-								<a href="?customer_id='.Session::get('customer_id').'" role="button"  style="padding-right:0"><span
+						} else {
+							echo '<li class="">
+								<a href="?customer_id=' . Session::get('customer_id') . '" role="button"  style="padding-right:0"><span
 										class="btn btn-large btn-danger">Đăng xuất</span></a>
 								
 							</li>';
-							}
+						}
 						?>
 
-						
+
 					</ul>
 				</div>
 			</div>

@@ -94,18 +94,17 @@ include_once 'include/slider.php';
 											<!-- echo $fm->textShorten($result['product_desc'],5)  -->
 											<?php echo $result_new['product_desc'] ?>
 										</p>
-
+										<form method="post" action="./classes/themgiohang.php?proid=<?php echo $result_new['productId'] ?>" class="form-horizontal qtyFrm">
 										<h4 style="text-align:center">
 											<a class="btn btn-warning" href="product_details.php?proid=<?php echo $result_new['productId'] ?>&&cateid=<?php echo $result_new['cateId'] ?> ">
 												<i class=" icon-zoom-in"></i>
 											</a>
-											<a class="btn btn-primary" href="#">Thêm vào
-												<i class="icon-shopping-cart"></i>
-											</a>
+											<input value=" Thêm vào giỏ" type="submit" name="themgiohang" class="btn btn-primary" />
 											<div class="text-error" href="#">
 												<?php echo $fm->format_currency($result_new['price']) . " " . "VND" ?>
 											</div>
 										</h4>
+										</form>
 									</div>
 								</div>
 							</li>

@@ -112,7 +112,7 @@ $total = ceil($rowCount / $pro);
 													<h4 style="text-align:center">
 														<a class="btn" href="product_details.php?proid=<?php echo $val['productId'] ?>&&cateid=<?php echo $val['cateId'] ?>"> <i class="icon-zoom-in"></i></a>
 														<div class="text-error" href="#"><?php echo $fm->format_currency($val['price']) . " " . "VND" ?></div>
-														<input value=" Thêm vào giỏ " type="submit" name="themgiohang" class="btn btn-large btn-primary" />
+														<input value=" Thêm vào giỏ " type="submit" name="themgiohang" class="btn btn-primary" />
 													</h4>
 												</form>
 											</div>

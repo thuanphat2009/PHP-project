@@ -1,5 +1,23 @@
 <div id="sidebar" class="span3">
-	<div class="well well-small"><a id="myCart" href="product_summary.php"><img src="themes/images/ico-cart.png" alt="cart">3 sản phẩm <span class="badge badge-warning pull-right">$155.00</span></a></div>
+	<div class="well well-small">
+		<a id="myCart" href="product_summary.php">
+			<img src="themes/images/ico-cart.png" alt="cart">
+			<?php
+			if (isset($_SESSION['cart'])) {
+				$tongtien = 0;
+				foreach ($_SESSION['cart'] as $cart_item) {
+					$thanhtien = $cart_item['soluong'] * $cart_item['giasp'];
+					$tongcong = $thanhtien - (($cart_item['giamgia'] * $thanhtien) / 100);
+					$tongtien += $tongcong;
+				}
+			?>
+				<?php echo $i; ?> sản phẩm
+				<span class="badge badge-warning pull-right"> <?php echo  number_format($tongtien,0,',','.').' '.'VND'; ?></span>
+			<?php } else { ?>
+				0 sản phẩm
+			<?php } ?>
+		</a>
+	</div>
 	<ul id="sideManu" class="nav nav-tabs nav-stacked">
 		<li class="subMenu open"><a> Danh Mục </a>
 			<ul>
@@ -50,11 +68,13 @@
 				</a>
 				<div class="caption">
 					<h5><?php echo $result_rand['productName'] ?></h5>
-					<h4 style="text-align:center">
-						<a class="btn btn-warning" href="product_details.php?proid=<?php echo $result_rand['productId'] ?>&&cateid=<?php echo $result_rand['cateId'] ?>"><i class="icon-zoom-in"></i></a>
-						<a class="btn btn-success" href="#"> Thêm vào <i class="icon-shopping-cart"></i></a>
-						<div class="text-success" href="#"><?php echo  $fm->format_currency($result_rand['price']) . " " . "VND" ?></div>
-					</h4>
+					<form method="post" action="./classes/themgiohang.php?proid=<?php echo $result_rand['productId'] ?>" class="form-horizontal qtyFrm">
+						<h4 style="text-align:center">
+							<a class="btn btn-warning" href="product_details.php?proid=<?php echo $result_rand['productId'] ?>&&cateid=<?php echo $result_rand['cateId'] ?>"><i class="icon-zoom-in"></i></a>
+							<input value=" Thêm vào giỏ" type="submit" name="themgiohang" class="btn btn-primary" />
+							<div class="text-success" href="#"><?php echo  $fm->format_currency($result_rand['price']) . " " . "VND" ?></div>
+						</h4>
+					</form>
 				</div>
 			</div><br />
 	<?php
