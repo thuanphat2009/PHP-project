@@ -307,7 +307,7 @@ if (!isset($_GET['proid']) || $_GET['proid'] == NULL) {
 																<p>
 																	Mô tả.
 																</p>
-																<h4 style="text-align:center"><a class="btn" href="product_details.php"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a>
+																<h4 style="text-align:center"><a class="btn" href="product_details.php"> <i class="icon-zoom-in"></i></a> <div class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></d> <a class="btn btn-primary" href="#">&euro;222.00</a>
 																</h4>
 															</div>
 														</div>
