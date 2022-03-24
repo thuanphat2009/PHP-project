@@ -54,15 +54,15 @@ if (isset($_SESSION['cart'])) {
 					if (isset($_SESSION['cart'])) {
 						$tongtien = 0;
 					?>
-							<tbody>
-								<?php 
-										$i = 0;
-										foreach ($_SESSION['cart'] as $cart_item) {
-											$i++;
-											$thanhtien = $cart_item['soluong'] * $cart_item['giasp'];
-											$tongcong = $thanhtien - (($cart_item['giamgia']*$thanhtien)/100);
-											$tongtien += $tongcong;
-								?>
+						<tbody>
+							<?php
+							$i = 0;
+							foreach ($_SESSION['cart'] as $cart_item) {
+								$i++;
+								$thanhtien = $cart_item['soluong'] * $cart_item['giasp'];
+								$tongcong = $thanhtien - (($cart_item['giamgia'] * $thanhtien) / 100);
+								$tongtien += $tongcong;
+							?>
 								<tr>
 									<td>
 										<img width="60" src="admin/uploads/<?php echo $cart_item['hinh'] ?>" />
@@ -82,33 +82,33 @@ if (isset($_SESSION['cart'])) {
 											</a>
 										</div>
 									</td>
-									<td><?php echo number_format($cart_item['giasp'],0,',','.').' '.'VND';  ?></td>
-									<td><?php echo number_format($thanhtien,0,',','.').' '.'VND'; ?></td>
+									<td><?php echo number_format($cart_item['giasp'], 0, ',', '.') . ' ' . 'VND';  ?></td>
+									<td><?php echo number_format($thanhtien, 0, ',', '.') . ' ' . 'VND'; ?></td>
 									<td><?php echo $cart_item['giamgia'] ?> %</td>
-									<td><?php echo number_format($tongcong,0,',','.').' '.'VND'; ?></td>
+									<td><?php echo number_format($tongcong, 0, ',', '.') . ' ' . 'VND'; ?></td>
 								</tr>
-										<?php
-										}
-										?>
+							<?php
+							}
+							?>
 
-								<tr>
-									<td colspan="6" style="text-align:right"><strong>Tổng cộng = </strong>
-									</td>
-									<td class="label label-important" style="display:block"> <strong><?php echo number_format($tongtien,0,',','.'); ?> VND </strong></td>
-								</tr>
-								<tr>
-									<td colspan="12" style="text-align:right">
+							<tr>
+								<td colspan="6" style="text-align:right"><strong>Tổng cộng = </strong>
+								</td>
+								<td class="label label-important" style="display:block"> <strong><?php echo number_format($tongtien, 0, ',', '.'); ?> VND </strong></td>
+							</tr>
+							<tr>
+								<td colspan="12" style="text-align:right">
 									<strong>
-										<a onclick= "return confirm ('Xác nhận xóa toàn bộ giỏ hàng?')" href="./classes/themgiohang.php?xoatatca">Xóa tất cả sản phẩm </a>
+										<a onclick="return confirm ('Xác nhận xóa toàn bộ giỏ hàng?')" href="./classes/themgiohang.php?xoatatca">Xóa tất cả sản phẩm </a>
 
 									</strong>
-									</td>
-								</tr>
-							</tbody>
-						<?php
-						
+								</td>
+							</tr>
+						</tbody>
+					<?php
+
 					} else {
-						?>
+					?>
 						<tbody>
 							<h2>Giỏ hàng trống</h2>
 						</tbody>
@@ -120,9 +120,17 @@ if (isset($_SESSION['cart'])) {
 
 
 
+				<?php
+				$login_check = Session::get('customer_login');
+				if ($login_check) {
+				?>
+					<a href="checkout.php" class="btn btn-large btn-success pull-right">Thanh toán <i class="icon-arrow-right"></i></a>
+				<?php
+				} else {
+				?>
+					<a href="login.php" class="btn btn-large btn-success pull-right">Thanh toán <i class="icon-arrow-right"></i></a>
 
-				<a href="login.php" class="btn btn-large btn-success pull-right">Thanh toán <i class="icon-arrow-right"></i></a>
-
+				<?php } ?>
 			</div>
 		</div>
 	</div>

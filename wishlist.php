@@ -23,7 +23,7 @@ if (isset($_GET['proid'])) {
 					<li><a href="index.php">Trang chủ</a> <span class="divider">/</span></li>
 					<li class="active"> WishList</li>
 				</ul>
-				<h3> Giỏ hàng [ <small> 3 sản phẩm </small>]<a href="products.php" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Trở lại trang sản phẩm </a></h3>
+				
 				<hr class="soft" />
 
 
