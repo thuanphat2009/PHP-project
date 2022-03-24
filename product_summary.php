@@ -121,7 +121,7 @@ if (isset($_SESSION['cart'])) {
 
 
 
-				<a href="login.php" class="btn btn-large pull-right">Thanh toán <i class="icon-arrow-right"></i></a>
+				<a href="login.php" class="btn btn-large btn-success pull-right">Thanh toán <i class="icon-arrow-right"></i></a>
 
 			</div>
 		</div>

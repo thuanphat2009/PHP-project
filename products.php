@@ -1,25 +1,25 @@
 <?php
 include_once 'include/header.php';
 ?>
-<?php 
-  $product = new product();
-  //vị trí hiện tại của trang
-  $page = isset($_GET['page']) ?  $_GET['page'] : 1;
+<?php
+$product = new product();
+//vị trí hiện tại của trang
+$page = isset($_GET['page']) ?  $_GET['page'] : 1;
 
-  // số sản phẩm trên 1 trang 
-  $pro =6	;
-  //công thức tính vị trí sản phẩm băt sđầu muốn lấy
-  $startPro = $page * $pro - $pro;
+// số sản phẩm trên 1 trang 
+$pro = 6;
+//công thức tính vị trí sản phẩm băt sđầu muốn lấy
+$startPro = $page * $pro - $pro;
 
-  //show sp
-  $result_page = $product->show_productuser_pagein($startPro,$pro);
-  //lấy tất cả sp từ db
-  $rows = $product->show_productuser_all();
+//show sp
+$result_page = $product->show_productuser_pagein($startPro, $pro);
+//lấy tất cả sp từ db
+$rows = $product->show_productuser_all();
 
-  //đếm số lượng sp
-  $rowCount = count($rows);
-  //tổng só trang
-  $total = ceil($rowCount / $pro);
+//đếm số lượng sp
+$rowCount = count($rows);
+//tổng só trang
+$total = ceil($rowCount / $pro);
 ?>
 
 <!-- Header End====================================================================== -->
@@ -57,9 +57,9 @@ include_once 'include/header.php';
 				<br class="clr" />
 				<div class="tab-content">
 					<div class="tab-pane" id="listView">
-					<?php 
-                      if(!empty($result_page)): foreach($result_page as $val):
-                    ?>
+						<?php
+						if (!empty($result_page)) : foreach ($result_page as $val) :
+						?>
 								<div class="row">
 									<a href="product_details.php?proid=<?php echo $val['productId'] ?>&&cateid=<?php echo $val['cateId'] ?>">
 										<div class="span2">
@@ -81,25 +81,25 @@ include_once 'include/header.php';
 										<form method="post" action="./classes/themgiohang.php?proid=<?php echo $val['productId'] ?>" class="form-horizontal qtyFrm">
 											<h3> <?php echo $fm->format_currency($val['price']) . " " . "VND" ?></h3>
 
-											
-											<input value=" Thêm vào giỏ" type="submit" name="themgiohang" class="btn btn-large btn-primary"/>
+
+											<input value=" Thêm vào giỏ" type="submit" name="themgiohang" class="btn btn-large btn-primary" />
 											<a href="product_details.php?proid=<?php echo $val['productId'] ?>&&cateid=<?php echo $val['cateId'] ?>" class="btn btn-large"><i class="icon-zoom-in"></i></a>
 
 										</form>
 									</div>
 								</div>
 								<hr class="soft" />
-								<?php
-                      				endforeach;
-                      				endif
-                   				 ?>
+						<?php
+							endforeach;
+						endif
+						?>
 					</div>
 
 					<div class="tab-pane  active" id="blockView">
 						<ul class="thumbnails">
-						<?php 
-                     		 if(!empty($result_page)): foreach($result_page as $val):
-                    	?>
+							<?php
+							if (!empty($result_page)) : foreach ($result_page as $val) :
+							?>
 									<li class="span3">
 										<div class="thumbnail">
 											<a href="product_details.php?proid=<?php echo $val['productId'] ?>&&cateid=<?php echo $val['cateId'] ?>"><img class="radius products-item" src="admin/uploads/<?php echo $val['image'] ?>" alt="" /></a>
@@ -109,20 +109,20 @@ include_once 'include/header.php';
 													<?php echo $val['product_desc'] ?>
 												</p>
 												<form method="post" action="./classes/themgiohang.php?proid=<?php echo $val['productId'] ?>" class="form-horizontal qtyFrm">
-												<h4 style="text-align:center">
-													<a class="btn" href="product_details.php?proid=<?php echo $val['productId'] ?>&&cateid=<?php echo $val['cateId'] ?>"> <i class="icon-zoom-in"></i></a>
-													<input value=" Thêm vào giỏ " type="submit" name="themgiohang" class="btn btn-large btn-primary"/>
-													<a class="btn btn-primary" href="#"><?php echo $fm->format_currency($val['price']) . " " . "VND" ?></a>
-												</h4>
+													<h4 style="text-align:center">
+														<a class="btn" href="product_details.php?proid=<?php echo $val['productId'] ?>&&cateid=<?php echo $val['cateId'] ?>"> <i class="icon-zoom-in"></i></a>
+														<div class="text-error" href="#"><?php echo $fm->format_currency($val['price']) . " " . "VND" ?></div>
+														<input value=" Thêm vào giỏ " type="submit" name="themgiohang" class="btn btn-large btn-primary" />
+													</h4>
 												</form>
 											</div>
 										</div>
 									</li>
-									<?php
-										endforeach;
-										endif
-                    
-                    				?>
+							<?php
+								endforeach;
+							endif
+
+							?>
 						</ul>
 						<hr class="soft" />
 					</div>
@@ -130,24 +130,25 @@ include_once 'include/header.php';
 
 				<div class="pagination">
 					<ul>
-						<?php if($page>1): ?>
-							<li><a href="products.php?page=<?= $page -1  ?>">&lsaquo;</a></li>
+						<?php if ($page > 1) : ?>
+							<li><a href="products.php?page=<?= $page - 1  ?>">&lsaquo;</a></li>
 						<?php endif; ?>
 
-						<?php for($i =1 ; $i<= $total;$i++): ?>
-                        <?php if($page == $i){ ?>
-						
-						<li><a class="" href="products.php?page=<? $i ?>"><?php $i ?></a></li>
+						<?php for ($i = 1; $i <= $total; $i++) : ?>
+							<?php if ($page == $i) { ?>
 
-                        <?php }else{ ?>
-                        
-							<li><a class="" href="products.php?page=<?= $i ?>"><?= $i ?></a></li>
+								<li><a class="" href="products.php?page=<? $i ?>"><?php $i ?></a></li>
 
-                    	<?php } endfor; ?>
+							<?php } else { ?>
 
-						
-						<?php if($page!= $total): ?>
-							<li><a href="products.php?page=<?= $page +1  ?>">&rsaquo;</a></li>
+								<li><a class="" href="products.php?page=<?= $i ?>"><?= $i ?></a></li>
+
+						<?php }
+						endfor; ?>
+
+
+						<?php if ($page != $total) : ?>
+							<li><a href="products.php?page=<?= $page + 1  ?>">&rsaquo;</a></li>
 						<?php endif; ?>
 					</ul>
 				</div>

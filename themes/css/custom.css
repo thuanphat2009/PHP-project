@@ -4,22 +4,22 @@ img.radius {
 }
 
 img.slider {
+    width: 100%;
     height: 140px;
-    width: 140px;
 }
 
 img.slidebar {
+    width: 100%;
     height: 140px;
-    width: 140px;
 }
 
 img.product-new {
-    width: 250px;
+    width: 100%;
     height: 250px;
 }
 
 img.products-item {
-    width: 160px;
+    width: 100%;
     height: 160px;
 }
 
@@ -33,3 +33,7 @@ img.products-item {
 }
 
 
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}

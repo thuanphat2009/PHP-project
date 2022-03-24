@@ -29,13 +29,12 @@ include_once 'include/slider.php';
 														<a href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?> ">
 															<img class="radius slider" src="admin/uploads/<?php echo $result['image'] ?>" alt="">
 														</a>
-														<div class="caption">
+														<div class="caption ">
 															<h5><?php echo $result['productName'] ?></h5>
-															<h4>
-
-																<a class="btn" href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>">Xem</a>
-																<span class="pull-right"><?php echo $fm->format_currency($result['price']) . " " . "VND" ?>
+															<h4 class="text-center flex-column">
+																<span class="pull-right text-warning"><?php echo $fm->format_currency($result['price']) . " " . "VND" ?>
 																</span>
+																<a class="btn btn-success" href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>">Xem</a>
 															</h4>
 														</div>
 													</div>
@@ -48,28 +47,30 @@ include_once 'include/slider.php';
 								</div>
 								<div class="item ">
 									<ul class="thumbnails">
-									<?php
+										<?php
 										$product_featured_last = $product->getproduct_featured_last();
 										if ($product_featured_last) {
 											while ($result_last = $product_featured_last->fetch_assoc()) {
 										?>
-										<li class="span3">
-										<div class="thumbnail">
-													<i class="tag"></i>
-													<a href="product_details.php?proid=<?php echo $result_last['productId'] ?>&&cateid=<?php echo $result_last['cateId'] ?>"><img class="radius slider" src="admin/uploads/<?php echo $result_last['image'] ?>" alt=""></a>
-												<div class="caption">
-													<h5><?php echo $result_last['productName'] ?></h5>
-													<h4><a class="btn" href="product_details.html">Xem</a> 
-													<span class="pull-right"><?php echo $fm->format_currency($result_last['price']) . " " . "VND" ?></span></h4>
-												</div>
-										</div>
-										</li>
+												<li class="span3">
+													<div class="thumbnail">
+														<i class="tag"></i>
+														<a href="product_details.php?proid=<?php echo $result_last['productId'] ?>&&cateid=<?php echo $result_last['cateId'] ?>"><img class="radius slider" src="admin/uploads/<?php echo $result_last['image'] ?>" alt=""></a>
+														<div class="caption">
+															<h5><?php echo $result_last['productName'] ?></h5>
+															<h4 class="text-center flex-column">
+															<span class="pull-right text-warning"><?php echo $fm->format_currency($result_last['price']) . " " . "VND" ?></span>
+																<a class="btn btn-success" href="product_details.html">Xem</a>
+															</h4>
+														</div>
+													</div>
+												</li>
 										<?php
 											}
 										}
 										?>
 									</ul>
-			  					</div>
+								</div>
 							</div>
 							<a class="left carousel-control" href="#featured" data-slide="prev">‹</a>
 							<a class="right carousel-control" href="#featured" data-slide="next">›</a>
@@ -95,15 +96,15 @@ include_once 'include/slider.php';
 										</p>
 
 										<h4 style="text-align:center">
-											<a class="btn" href="product_details.php?proid=<?php echo $result_new['productId'] ?>&&cateid=<?php echo $result_new['cateId'] ?> ">
+											<a class="btn btn-warning" href="product_details.php?proid=<?php echo $result_new['productId'] ?>&&cateid=<?php echo $result_new['cateId'] ?> ">
 												<i class=" icon-zoom-in"></i>
 											</a>
-											<a class="btn" href="#">Thêm vào
+											<a class="btn btn-primary" href="#">Thêm vào
 												<i class="icon-shopping-cart"></i>
-											</a> <a class="btn btn-primary" href="#">
-											<?php echo $fm->format_currency($result_new['price']) . " " . "VND" ?>
-
 											</a>
+											<div class="text-error" href="#">
+												<?php echo $fm->format_currency($result_new['price']) . " " . "VND" ?>
+											</div>
 										</h4>
 									</div>
 								</div>
