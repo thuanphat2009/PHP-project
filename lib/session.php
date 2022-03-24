@@ -38,6 +38,12 @@ class Session{
             header("Location:dashboard.php");
         }
     }
+    public static function checkuserLogin(){
+        self::init();
+        if(self::get("customer_login") != true){
+            header("Location:login.php");
+        }
+    }
 
     public static function destroy(){
         session_destroy();

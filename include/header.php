@@ -10,7 +10,6 @@ spl_autoload_register(function ($className) {
 $db = new Database();
 $fm = new Format();
 $ct = new cart();
-$us = new user();
 $br = new brand();
 $cate = new category();
 $product = new product();
