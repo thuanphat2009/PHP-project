@@ -18,9 +18,10 @@ if ($order_query) {
         $id_sanpham = $value['id'];
         $sanphamdat = $product->getproductbyId($id_sanpham);
         $soluong = $value['soluong'];
-        $tonkhomoi = $value['tonkho'] - $value['soluong'];
+        $tonkhomoi = $value['tonkho'] - $soluong;
+        $daban = $value['daban'] + $value['soluong'];
         $update_query = "UPDATE tbl_product SET 
-                    tonkho = '$tonkhomoi'
+                    daban = '$daban' ,tonkho = '$tonkhomoi' 
                     WHERE productId = '$id_sanpham'";
         $insert_order_detail = "INSERT INTO tbl_order_detail(id_product,code_order,soluong) VALUES('" . $id_sanpham . "','" . $code_order . "','" . $soluong . "')";
         mysqli_query($db->conn, $insert_order_detail);

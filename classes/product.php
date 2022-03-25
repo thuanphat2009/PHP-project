@@ -13,48 +13,48 @@ class product
         $this->db = new Database();
         $this->fm = new Format();
     }
-        public function insert_product($data,$files){
-        
-            $connection = $this->db->conn;
-            $productName =$connection -> real_escape_string($data['productName']);
-            $category =$connection -> real_escape_string($data['category']);
-            $brand =$connection -> real_escape_string($data['brand']);
-            $product_desc =$connection -> real_escape_string($data['product_desc']);
-            $price =$connection -> real_escape_string($data['price']);
-            $tonkho =$connection -> real_escape_string($data['tonkho']);
-            $giamgia =$connection -> real_escape_string($data['giamgia']);
-            // $daban =$connection -> real_escape_string($data['daban']);
-            $type =$connection -> real_escape_string($data['type']);
-           
-             
-            $permited = array('jpg', 'jpeg', 'png', 'gif');
-            $file_name = $_FILES['image']['name'];  
-            $file_size = $_FILES['image']['size'];
-            $file_temp = $_FILES['image']['tmp_name'];
+    public function insert_product($data, $files)
+    {
 
-            $div = explode('.', $file_name);
-            $file_ext = strtolower(end($div));
-            $unique_image = substr(md5(time()), 0, 10).'.'.$file_ext;
-            $uploaded_image = "uploads/".$unique_image;
-            
-                  
+        $connection = $this->db->conn;
+        $productName = $connection->real_escape_string($data['productName']);
+        $category = $connection->real_escape_string($data['category']);
+        $brand = $connection->real_escape_string($data['brand']);
+        $product_desc = $connection->real_escape_string($data['product_desc']);
+        $price = $connection->real_escape_string($data['price']);
+        $tonkho = $connection->real_escape_string($data['tonkho']);
+        $giamgia = $connection->real_escape_string($data['giamgia']);
+        // $daban =$connection -> real_escape_string($data['daban']);
+        $type = $connection->real_escape_string($data['type']);
 
-            if($productName=="" ||  $brand=="" || $category=="" || $product_desc=="" || $price=="" || $type=="" || $file_name=="" || $tonkho==""){                                                                           
-                $alert =  "<span class='text-danger'>Không được để trống</span>"; 
-                 return $alert;
-            }else{
-                move_uploaded_file($file_temp,$uploaded_image);
-                $query = "INSERT INTO tbl_product(productName,cateId,brandId,product_desc,price,type,image,tonkho,giamgia) VALUES('$productName','$category','$brand','$product_desc','$price','$type','$unique_image','$tonkho','$giamgia')";
-                $result = $this->db->insert($query);
-                if ($result){
-                    $alert = "<span class='text-success'>Thêm Sản Phẩm thành công</span>";             
-                    return $alert;
-                }else{
-                    $alert = "<span class='text-danger'>Thêm Sản Phẩm thất bại</span>";
-                    return $alert;            
-             }
-            
-    }
+
+        $permited = array('jpg', 'jpeg', 'png', 'gif');
+        $file_name = $_FILES['image']['name'];
+        $file_size = $_FILES['image']['size'];
+        $file_temp = $_FILES['image']['tmp_name'];
+
+        $div = explode('.', $file_name);
+        $file_ext = strtolower(end($div));
+        $unique_image = substr(md5(time()), 0, 10) . '.' . $file_ext;
+        $uploaded_image = "uploads/" . $unique_image;
+
+
+
+        if ($productName == "" ||  $brand == "" || $category == "" || $product_desc == "" || $price == "" || $type == "" || $file_name == "" || $tonkho == "") {
+            $alert =  "<span class='text-danger'>Không được để trống</span>";
+            return $alert;
+        } else {
+            move_uploaded_file($file_temp, $uploaded_image);
+            $query = "INSERT INTO tbl_product(productName,cateId,brandId,product_desc,price,type,image,tonkho,giamgia) VALUES('$productName','$category','$brand','$product_desc','$price','$type','$unique_image','$tonkho','$giamgia')";
+            $result = $this->db->insert($query);
+            if ($result) {
+                $alert = "<span class='text-success'>Thêm Sản Phẩm thành công</span>";
+                return $alert;
+            } else {
+                $alert = "<span class='text-danger'>Thêm Sản Phẩm thất bại</span>";
+                return $alert;
+            }
+        }
     }
 
     public function show_productadmin_all()
@@ -63,41 +63,40 @@ class product
         $sql = "SELECT * From tbl_product";
         $result = $this->db->select($sql);
 
-        if($result->num_rows >0 ){
-            while($row = $result->fetch_assoc()){
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
                 $data[] = $row;
-
             }
             return $data;
         }
     }
-    public function show_productadmin_pagein($startPro,$pro){
-    
+    public function show_productadmin_pagein($startPro, $pro)
+    {
+
         $data = null;
         $sql = "SELECT tbl_product.*, tbl_brand.brandName 
         From tbl_product INNER JOIN tbl_brand ON tbl_product.brandId = tbl_brand.brandId
         order by tbl_product.productId LIMIT $startPro,$pro";
         $result = $this->db->select($sql);
 
-        if($result->num_rows >0 ){
-            while($row = $result->fetch_assoc()){
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
                 $data[] = $row;
-
             }
             return $data;
         }
     }
 
-    public function show_productuser_pagein($startPro,$pro){
-    
+    public function show_productuser_pagein($startPro, $pro)
+    {
+
         $data = null;
         $sql = "SELECT * FROM tbl_product LIMIT $startPro,$pro";
         $result = $this->db->select($sql);
 
-        if($result->num_rows >0 ){
-            while($row = $result->fetch_assoc()){
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
                 $data[] = $row;
-
             }
             return $data;
         }
@@ -108,12 +107,72 @@ class product
         $sql = "SELECT * From tbl_product";
         $result = $this->db->select($sql);
 
-        if($result->num_rows >0 ){
-            while($row = $result->fetch_assoc()){
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
                 $data[] = $row;
-
             }
             return $data;
+        }
+    }
+    public function show_productuser_pagein_search($tukhoa, $option, $startPro, $pro)
+    {
+
+        $data = null;
+        switch ($option) {
+            case "all":
+                $sql = "SELECT * FROM tbl_product WHERE productName LIKE '%" . $tukhoa . "%' LIMIT $startPro,$pro";
+                $result = $this->db->select($sql);
+                if ($result) {
+                    while ($row = $result->fetch_assoc()) {
+                        $data[] = $row;
+                    }
+                    return $data;
+                } else {
+                    return $data = [];
+                }
+                break;
+            default:
+                $sql = "SELECT * FROM tbl_product WHERE productName LIKE '%" . $tukhoa . "%' AND brandId = '$option' LIMIT $startPro,$pro";
+                $result = $this->db->select($sql);
+                if ($result) {
+                    while ($row = $result->fetch_assoc()) {
+                        $data[] = $row;
+                    }
+                    return $data;
+                } else {
+                    return $data = [];
+                }
+                break;
+        }
+    }
+    public function show_productuser_all_search($tukhoa, $option)
+    {
+        $data = null;
+        switch ($option) {
+            case "all":
+                $sql = "SELECT * From tbl_product WHERE productName  LIKE '%" . $tukhoa . "%'";
+                $result = $this->db->select($sql);
+                if ($result) {
+                    while ($row = $result->fetch_assoc()) {
+                        $data[] = $row;
+                    }
+                    return $data;
+                } else {
+                    return $data = [];
+                }
+                break;
+            default:
+                $sql = "SELECT * FROM tbl_product WHERE productName LIKE '%" . $tukhoa . "%' AND brandId = '$option'";
+                $result = $this->db->select($sql);
+                if ($result) {
+                    while ($row = $result->fetch_assoc()) {
+                        $data[] = $row;
+                    }
+                    return $data;
+                } else {
+                    return $data = [];
+                }
+                break;
         }
     }
 
@@ -121,33 +180,32 @@ class product
     {
 
         $connection = $this->db->conn;
-            $productName =$connection -> real_escape_string($data['productName']);
-            $category =$connection -> real_escape_string($data['category']);
-            $brand =$connection -> real_escape_string($data['brand']);
-            $product_desc =$connection -> real_escape_string($data['product_desc']);
-            $price =$connection -> real_escape_string($data['price']);
-            $type =$connection -> real_escape_string($data['type']);
-            $tonkho =$connection -> real_escape_string($data['tonkho']);
-            $giamgia =$connection -> real_escape_string($data['giamgia']);
-            $permited = array('jpg', 'jpeg', 'png', 'gif');
-            $file_name = $_FILES['image']['name'];  
-            $file_size = $_FILES['image']['size'];
-            $file_temp = $_FILES['image']['tmp_name'];
+        $productName = $connection->real_escape_string($data['productName']);
+        $category = $connection->real_escape_string($data['category']);
+        $brand = $connection->real_escape_string($data['brand']);
+        $product_desc = $connection->real_escape_string($data['product_desc']);
+        $price = $connection->real_escape_string($data['price']);
+        $type = $connection->real_escape_string($data['type']);
+        $tonkho = $connection->real_escape_string($data['tonkho']);
+        $giamgia = $connection->real_escape_string($data['giamgia']);
+        $permited = array('jpg', 'jpeg', 'png', 'gif');
+        $file_name = $_FILES['image']['name'];
+        $file_size = $_FILES['image']['size'];
+        $file_temp = $_FILES['image']['tmp_name'];
 
-            $div = explode('.', $file_name);
-            $file_ext = strtolower(end($div));
-            $unique_image = substr(md5(time()), 0, 10).'.'.$file_ext;
-            $uploaded_image = "uploads/".$unique_image;
-   
-            if($productName=="" ||  $brand=="" || $category=="" || $product_desc=="" || $price=="" || $type=="" || $tonkho==""){                                                                           
-                $alert =  "<span class='text-danger'>Không được để trống</span>"; 
-                 return $alert;
-            }else{
-                // Nếu ng dùng chọn ảnh
-                if(!empty($file_name)){
-                if (in_array ($file_ext, $permited) === false)
-                  {
-                    $alert = "<span class='text-danger'>You can upload only:-".implode(', ', $permited)."</span>";
+        $div = explode('.', $file_name);
+        $file_ext = strtolower(end($div));
+        $unique_image = substr(md5(time()), 0, 10) . '.' . $file_ext;
+        $uploaded_image = "uploads/" . $unique_image;
+
+        if ($productName == "" ||  $brand == "" || $category == "" || $product_desc == "" || $price == "" || $type == "" || $tonkho == "") {
+            $alert =  "<span class='text-danger'>Không được để trống</span>";
+            return $alert;
+        } else {
+            // Nếu ng dùng chọn ảnh
+            if (!empty($file_name)) {
+                if (in_array($file_ext, $permited) === false) {
+                    $alert = "<span class='text-danger'>You can upload only:-" . implode(', ', $permited) . "</span>";
                     return $alert;
                 }
                 move_uploaded_file($file_temp, $uploaded_image);
@@ -205,14 +263,15 @@ class product
         $query = "SELECT * FROM tbl_product WHERE productId = '$id'";
         $result = $this->db->select($query);
         return $result;
-    }     
-    public function getproductbyIdtoArray($id){
+    }
+    public function getproductbyIdtoArray($id)
+    {
         $query = "SELECT * FROM tbl_product WHERE productId = '$id'";
         $result = $this->db->select_to_array($query);
         return $result;
-    }   
+    }
 
-    
+
 
     //lấy thêm thông tin chí tiết của sản phẩm
     public function get_details($id)
@@ -272,7 +331,7 @@ class product
     //lấy sản phẩm ngẫu nhiên
     public function get_product_rand($num)
     {
-        $query = "SELECT DISTINCT * FROM tbl_product ORDER BY RAND() LIMIT " .$num;
+        $query = "SELECT DISTINCT * FROM tbl_product ORDER BY RAND() LIMIT " . $num;
         $result = $this->db->select($query);
         return $result;
     }
