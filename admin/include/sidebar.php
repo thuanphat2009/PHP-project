@@ -36,6 +36,12 @@
               <p>Sản phẩm</p>
             </a>
           </li>
+          <li>
+            <a href="./orderlist.php">
+              <i class="now-ui-icons design_bullet-list-67"></i>
+              <p>Đơn hàng</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
