@@ -89,6 +89,8 @@ Session::checkuserLogin();
 							<tr>
 								<td colspan="6" style="text-align:right"><strong>Tổng cộng = </strong>
 								</td>
+                                <input type="hidden" name="tongtien" value="<?php echo $tongtien ?>">
+                        
 								<td class="label label-important" style="display:block"> <strong><?php echo number_format($tongtien, 0, ',', '.'); ?> VND </strong></td>
 							</tr>
 							<tr>
@@ -123,7 +125,6 @@ Session::checkuserLogin();
                     <div class="control-group pull-right">
                         <div class="controls">
                             <input type="hidden" name="email_create" value="1">
-                            <input type="hidden" name="is_new_customer" value="1">
                             <input class="btn btn-large btn-success" type="submit" value="Đặt hàng" />
                         </div>
                     </div>

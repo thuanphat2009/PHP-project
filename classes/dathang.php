@@ -6,11 +6,13 @@ $product = new Product();
 Session::init();
 $db = new Database();
 $id_khachhang = $_SESSION['customer_id'];
-$code_order = rand(0, 9999);
+$bytes = random_bytes(20);
+$code_order = bin2hex($bytes);
 $name = $_POST['name'];
 $phone = $_POST['phone'];
 $address = $_POST['address'];
-$insert_order = "INSERT INTO tbl_order(id_khachhang,code_order,status,userName,phone,address) VALUES('" . $id_khachhang . "','" . $code_order . "',1,'" . $name . "', '" . $phone . "','" . $address . "')";
+$tongtien = $_POST['tongtien'];
+$insert_order = "INSERT INTO tbl_order(id_khachhang,code_order,status,userName,phone,address,tongtien) VALUES('" . $id_khachhang . "','" . $code_order . "',1,'" . $name . "', '" . $phone . "','" . $address . "' ,'" . $tongtien . "')";
 $order_query = mysqli_query($db->conn, $insert_order);
 if ($order_query) {
     // Them chi tiet hoa don
