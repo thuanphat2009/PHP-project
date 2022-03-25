@@ -92,14 +92,23 @@ if (isset($_SESSION['cart'])) {
 				</a>
 				<div class="navbar-inner">
 					<a class="brand" href="index.php"><img src="themes/images/logo.png" alt="Bootsshop" /></a>
-					<form class="form-inline navbar-search" method="post" action="products.php">
-						<input id="srchFld" class="srchTxt" type="text" />
-						<select style="width:100px;" class="srchTxt">
-							<option>Tất cả</option>
-							<option>Áo </option>
-							<option>Quần </option>
+					<form class="form-inline navbar-search" method="POST" action="timkiem.php">
+						<input placeholder="Tìm kiếm sản phẩm" name="tukhoa" class="srchTxt" type="text" />
+						<select style="width:100px;" name=option class="srchTxt">
+							<option value="all">Tất cả</option>
+							<?php
+							$getall_brand = $br->add_brand();
+							if ($getall_brand) {
+								while ($result_allbrand = $getall_brand->fetch_assoc()) {
+
+							?>
+									<option value="<?php echo $result_allbrand['brandId'] ?>"><?php echo $result_allbrand['brandName'] ?> </option>
+							<?php
+								}
+							}
+							?>
 						</select>
-						<button type="submit" id="submitButton" class="btn btn-primary">Tìm kiếm</button>
+						<input value="Tìm kiếm" type="submit" name="timkiem" id="submitButton" class="btn btn-primary"/>
 					</form>
 					<ul id="topMenu" class="nav pull-right">
 						<li class=""><a href="products.php">Sản Phẩm</a></li>

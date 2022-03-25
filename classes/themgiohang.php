@@ -10,19 +10,19 @@ if (isset($_GET['tangsl'])) {
     foreach ($_SESSION['cart'] as $cart_item) {
         if ($cart_item['id'] != $id) {
             $product[] = array(
-                'tensanpham' => $cart_item['tensanpham'], 'id' => $cart_item['id'], 'soluong' => $cart_item['soluong'], 'giasp' => $cart_item['giasp'], 'hinh' => $cart_item['hinh'], 'giamgia' => $cart_item['giamgia'], 'tonkho' => $cart_item['tonkho']
+                'tensanpham' => $cart_item['tensanpham'], 'id' => $cart_item['id'], 'soluong' => $cart_item['soluong'], 'giasp' => $cart_item['giasp'], 'hinh' => $cart_item['hinh'], 'giamgia' => $cart_item['giamgia'], 'tonkho' => $cart_item['tonkho'], 'daban' => $cart_item['daban']
             );
             $_SESSION['cart'] = $product;
         } else {
             $tangsoluong = $cart_item['soluong'] + 1;
             if($cart_item['soluong'] < $cart_item['tonkho'] ){
                 $product[] = array(
-                    'tensanpham' => $cart_item['tensanpham'], 'id' => $cart_item['id'], 'soluong' => $tangsoluong, 'giasp' => $cart_item['giasp'], 'hinh' => $cart_item['hinh'], 'giamgia' => $cart_item['giamgia'], 'tonkho' => $cart_item['tonkho']
+                    'tensanpham' => $cart_item['tensanpham'], 'id' => $cart_item['id'], 'soluong' => $tangsoluong, 'giasp' => $cart_item['giasp'], 'hinh' => $cart_item['hinh'], 'giamgia' => $cart_item['giamgia'], 'tonkho' => $cart_item['tonkho'], 'daban' => $cart_item['daban']
                 );
             }
             else{
                 $product[] = array(
-                    'tensanpham' => $cart_item['tensanpham'], 'id' => $cart_item['id'], 'soluong' => $cart_item['soluong'], 'giasp' => $cart_item['giasp'], 'hinh' => $cart_item['hinh'], 'giamgia' => $cart_item['giamgia'], 'tonkho' => $cart_item['tonkho']
+                    'tensanpham' => $cart_item['tensanpham'], 'id' => $cart_item['id'], 'soluong' => $cart_item['soluong'], 'giasp' => $cart_item['giasp'], 'hinh' => $cart_item['hinh'], 'giamgia' => $cart_item['giamgia'], 'tonkho' => $cart_item['tonkho'], 'daban' => $cart_item['daban']
                 );
             }
             $_SESSION['cart'] = $product;
@@ -36,19 +36,19 @@ if (isset($_GET['giamsl'])) {
     foreach ($_SESSION['cart'] as $cart_item) {
         if ($cart_item['id'] != $id) {
             $product[] = array(
-                'tensanpham' => $cart_item['tensanpham'], 'id' => $cart_item['id'], 'soluong' => $cart_item['soluong'], 'giasp' => $cart_item['giasp'], 'hinh' => $cart_item['hinh'], 'giamgia' => $cart_item['giamgia'], 'tonkho' => $cart_item['tonkho']
+                'tensanpham' => $cart_item['tensanpham'], 'id' => $cart_item['id'], 'soluong' => $cart_item['soluong'], 'giasp' => $cart_item['giasp'], 'hinh' => $cart_item['hinh'], 'giamgia' => $cart_item['giamgia'], 'tonkho' => $cart_item['tonkho'], 'daban' => $cart_item['daban']
             );
             $_SESSION['cart'] = $product;
         } else {
             $tangsoluong = $cart_item['soluong'] - 1;
             if($cart_item['soluong'] > 1){
                 $product[] = array(
-                    'tensanpham' => $cart_item['tensanpham'], 'id' => $cart_item['id'], 'soluong' => $tangsoluong, 'giasp' => $cart_item['giasp'], 'hinh' => $cart_item['hinh'], 'giamgia' => $cart_item['giamgia'], 'tonkho' => $cart_item['tonkho']
+                    'tensanpham' => $cart_item['tensanpham'], 'id' => $cart_item['id'], 'soluong' => $tangsoluong, 'giasp' => $cart_item['giasp'], 'hinh' => $cart_item['hinh'], 'giamgia' => $cart_item['giamgia'], 'tonkho' => $cart_item['tonkho'], 'daban' => $cart_item['daban']
                 );
             }
             else{
                 $product[] = array(
-                    'tensanpham' => $cart_item['tensanpham'], 'id' => $cart_item['id'], 'soluong' => $cart_item['soluong'], 'giasp' => $cart_item['giasp'], 'hinh' => $cart_item['hinh'], 'giamgia' => $cart_item['giamgia'], 'tonkho' => $cart_item['tonkho']
+                    'tensanpham' => $cart_item['tensanpham'], 'id' => $cart_item['id'], 'soluong' => $cart_item['soluong'], 'giasp' => $cart_item['giasp'], 'hinh' => $cart_item['hinh'], 'giamgia' => $cart_item['giamgia'], 'tonkho' => $cart_item['tonkho'], 'daban' => $cart_item['daban']
                 );
             }
             $_SESSION['cart'] = $product;
@@ -62,7 +62,7 @@ if (isset($_SESSION['cart']) && $_GET['xoaspid']) {
     foreach ($_SESSION['cart'] as $cart_item) {
         if ($cart_item['id'] != $id) {
             $product[] = array(
-                'tensanpham' => $cart_item['tensanpham'], 'id' => $cart_item['id'], 'soluong' => $cart_item['soluong'], 'giasp' => $cart_item['giasp'], 'hinh' => $cart_item['hinh'], 'giamgia' => $cart_item['giamgia'], 'tonkho' => $cart_item['tonkho']
+                'tensanpham' => $cart_item['tensanpham'], 'id' => $cart_item['id'], 'soluong' => $cart_item['soluong'], 'giasp' => $cart_item['giasp'], 'hinh' => $cart_item['hinh'], 'giamgia' => $cart_item['giamgia'], 'tonkho' => $cart_item['tonkho'], 'daban' => $cart_item['daban']
             );
         }
         $_SESSION['cart'] = $product;
@@ -84,7 +84,7 @@ if (isset($_POST['themgiohang'])) {
     echo ($row['giamgia']);
     if ($row) {
         $new_product = array(array(
-            'tensanpham' => $row['productName'], 'id' => $id, 'soluong' => $soluong, 'giasp' => $row['price'], 'hinh' => $row['image'], 'giamgia' => $row['giamgia'], 'tonkho' => $row['tonkho']
+            'tensanpham' => $row['productName'], 'id' => $id, 'soluong' => $soluong, 'giasp' => $row['price'], 'hinh' => $row['image'], 'giamgia' => $row['giamgia'], 'tonkho' => $row['tonkho'], 'daban' => $row['daban']
         ));
 
         // Kiem tra session gio hang ton tai
@@ -94,13 +94,13 @@ if (isset($_POST['themgiohang'])) {
                 // Neu du lieu trung
                 if ($cart_item['id'] == $id) {
                     $product[] = array(
-                        'tensanpham' => $cart_item['tensanpham'], 'id' => $cart_item['id'], 'soluong' => $soluong + 1, 'giasp' => $cart_item['giasp'], 'hinh' => $cart_item['hinh'], 'giamgia' => $cart_item['giamgia'] , 'tonkho' => $cart_item['tonkho']
+                        'tensanpham' => $cart_item['tensanpham'], 'id' => $cart_item['id'], 'soluong' => $soluong + 1, 'giasp' => $cart_item['giasp'], 'hinh' => $cart_item['hinh'], 'giamgia' => $cart_item['giamgia'] , 'tonkho' => $cart_item['tonkho'], 'daban' => $cart_item['daban']
                     );
                     $found = true;
                 } else {
                     // Neu khong trung
                     $product[] = array(
-                        'tensanpham' => $cart_item['tensanpham'], 'id' => $cart_item['id'], 'soluong' => $cart_item['soluong'], 'giasp' => $cart_item['giasp'], 'hinh' => $cart_item['hinh'], 'giamgia' => $cart_item['giamgia'] , 'tonkho' => $cart_item['tonkho']
+                        'tensanpham' => $cart_item['tensanpham'], 'id' => $cart_item['id'], 'soluong' => $cart_item['soluong'], 'giasp' => $cart_item['giasp'], 'hinh' => $cart_item['hinh'], 'giamgia' => $cart_item['giamgia'] , 'tonkho' => $cart_item['tonkho'], 'daban' => $cart_item['daban']
                     );
                 }
             }

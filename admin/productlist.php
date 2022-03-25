@@ -192,10 +192,9 @@ Session::checkSession();
                           <?php echo $val['tonkho'] ?>
                         </td>
                         <td>
-                          <?php echo $result['giamgia'] ?>
+                          <?php echo $val['giamgia'] ?>
                         </td>
                         <td>
-                          <?php echo $result['daban'] ?>
                           <?php echo $val['daban'] ?>
                         </td>
                         <td>
