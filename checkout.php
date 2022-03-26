@@ -21,24 +21,26 @@ Session::checkuserLogin();
                 </ul>
                 <h3> Thanh toán</h3>
                 <hr class="soft" />
-
+                <?php 
+                    $login_check = Session::get('customer_name');
+                ?>
                 <form method="post" action="./classes/dathang.php" class="form-horizontal">
                     <div class="control-group">
                         <label class="control-label" for="name">Họ tên <sup>*</sup></label>
                         <div class="controls">
-                            <input type="text" name="name" id="name" placeholder="Họ tên">
+                            <input type="text" name="name" id="name" placeholder="Họ tên" value="<?=$login_check?>" required>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="phone"> Số điện thoại <sup>*</sup></label>
                         <div class="controls">
-                            <input type="text" name="phone" id="phone" placeholder="Số điện thoại">
+                            <input type="text" name="phone" id="phone" placeholder="Số điện thoại" required>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="address"> Địa chỉ <sup>*</sup></label>
                         <div class="controls">
-                            <input type="text" name="address" id="address" placeholder="Địa chỉ">
+                            <input type="text" name="address" id="address" placeholder="Địa chỉ" required>
                         </div>
                     </div>
                     <table class="table table-bordered">

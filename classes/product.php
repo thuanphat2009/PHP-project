@@ -384,5 +384,12 @@ class product
         $result = $this->db->delete($query);
         return $result;
     }
+
+    public function get_special()
+    {
+        $query = "SELECT * FROM tbl_product WHERE giamgia != 0 ORDER BY giamgia DESC ";
+        $result = $this->db->select($query);
+        return $result;
+    }
 }
 ?>
