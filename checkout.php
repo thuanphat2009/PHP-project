@@ -54,72 +54,72 @@ Session::checkuserLogin();
                             </tr>
                         </thead>
                         <?php
-					if (isset($_SESSION['cart'])) {
-						$tongtien = 0;
-					?>
-						<tbody>
-							<?php
-							$i = 0;
-							foreach ($_SESSION['cart'] as $cart_item) {
-								$i++;
-								$thanhtien = $cart_item['soluong'] * $cart_item['giasp'];
-								$tongcong = $thanhtien - (($cart_item['giamgia'] * $thanhtien) / 100);
-								$tongtien += $tongcong;
-							?>
-								<tr>
-									<td>
-										<img width="60" src="admin/uploads/<?php echo $cart_item['hinh'] ?>" />
-									</td>
-									<td><?php echo $cart_item['tensanpham'] ?></td>
-									<td>
-										<div class="input-append">
-											<input readonly class="span1" style="max-width:34px" value="<?php echo $cart_item['soluong'] ?>" id="appendedInputButtons" size="16" type="text">
-											
-										</div>
-									</td>
-									<td><?php echo number_format($cart_item['giasp'], 0, ',', '.') . ' ' . 'VND';  ?></td>
-									<td><?php echo number_format($thanhtien, 0, ',', '.') . ' ' . 'VND'; ?></td>
-									<td><?php echo $cart_item['giamgia'] ?> %</td>
-									<td><?php echo number_format($tongcong, 0, ',', '.') . ' ' . 'VND'; ?></td>
-								</tr>
-							<?php
-							}
-							?>
+                        if (isset($_SESSION['cart'])) {
+                            $tongtien = 0;
+                        ?>
+                            <tbody>
+                                <?php
+                                $i = 0;
+                                foreach ($_SESSION['cart'] as $cart_item) {
+                                    $i++;
+                                    $thanhtien = $cart_item['soluong'] * $cart_item['giasp'];
+                                    $tongcong = $thanhtien - (($cart_item['giamgia'] * $thanhtien) / 100);
+                                    $tongtien += $tongcong;
+                                ?>
+                                    <tr>
+                                        <td>
+                                            <img width="60" src="admin/uploads/<?php echo $cart_item['hinh'] ?>" />
+                                        </td>
+                                        <td><?php echo $cart_item['tensanpham'] ?></td>
+                                        <td>
+                                            <div class="input-append">
+                                                <input readonly class="span1" style="max-width:34px" value="<?php echo $cart_item['soluong'] ?>" id="appendedInputButtons" size="16" type="text">
 
-							<tr>
-								<td colspan="6" style="text-align:right"><strong>Tổng cộng = </strong>
-								</td>
-                                <input type="hidden" name="tongtien" value="<?php echo $tongtien ?>">
-                        
-								<td class="label label-important" style="display:block"> <strong><?php echo number_format($tongtien, 0, ',', '.'); ?> VND </strong></td>
-							</tr>
-							<tr>
-								<td colspan="12" style="text-align:right">
-									<strong>
-										<a href="./product_summary.php">Trở lại trang giỏ hàng </a>
+                                            </div>
+                                        </td>
+                                        <td><?php echo number_format($cart_item['giasp'], 0, ',', '.') . ' ' . 'VND';  ?></td>
+                                        <td><?php echo number_format($thanhtien, 0, ',', '.') . ' ' . 'VND'; ?></td>
+                                        <td><?php echo $cart_item['giamgia'] ?> %</td>
+                                        <td><?php echo number_format($tongcong, 0, ',', '.') . ' ' . 'VND'; ?></td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
 
-									</strong>
-								</td>
-							</tr>
-						</tbody>
-					<?php
+                                <tr>
+                                    <td colspan="6" style="text-align:right"><strong>Tổng cộng = </strong>
+                                    </td>
+                                    <input type="hidden" name="tongtien" value="<?php echo $tongtien ?>">
 
-					} else {
-					?>
-						<tbody>
-							<h2>Chưa chọn sản phẩm để thanh toán</h2>
-                            <tr>
-								<td colspan="12" style="text-align:right">
-									<strong>
-										<a href="./product_summary.php">Trở lại trang giỏ hàng </a>
+                                    <td class="label label-important" style="display:block"> <strong><?php echo number_format($tongtien, 0, ',', '.'); ?> VND </strong></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="12" style="text-align:right">
+                                        <strong>
+                                            <a href="./product_summary.php">Trở lại trang giỏ hàng </a>
 
-									</strong>
-								</td>
-							</tr>
-						</tbody>
-					<?php
-					}
-					?>
+                                        </strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        <?php
+
+                        } else {
+                        ?>
+                            <tbody>
+                                <h2>Chưa chọn sản phẩm để thanh toán</h2>
+                                <tr>
+                                    <td colspan="12" style="text-align:right">
+                                        <strong>
+                                            <a href="./product_summary.php">Trở lại trang giỏ hàng </a>
+
+                                        </strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        <?php
+                        }
+                        ?>
                     </table>
 
                     <div class="control-group pull-right">
@@ -129,12 +129,27 @@ Session::checkuserLogin();
                         </div>
                     </div>
                 </form>
-                </div>
+
             </div>
+            <?php
+                $tong = 0;
+                foreach ($_SESSION['cart'] as $key => $value) {
+                    $tien = $value['soluong']*$value['giasp'];
+                    $tong += $tien;
+                }
+            ?>
+            <form method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="classes/momoqr.php">
+                <input class="pull-right btn-large" style="background-color:#a50064;border:#a50064;color:#ffffff" type="submit" name="" value="Thanh toán MOMO QR" />
+            </form>
+            <form method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="classes/momoatm.php">
+                <input name = "tongtienmomo" type="hidden" value = "<?php echo $tong ?>">
+                <input class="pull-right btn-large" style="margin-right:10px;background-color:#a50064;border:#a50064;color:#ffffff" type="submit" name="" value="Thanh toán MOMO ATM" />
+            </form>
         </div>
     </div>
-    <!-- MainBody End ============================= -->
-    <!-- Footer ================================================================== -->
-    <?php
-    include 'include/footer.php'
-    ?>
+</div>
+<!-- MainBody End ============================= -->
+<!-- Footer ================================================================== -->
+<?php
+include 'include/footer.php'
+?>
