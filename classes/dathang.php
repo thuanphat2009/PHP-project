@@ -12,7 +12,8 @@ $name = $_POST['name'];
 $phone = $_POST['phone'];
 $address = $_POST['address'];
 $tongtien = $_POST['tongtien'];
-$insert_order = "INSERT INTO tbl_order(id_khachhang,code_order,status,userName,phone,address,tongtien) VALUES('" . $id_khachhang . "','" . $code_order . "',1,'" . $name . "', '" . $phone . "','" . $address . "' ,'" . $tongtien . "')";
+$ngaylap =  date("Y/m/d");
+$insert_order = "INSERT INTO tbl_order(id_khachhang,code_order,status,userName,phone,address,tongtien,ngaylap) VALUES('" . $id_khachhang . "','" . $code_order . "',1,'" . $name . "', '" . $phone . "','" . $address . "' ,'" . $tongtien . "','" . $ngaylap . "')";
 $order_query = mysqli_query($db->conn, $insert_order);
 if ($order_query) {
     // Them chi tiet hoa don

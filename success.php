@@ -20,9 +20,8 @@ if (isset($_GET['partnerCode'])) {
 	,'" . $payType . "','" . $code_order . "')";
 	$momo_query = mysqli_query($db->conn, $insert_momo);
 	if ($momo_query) {
-		$insert_order = "INSERT INTO tbl_order(id_khachhang,code_order,status,userName,phone,address,tongtien) 
-		VALUES('" . $id_khachhang . "','" . $code_order . "',1,'" . $name . "', '" . $phone . "'
-		,'" . $address . "' ,'" . $tongtien . "')";
+		$ngaylap =  date("Y/m/d");
+		$insert_order = "INSERT INTO tbl_order(id_khachhang,code_order,status,userName,phone,address,tongtien,ngaylap) VALUES('" . $id_khachhang . "','" . $code_order . "',1,'" . $name . "', '" . $phone . "','" . $address . "' ,'" . $tongtien . "','" . $ngaylap . "')";
 		$momo_query = mysqli_query($db->conn, $insert_order);
 
 		foreach ($_SESSION['cart'] as $key => $value) {
