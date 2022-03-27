@@ -113,6 +113,61 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['wishlist'])) {
 								<?php echo $result_details['product_desc'] ?>
 							</div>
 
+							<div class=" span9">
+								<div class="be-comment-block">
+
+									<?php
+									$product_comment = $comment->show_comment($id);
+									if ($product_comment) {
+										while ($result = $product_comment->fetch_assoc()) {
+									?>
+											<div class="be-comment">
+												<!-- <div class="be-img-comment">
+											<a href="blog-detail-2.html">
+												<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
+											</a>
+										</div> -->
+
+												<div class="be-comment-content">
+
+													<span class="be-comment-name">
+														<p>	<?php echo $result['name'] ?></p>
+													</span>
+													<span class="be-comment-time">
+														<i class="fa fa-clock-o"></i>
+														<?php echo $result['ngay'] ?> lúc	<?php echo $result['gio'] ?>
+													</span>
+
+													<p class="be-comment-text">
+													<?php echo $result['noidung'] ?>
+													</p>
+												</div>
+											</div>
+									<?php }
+									} ?>
+									<form method="post" action="./classes/dangbinhluan.php" class="form-block">
+										<div class="row">
+
+											<div class="col-xs-12">
+												<div class="form-group">
+													<textarea name="binhluan" class="form-input" required="" placeholder="Nhập bình luận"></textarea>
+												</div>
+											</div>
+											<input type="hidden" name="proid" value="<?php echo $_GET['proid'] ?>">
+											<?php
+											$login_check = Session::get('customer_login');
+											if ($login_check) {
+												echo '<input type="submit" value="Đăng bình luận" class="btn btn-primary pull-right"></input>
+											';
+											} else {
+												echo '';
+											}
+											?>
+
+										</div>
+									</form>
+								</div>
+							</div>
 
 							<div class="span9">
 								<ul id="productDetail" class="nav nav-tabs">
@@ -146,14 +201,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['wishlist'])) {
 									</div>
 									<div class="tab-pane fade" id="profile">
 										<div id="myTab" class="pull-right">
-										
+
 											<a href="#blockView" data-toggle="tab"><span class="btn btn-large btn-primary"><i class="icon-th-large"></i></span></a>
 										</div>
 										<br class="clr" />
 										<hr class="soft" />
 
 										<div class="tab-content">
-											
+
 											<div class="tab-pane active" id="blockView">
 												<ul class="thumbnails">
 													<?php
@@ -172,15 +227,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['wishlist'])) {
 																			<?php echo $result_relative['product_desc'] ?>
 																		</p>
 																		<form method="post" action="./classes/themgiohang.php?proid=<?php echo $result_relative['productId'] ?>" class="form-horizontal qtyFrm">
-																		<h4 style="text-align:center">
-																		
-																			<a class="btn" href="product_details.php?proid=<?php echo $result_relative['productId'] ?>&&cateid=<?php echo $result_relative['cateId'] ?>">
-																				<i class="icon-zoom-in"></i>
-																			</a> 
-																			<input value=" Thêm vào giỏ" type="submit" name="themgiohang" class="btn btn-primary" />
-																			<a class="btn btn-primary" href="#"> <?php echo $fm->format_currency($result_relative['price']) . " " . "VND" ?>
-																			</a>
-																		</h4>
+																			<h4 style="text-align:center">
+
+																				<a class="btn" href="product_details.php?proid=<?php echo $result_relative['productId'] ?>&&cateid=<?php echo $result_relative['cateId'] ?>">
+																					<i class="icon-zoom-in"></i>
+																				</a>
+																				<input value=" Thêm vào giỏ" type="submit" name="themgiohang" class="btn btn-primary" />
+																				<a class="btn btn-primary" href="#"> <?php echo $fm->format_currency($result_relative['price']) . " " . "VND" ?>
+																				</a>
+																			</h4>
 																		</form>
 																	</div>
 																</div>

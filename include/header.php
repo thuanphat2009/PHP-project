@@ -13,6 +13,7 @@ $ct = new cart();
 $br = new brand();
 $cate = new category();
 $product = new product();
+$comment = new comment();
 $cs = new customer();
 if (isset($_SESSION['cart'])) {
 	$i = 0;
@@ -40,6 +41,7 @@ if (isset($_SESSION['cart'])) {
 	<script src="themes/js/less.js" type="text/javascript"></script> -->
 
 	<!-- Bootstrap style -->
+
 	<link id="callCss" rel="stylesheet" href="themes/bootshop/bootstrap.min.css" media="screen" />
 	<link href="themes/css/base.css" rel="stylesheet" media="screen" />
 	<!-- Bootstrap style responsive -->
@@ -55,6 +57,113 @@ if (isset($_SESSION['cart'])) {
 	<link rel="apple-touch-icon-precomposed" href="themes/images/ico/apple-touch-icon-57-precomposed.png">
 	<style type="text/css" id="enject"></style>
 	<link rel="stylesheet" href="themes/css/custom.css">
+	<style>
+		.be-comment-block {
+			margin-bottom: 50px !important;
+			border: 1px solid #edeff2;
+			border-radius: 2px;
+			padding: 50px 70px;
+			border: 1px solid #ffffff;
+		}
+
+		.comments-title {
+			font-size: 16px;
+			color: #262626;
+			font-family: 'Conv_helveticaneuecyr-bold';
+		}
+
+		.be-img-comment {
+			width: 60px;
+			height: 60px;
+			float: left;
+			margin-bottom: 15px;
+		}
+
+		.be-ava-comment {
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+		}
+
+
+		.be-comment-content span {
+			display: inline-block;
+			width: 49%;
+		}
+
+		.be-comment-name {
+			font-size: 13px;
+			font-family: 'Conv_helveticaneuecyr-bold';
+		}
+
+		.be-comment-content a {
+			color: #383b43;
+		}
+
+		.be-comment-content span {
+			display: inline-block;
+			width: 49%;
+			margin-bottom: 15px;
+		}
+
+		.be-comment-time {
+			text-align: right;
+		}
+
+		.be-comment-time {
+			font-size: 11px;
+			color: #b4b7c1;
+		}
+
+		.be-comment-text {
+			font-size: 13px;
+			line-height: 18px;
+			color: #7a8192;
+			display: block;
+			background: #f6f6f7;
+			border: 1px solid #edeff2;
+			padding: 15px 20px 20px 20px;
+		}
+
+		.form-group.fl_icon .icon {
+			position: absolute;
+			top: 1px;
+			left: 16px;
+			width: 48px;
+			height: 48px;
+			background: #f6f6f7;
+			color: #b5b8c2;
+			text-align: center;
+			line-height: 50px;
+			-webkit-border-top-left-radius: 2px;
+			-webkit-border-bottom-left-radius: 2px;
+			-moz-border-radius-topleft: 2px;
+			-moz-border-radius-bottomleft: 2px;
+			border-top-left-radius: 2px;
+			border-bottom-left-radius: 2px;
+		}
+
+		.form-group .form-input {
+			font-size: 13px;
+			line-height: 30px;
+			font-weight: 400;
+			color: #b4b7c1;
+			width: 100%;
+			height: 50px;
+			padding-left: 20px;
+			padding-right: 20px;
+			border: 1px solid #edeff2;
+			border-radius: 3px;
+		}
+
+		.form-group.fl_icon .form-input {
+			padding-left: 70px;
+		}
+
+		.form-group textarea.form-input {
+			height: 150px;
+		}
+	</style>
 </head>
 
 <body>
@@ -108,7 +217,7 @@ if (isset($_SESSION['cart'])) {
 							}
 							?>
 						</select>
-						<input value="Tìm kiếm" type="submit" name="timkiem" id="submitButton" class="btn btn-primary"/>
+						<input value="Tìm kiếm" type="submit" name="timkiem" id="submitButton" class="btn btn-primary" />
 					</form>
 					<ul id="topMenu" class="nav pull-right">
 						<li class=""><a href="products.php">Sản Phẩm</a></li>
