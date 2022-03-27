@@ -114,7 +114,7 @@ if (isset($_POST['themgiohang'])) {
             $_SESSION['cart'] = $new_product;
         }
     }
-    header('Location:../product_summary.php');        // print_r($new_product);
+    header('Location: ' . $_SERVER['HTTP_REFERER']);       // print_r($new_product);
 
     // print_r($_SESSION['cart']);
 }
