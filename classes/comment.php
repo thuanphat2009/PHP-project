@@ -29,11 +29,28 @@ class comment
         $result = $this->db->select($query);
         return $result;
     }
+    public function show_commentAdmin()
+    {
+        $query = "SELECT * FROM tbl_comment,tbl_customer,tbl_product WHERE tbl_comment.id_product = tbl_product.productId AND tbl_comment.id_khachhang = tbl_customer.Id  ORDER BY id_comment DESC";
+        $result = $this->db->select($query);
+        return $result;
+    }
     public function delete_comment($id_comment)
     {
         $query = "DELETE FROM tbl_comment WHERE id_comment = '$id_comment'";
         $result = $this->db->delete($query);
         return $result;
+    }
+    public function del_cmt($id){
+        $query = "DELETE FROM tbl_comment WHERE id_comment = '$id'";
+        $result = $this->db->delete($query);
+        if ($result){
+            $alert = "<span class='text-success'>Xóa bình luận thành công</span>";             
+            return $alert;
+        }else{
+            $alert = "<span class='text-danger'>Xóa bình luận thất bại</span>";
+            return $alert;            
+     }
     }
 }
 ?>

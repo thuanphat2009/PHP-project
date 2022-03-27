@@ -37,6 +37,12 @@
             </a>
           </li>
           <li>
+            <a href="./commentlist.php">
+              <i class="now-ui-icons design_bullet-list-67"></i>
+              <p>Bình luận</p>
+            </a>
+          </li>
+          <li>
             <a href="./orderlist.php">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Đơn hàng</p>
