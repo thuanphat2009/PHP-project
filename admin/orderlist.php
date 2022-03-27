@@ -109,6 +109,9 @@ $order = new Order();
                         Mã đơn hàng
                       </th>
                       <th>
+                        Ngày
+                      </th>
+                      <th>
                         Tên khách hàng
                       </th>
                       <th>
@@ -143,6 +146,9 @@ $order = new Order();
                               <?php echo $val['code_order']; ?>
                             </td>
                             <td>
+                              <?php echo $val['ngaylap']; ?>
+                            </td>
+                            <td>
                               <?php echo $val['userName']; ?>
                             </td>
                             <td>
@@ -159,7 +165,7 @@ $order = new Order();
                               <?php if ($val['status'] == 1) {
                                 echo 'Đơn hàng mới';
                               } else {
-                                echo 'Đã xem';
+                                echo 'Đã xác nhận';
                               } ?>
                             </td>
                             <td>
