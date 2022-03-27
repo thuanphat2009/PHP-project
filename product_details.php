@@ -114,59 +114,57 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['wishlist'])) {
 							</div>
 
 							<div class=" span9">
-								<div class="be-comment-block">
+								<ul class="be-comment-block">
 
 									<?php
 									$product_comment = $comment->show_comment($id);
 									if ($product_comment) {
 										while ($result = $product_comment->fetch_assoc()) {
 									?>
-											<div class="be-comment">
-												<!-- <div class="be-img-comment">
-											<a href="blog-detail-2.html">
-												<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
-											</a>
-										</div> -->
-
+											<li style="list-style:none;" class="be-comment">
 												<div class="be-comment-content">
-
 													<span class="be-comment-name">
-														<p>	<?php echo $result['name'] ?></p>
+														<p> <?php echo $result['name'] ?></p>
 													</span>
 													<span class="be-comment-time">
 														<i class="fa fa-clock-o"></i>
-														<?php echo $result['ngay'] ?> lúc	<?php echo $result['gio'] ?>
+														<?php echo $result['ngay'] ?> lúc <?php echo $result['gio'] ?>
 													</span>
 
 													<p class="be-comment-text">
-													<?php echo $result['noidung'] ?>
+														<?php echo $result['noidung'] ?>
 													</p>
 												</div>
-											</div>
+											</li>
 									<?php }
 									} ?>
-									<form method="post" action="./classes/dangbinhluan.php" class="form-block">
-										<div class="row">
 
-											<div class="col-xs-12">
-												<div class="form-group">
-													<textarea name="binhluan" class="form-input" required="" placeholder="Nhập bình luận"></textarea>
-												</div>
-											</div>
-											<input type="hidden" name="proid" value="<?php echo $_GET['proid'] ?>">
-											<?php
-											$login_check = Session::get('customer_login');
-											if ($login_check) {
-												echo '<input type="submit" value="Đăng bình luận" class="btn btn-primary pull-right"></input>
-											';
-											} else {
-												echo '';
-											}
-											?>
-
-										</div>
-									</form>
+								</ul>
+								<div class="showmore" style="display:flex;justify-content:center;">
+									<div id="loadMore" class="btn btn-success hvr-hover">Xem Thêm</div>
+									<div style="margin-left:5px;" id="showLess" class="btn btn-primary hvr-hover">Thu Gọn</div>
 								</div>
+								<form method="post" action="./classes/dangbinhluan.php" class="p-5 form-block">
+									<div class="row">
+
+										<div class="col-xs-6">
+											<div class="form-group">
+												<textarea name="binhluan" class="form-input" required="" placeholder="Nhập bình luận"></textarea>
+											</div>
+										</div>
+										<input type="hidden" name="proid" value="<?php echo $_GET['proid'] ?>">
+										<?php
+										$login_check = Session::get('customer_login');
+										if ($login_check) {
+											echo '<input type="submit" value="Đăng bình luận" class="btn btn-primary pull-right"></input>
+											';
+										} else {
+											echo '';
+										}
+										?>
+
+									</div>
+								</form>
 							</div>
 
 							<div class="span9">
