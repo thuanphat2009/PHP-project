@@ -25,7 +25,7 @@ class comment
     }
     public function show_comment($id_sanpham)
     {
-        $query = "SELECT * FROM tbl_comment,tbl_customer WHERE tbl_comment.id_khachhang = tbl_customer.Id AND tbl_comment.id_product = '$id_sanpham'";
+        $query = "SELECT * FROM tbl_comment,tbl_customer WHERE tbl_comment.id_khachhang = tbl_customer.Id AND tbl_comment.id_product = '$id_sanpham' ORDER BY id_comment DESC";
         $result = $this->db->insert($query);
         return $result;
     }

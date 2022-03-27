@@ -149,6 +149,7 @@ if (isset($_SESSION['cart'])) {
 			font-weight: 400;
 			color: #b4b7c1;
 			width: 100%;
+			margin:20px 20px 0;
 			height: 50px;
 			padding-left: 20px;
 			padding-right: 20px;
