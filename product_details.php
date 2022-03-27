@@ -133,6 +133,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['wishlist'])) {
 
 													<p class="be-comment-text">
 														<?php echo $result['noidung'] ?>
+														<?php if ($result['id_khachhang'] == Session::get('customer_id')) { ?>
+															<a onclick="return confirm('Bạn muốn xóa bình luận ?')" href="./classes/dangbinhluan.php?xoacmtid=<?php echo $result['id_comment'] ?>">
+																<i style="float:right;" class="icon-remove icon-white"></i>
+															</a>
+
+														<?php } ?>
 													</p>
 												</div>
 											</li>

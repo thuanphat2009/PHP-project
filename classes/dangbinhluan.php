@@ -10,5 +10,11 @@ $binhluan = $_POST['binhluan'];
 date_default_timezone_set("Asia/Ho_Chi_Minh");
 $ngay = date("Y/m/d");
 $gio = date('H:i');
-$insert_comment = $comment -> insert_comment($id_khachhang,$id_sanpham,$ngay,$gio,$binhluan);
+$insert_comment = $comment->insert_comment($id_khachhang, $id_sanpham, $ngay, $gio, $binhluan);
 header('Location: ' . $_SERVER['HTTP_REFERER']);
+
+if (isset($_GET['xoacmtid'])) {
+    $id_comment = $_GET['xoacmtid'];
+    $delete_comment = $comment->delete_comment($id_comment);
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+}
