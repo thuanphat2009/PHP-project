@@ -110,7 +110,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['wishlist'])) {
 									</div>
 								</div>
 								<hr class="soft" />
-								<?php echo $result_details['product_desc'] ?>
 							</div>
 
 
@@ -169,7 +168,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['wishlist'])) {
 																	<div class="caption">
 																		<h5><?php echo $result_relative['productName'] ?> </h5>
 																		<p>
-																			<?php echo $result_relative['product_desc'] ?>
+																			<!-- echo $fm->textShorten($result['product_desc'],5)  -->
+																			<?php echo $fm->textShorten($result_relative['product_desc'],80)  ?>
 																		</p>
 																		<form method="post" action="./classes/themgiohang.php?proid=<?php echo $result_relative['productId'] ?>" class="form-horizontal qtyFrm">
 																		<h4 style="text-align:center">

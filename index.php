@@ -1,6 +1,8 @@
 ﻿<?php
 include_once 'include/header.php';
 include_once 'include/slider.php';
+require_once './helper/format.php';
+$fm = new Format();
 ?>
 <div id="mainBody">
 	<div class="container">
@@ -92,7 +94,7 @@ include_once 'include/slider.php';
 										<h5><?php echo $result_new['productName'] ?></h5>
 										<p>
 											<!-- echo $fm->textShorten($result['product_desc'],5)  -->
-											<?php echo $result_new['product_desc'] ?>
+											<?php echo $fm->textShorten($result_new['product_desc'],80)  ?>
 										</p>
 										<form method="post" action="./classes/themgiohang.php?proid=<?php echo $result_new['productId'] ?>" class="form-horizontal qtyFrm">
 										<h4 style="text-align:center">
