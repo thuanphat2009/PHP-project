@@ -78,7 +78,7 @@ $total = ceil($rowCount / $pro);
 
                                             <h5><?php echo $val['productName'] ?></h5>
                                             <p>
-                                                <?php echo $val['product_desc'] ?>
+                                                <?php echo $fm->textShorten($val['product_desc'],80)  ?>
                                             </p>
 
                                             <br class="clr" />
@@ -114,7 +114,7 @@ $total = ceil($rowCount / $pro);
                                             <div class="caption">
                                                 <h5><?php echo $val['productName'] ?></h5>
                                                 <p>
-                                                    <?php echo $val['product_desc'] ?>
+                                                    <?php echo $fm->textShorten($val['product_desc'],80)  ?>
                                                 </p>
                                                 <form method="post" action="./classes/themgiohang.php?proid=<?php echo $val['productId'] ?>" class="form-horizontal qtyFrm">
                                                     <h4 style="text-align:center">
