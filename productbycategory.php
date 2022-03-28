@@ -98,7 +98,7 @@ $total = ceil($rows['0']['count_product_cate'] / $pro);
 
 										<h5><?php echo $result['productName'] ?></h5>
 										<p>
-											<?php echo $result['product_desc'] ?>
+											<?php echo $fm->textShorten($result['product_desc'],80)  ?>
 										</p>
 
 										<br class="clr" />
@@ -139,7 +139,7 @@ $total = ceil($rows['0']['count_product_cate'] / $pro);
 											<div class="caption">
 												<h5><?php echo $result['productName'] ?></h5>
 												<p>
-													<?php echo $result['product_desc'] ?>
+													<?php echo $fm->textShorten($result['product_desc'],80)  ?>
 												</p>
 												<h4 style="text-align:center"><a class="btn" href="product_details.php?proid=<?php echo $result['productId'] ?>&&cateid=<?php echo $result['cateId'] ?>"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><?php echo $fm->format_currency($result['price']) . " " . "VND" ?></a></h4>
 											</div>
