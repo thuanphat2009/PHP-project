@@ -1,9 +1,9 @@
 <?php
-include_once 'include/header.php';
 require_once './lib/session.php';
+Session::checkuserLogin();
+include_once 'include/header.php';
 require_once './lib/database.php';
 Session::init();
-Session::checkuserLogin();
 ?>
 <!-- Header End====================================================================== -->
 <div id="mainBody">
@@ -21,14 +21,14 @@ Session::checkuserLogin();
                 </ul>
                 <h3> Thanh toán</h3>
                 <hr class="soft" />
-                <?php 
-                    $login_check = Session::get('customer_name');
+                <?php
+                $login_check = Session::get('customer_name');
                 ?>
                 <form method="post" action="./classes/dathang.php" class="form-horizontal">
                     <div class="control-group">
                         <label class="control-label" for="name">Họ tên <sup>*</sup></label>
                         <div class="controls">
-                            <input type="text" name="name" id="name" placeholder="Họ tên" value="<?=$login_check?>" required>
+                            <input type="text" name="name" id="name" placeholder="Họ tên" value="<?= $login_check ?>" required>
                         </div>
                     </div>
                     <div class="control-group">
@@ -134,17 +134,20 @@ Session::checkuserLogin();
 
             </div>
             <?php
+            if (isset($_SESSION['cart'])) {
                 $tong = 0;
                 foreach ($_SESSION['cart'] as $key => $value) {
-                    $tien = $value['soluong']*$value['giasp'];
+                    $tien = $value['soluong'] * $value['giasp'];
                     $tong += $tien;
                 }
+            }
+
             ?>
             <form method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="classes/momoqr.php">
                 <input class="pull-right btn-large" style="background-color:#a50064;border:#a50064;color:#ffffff" type="submit" name="" value="Thanh toán MOMO QR" />
             </form>
             <form method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="classes/momoatm.php">
-                <input name = "tongtienmomo" type="hidden" value = "<?php echo $tong ?>">
+                <input name="tongtienmomo" type="hidden" value="<?php echo $tong ?>">
                 <input class="pull-right btn-large" style="margin-right:10px;background-color:#a50064;border:#a50064;color:#ffffff" type="submit" name="" value="Thanh toán MOMO ATM" />
             </form>
         </div>

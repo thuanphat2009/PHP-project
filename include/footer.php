@@ -28,6 +28,7 @@
 	</div><!-- Container End -->
 </div>
 <!-- Placed at the end of the document so the pages load faster ============================================= -->
+<script src="admin/assets/js//core/jsbybanhcuon.js"></script>
 <script src="themes/js/jquery.js" type="text/javascript"></script>
 <script src="themes/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="themes/js/google-code-prettify/prettify.js"></script>
