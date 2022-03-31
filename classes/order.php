@@ -29,7 +29,7 @@ class order
     public function showOrderDetail($id)
     {
         $data = null;
-        $sql = "SELECT * From tbl_order_detail,tbl_product WHERE tbl_order_detail.id_product = tbl_product.productId AND tbl_order_detail.code_order = '$id' ORDER BY tbl_order_detail.id_order_detail DESC";
+        $sql = "SELECT * From tbl_order_detail,tbl_product WHERE tbl_order_detail.productId = tbl_product.productId AND tbl_order_detail.code_order = '$id' ORDER BY tbl_order_detail.id_order_detail DESC";
         $result = $this->db->select($sql);
 
         if ($result->num_rows > 0) {
